@@ -1,0 +1,2409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Realm Labs — Ship AI Your Customers Trust</title>
+    <style>
+      /* ============ BRAND FONTS ============ */
+      @font-face {
+        font-family: 'Rebond Grotesque';
+        src: url('assets/fonts/Rebond-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Rebond Grotesque';
+        src: url('assets/fonts/Rebond-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Rebond Grotesque';
+        src: url('assets/fonts/Rebond-Semibold.otf') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Rebond Grotesque';
+        src: url('assets/fonts/Rebond-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('assets/fonts/Satoshi-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('assets/fonts/Satoshi-Italic.woff2') format('woff2');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('assets/fonts/Satoshi-Medium.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('assets/fonts/Satoshi-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Geist Mono';
+        src: url('assets/fonts/GeistMono-Regular.otf') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Geist Mono';
+        src: url('assets/fonts/GeistMono-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* ============ TOKENS ============ */
+      :root {
+        /* Brand palette — Realm Labs Brand Guidelines 2025 */
+        --purple: #400ebe; /* Amethyst — primary */
+        --purple-2: #6a3fe8; /* Amethyst 600 — secondary accent */
+        --purple-50: #ede7fa; /* Amethyst 50 — tint bg */
+        --teal: #11d677; /* Jade — supporting green */
+        --teal-dark: #00925c; /* Emerald — darker green */
+        --blue: #3b82f6;
+        --navy: #0a0f1c;
+        --navy-2: #0f172a;
+        --surface: #1e293b;
+        --white: #ffffff;
+        --offwhite: #f8fafb;
+        --ink: #0d0a1f;
+        --ink-2: #2a2440;
+        --body: #4a4562;
+        --muted: #a2a7b2; /* Slate for muted */
+        --red: #ef4444;
+        --amber: #f59e0b;
+        --border-l: #e6e4ee;
+        --border-d: #2a2a3c;
+        --font-head: 'Rebond Grotesque', 'Space Grotesk', system-ui, sans-serif;
+        --font-body: 'Satoshi', 'Inter', system-ui, sans-serif;
+        --font-mono: 'Geist Mono', ui-monospace, monospace;
+      }
+
+      /* ============ BASE ============ */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        background: #000;
+        color: var(--ink);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        overflow: hidden;
+        height: 100%;
+      }
+      .deck {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Each slide = 16:9, sized via aspect-ratio box */
+      .slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(32px, 4vw, 72px) clamp(40px, 5vw, 96px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        overflow: hidden;
+      }
+      .slide.active {
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 2;
+      }
+      .slide.light {
+        background: var(--white);
+        color: var(--ink);
+      }
+      .slide.dark {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      /* Animated gradient orbs for dark slides */
+      .slide.dark::before,
+      .slide.dark::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        opacity: 0.45;
+      }
+      .slide.dark::before {
+        width: 640px;
+        height: 640px;
+        background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+        top: -180px;
+        left: -180px;
+        animation: drift1 22s ease-in-out infinite;
+      }
+      .slide.dark::after {
+        width: 720px;
+        height: 720px;
+        background: radial-gradient(circle, var(--teal) 0%, transparent 70%);
+        bottom: -220px;
+        right: -220px;
+        animation: drift2 26s ease-in-out infinite;
+      }
+      @keyframes drift1 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(60px, 40px);
+        }
+      }
+      @keyframes drift2 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-50px, -30px);
+        }
+      }
+
+      /* ============ TYPOGRAPHY ============ */
+      .eyebrow {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: clamp(0.65rem, 0.85vw, 0.8rem);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .eyebrow::before {
+        content: '';
+        width: 28px;
+        height: 1.5px;
+        background: var(--teal);
+        display: inline-block;
+      }
+      .slide.light .eyebrow {
+        color: var(--purple);
+      }
+      .slide.light .eyebrow::before {
+        background: var(--purple);
+      }
+
+      h1.slide-title {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: clamp(2rem, 4.4vw, 3.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+      }
+      .subtitle {
+        font-family: var(--font-body);
+        font-weight: 400;
+        font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+        line-height: 1.5;
+        color: var(--ink-2);
+        max-width: 72ch;
+      }
+      .slide.dark .subtitle {
+        color: var(--muted);
+      }
+
+      /* ============ CHROME ============ */
+      .brand-mark {
+        position: absolute;
+        top: 32px;
+        left: 40px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+        z-index: 4;
+      }
+      .brand-mark img {
+        height: 28px;
+        width: auto;
+      }
+      .slide-number {
+        position: absolute;
+        bottom: 24px;
+        right: 40px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        z-index: 4;
+      }
+      .footer-copy {
+        position: absolute;
+        bottom: 24px;
+        left: 40px;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        z-index: 4;
+      }
+      .slide.light .footer-copy,
+      .slide.light .slide-number {
+        color: #94a3b8;
+      }
+
+      /* ============ PILLS / BADGES ============ */
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .pill.teal {
+        background: rgba(16, 185, 129, 0.14);
+        color: var(--teal);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      .pill.purple {
+        background: rgba(139, 92, 246, 0.14);
+        color: var(--purple-2);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+      }
+      .pill.red {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--red);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .pill.amber {
+        background: rgba(245, 158, 11, 0.12);
+        color: var(--amber);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .pill.dot::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      /* ============ BUTTONS ============ */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn.teal {
+        background: var(--teal);
+        color: var(--navy);
+      }
+      .btn.teal:hover {
+        background: #0ea271;
+        transform: translateY(-1px);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+      }
+      .btn.ghost:hover {
+        border-color: var(--white);
+      }
+
+      /* ============ CARDS ============ */
+      .card {
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-radius: 14px;
+        padding: 28px;
+        box-shadow:
+          0 1px 2px rgba(15, 23, 42, 0.04),
+          0 4px 12px rgba(15, 23, 42, 0.04);
+      }
+      .slide.dark .card {
+        background: var(--surface);
+        border: 1px solid var(--border-d);
+        box-shadow: none;
+      }
+
+      /* ============ STATS BAR ============ */
+      .stats-bar {
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 2vw, 32px);
+        flex-wrap: wrap;
+        font-family: var(--font-mono);
+        font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+        color: var(--muted);
+        letter-spacing: 0.04em;
+      }
+      .stats-bar .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--teal);
+        display: inline-block;
+      }
+
+      /* =========================================================
+   SLIDE 1 — TITLE (DARK)
+   ========================================================= */
+      #s1 {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+      }
+      #s1 .l {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-right: 20px;
+      }
+      #s1 h1 {
+        font-size: clamp(2.4rem, 5.6vw, 4.6rem);
+        line-height: 1;
+      }
+      #s1 h1 em {
+        font-style: normal;
+        background: linear-gradient(135deg, var(--teal), var(--purple-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      #s1 .tagline {
+        font-family: var(--font-head);
+        font-weight: 400;
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        color: var(--muted);
+        max-width: 46ch;
+        margin-top: 4px;
+      }
+      #s1 .hero-wrap {
+        position: relative;
+        width: 100%;
+        height: 78vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #s1 .hero-wrap img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        mix-blend-mode: screen;
+        filter: saturate(1.25) contrast(1.1);
+      }
+      #s1 .hero-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.25), transparent 60%);
+        pointer-events: none;
+      }
+      #s1 .stats-footer {
+        margin-top: 28px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      /* =========================================================
+   SLIDE 2 — PROBLEM (LIGHT)
+   ========================================================= */
+      #s2 .header {
+        margin-top: 40px;
+        max-width: 80ch;
+      }
+      #s2 .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+      #s2 .sev-card {
+        position: relative;
+        padding: 28px;
+        overflow: hidden;
+      }
+      #s2 .sev-card .topbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+      }
+      #s2 .sev-card.critical .topbar {
+        background: var(--red);
+      }
+      #s2 .sev-card.high .topbar {
+        background: var(--amber);
+      }
+      #s2 .sev-card .cat {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--body);
+        margin: 16px 0 12px;
+      }
+      #s2 .sev-card .body {
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: var(--ink);
+        font-weight: 500;
+      }
+      #s2 .footer-note {
+        margin-top: 36px;
+        padding: 20px 24px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-left: 3px solid var(--purple);
+        font-family: var(--font-head);
+        font-weight: 500;
+        color: var(--ink-2);
+        max-width: 80ch;
+        border-radius: 4px;
+      }
+
+      /* =========================================================
+   SLIDE 3 — SOCIAL PROOF (LIGHT)
+   ========================================================= */
+      #s3 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s3 .cust-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 32px;
+      }
+      #s3 .cust-card {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-height: 220px;
+      }
+      #s3 .cust-logo {
+        height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      #s3 .cust-logo svg {
+        height: 100%;
+        width: auto;
+        max-width: 180px;
+      }
+      #s3 .cust-body {
+        color: var(--ink-2);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        flex: 1;
+      }
+      #s3 .cust-badge {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--teal);
+        font-weight: 600;
+      }
+      #s3 .forrester {
+        margin-top: 28px;
+        padding: 24px 28px;
+        border-radius: 12px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-left: 3px solid var(--purple);
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      #s3 .forrester .quote-mark {
+        font-family: var(--font-head);
+        font-size: 3.6rem;
+        font-weight: 700;
+        color: var(--purple);
+        line-height: 0.6;
+      }
+      #s3 .forrester .q-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--ink);
+        font-style: italic;
+        flex: 1;
+      }
+      #s3 .forrester .q-attr {
+        font-family: var(--font-head);
+        font-size: 0.75rem;
+        color: var(--body);
+        letter-spacing: 0.05em;
+        margin-top: 6px;
+        font-style: normal;
+      }
+
+      /* =========================================================
+   SLIDE 4 — WHY NOW (DARK)
+   ========================================================= */
+      #s4 {
+        justify-content: center;
+        text-align: center;
+      }
+      #s4 h1 {
+        font-size: clamp(2.4rem, 5.2vw, 4rem);
+        max-width: 20ch;
+        margin: 0 auto 20px;
+      }
+      #s4 h1 em {
+        font-style: normal;
+        color: var(--teal);
+      }
+      #s4 .sub {
+        text-align: center;
+        margin: 0 auto;
+        color: var(--muted);
+        max-width: 58ch;
+      }
+      #s4 .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 64px;
+        width: 100%;
+      }
+      #s4 .u-card {
+        padding: 32px;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+      }
+      #s4 .u-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 60px;
+        background: var(--teal);
+      }
+      #s4 .u-stat {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: clamp(2rem, 3.6vw, 2.8rem);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: var(--teal);
+        margin: 16px 0 8px;
+      }
+      #s4 .u-label {
+        font-family: var(--font-head);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 12px;
+        letter-spacing: 0.02em;
+      }
+      #s4 .u-body {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      /* =========================================================
+   SLIDE 5 — HOW IT WORKS (LIGHT)
+   ========================================================= */
+      #s5 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s5 .flow {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 44px;
+        position: relative;
+      }
+      #s5 .step {
+        padding: 28px;
+        position: relative;
+      }
+      #s5 .step .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--teal);
+        color: var(--navy);
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+      }
+      #s5 .step:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        right: -16px;
+        top: 50px;
+        font-size: 1.6rem;
+        color: var(--teal);
+        font-weight: 300;
+        z-index: 3;
+      }
+      #s5 .step h3 {
+        font-family: var(--font-head);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        letter-spacing: -0.01em;
+      }
+      #s5 .step p {
+        color: var(--ink-2);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      #s5 .viz {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        min-height: 0;
+      }
+      #s5 .viz img {
+        max-width: 78%;
+        max-height: 32vh;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+   SLIDE 6 — PLATFORM (LIGHT)
+   ========================================================= */
+      #s6 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s6 .products {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 36px;
+      }
+      #s6 .prod {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-top: 3px solid transparent;
+      }
+      #s6 .prod.prism {
+        border-top-color: var(--teal);
+      }
+      #s6 .prod.omni {
+        border-top-color: var(--purple-2);
+      }
+      #s6 .prod.dr {
+        border-top-color: var(--blue);
+      }
+      #s6 .prod .ico {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+      }
+      #s6 .prod.prism .ico {
+        background: rgba(16, 185, 129, 0.1);
+      }
+      #s6 .prod.omni .ico {
+        background: rgba(139, 92, 246, 0.1);
+      }
+      #s6 .prod.dr .ico {
+        background: rgba(59, 130, 246, 0.1);
+      }
+      #s6 .prod .ico img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      #s6 .prod .name {
+        font-family: var(--font-head);
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      #s6 .prod .tag {
+        font-family: var(--font-head);
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--ink-2);
+      }
+      #s6 .prod ul {
+        list-style: none;
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #s6 .prod li {
+        font-size: 0.88rem;
+        color: var(--body);
+        padding-left: 18px;
+        position: relative;
+        line-height: 1.45;
+      }
+      #s6 .prod li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.4;
+      }
+      #s6 .integrations {
+        margin-top: 32px;
+        padding: 20px 28px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      #s6 .integrations .lbl {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--body);
+        flex-shrink: 0;
+      }
+      #s6 .integrations .logos {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        flex: 1;
+        justify-content: space-around;
+      }
+      #s6 .integrations img {
+        height: 28px;
+        width: auto;
+        opacity: 0.7;
+        filter: grayscale(0.3);
+      }
+
+      /* =========================================================
+   SLIDE 7 — USE CASES (LIGHT)
+   ========================================================= */
+      #s7 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s7 .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 22px;
+        margin-top: 32px;
+        flex: 1;
+        min-height: 0;
+      }
+      #s7 .uc {
+        padding: 28px;
+        border-left: 3px solid var(--teal);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      #s7 .uc.b {
+        border-left-color: var(--red);
+      }
+      #s7 .uc.c {
+        border-left-color: var(--amber);
+      }
+      #s7 .uc.d {
+        border-left-color: var(--purple-2);
+      }
+      #s7 .uc .for {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--body);
+        font-weight: 600;
+      }
+      #s7 .uc h3 {
+        font-family: var(--font-head);
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      #s7 .uc p {
+        color: var(--ink-2);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        flex: 1;
+      }
+      #s7 .uc .bot {
+        font-family: var(--font-head);
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--ink);
+        padding-top: 12px;
+        border-top: 1px solid var(--border-l);
+      }
+
+      /* =========================================================
+   SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
+   ========================================================= */
+      #s8 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s8 .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 36px;
+      }
+      #s8 .metric {
+        padding: 28px;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+      }
+      #s8 .metric .big {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, var(--purple), var(--teal));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 10px;
+      }
+      #s8 .metric .lbl {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      #s8 .metric .desc {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--body);
+      }
+      #s8 .outcomes {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      #s8 .out {
+        padding: 16px 20px;
+        border: 1px solid var(--border-l);
+        border-radius: 10px;
+        background: var(--white);
+      }
+      #s8 .out .ico {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(64, 14, 190, 0.08);
+        color: var(--purple);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+      #s8 .out .txt {
+        font-size: 0.82rem;
+        line-height: 1.45;
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+      #s8 .bottom-stripe {
+        margin-top: 24px;
+        padding: 16px 24px;
+        border-radius: 10px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-left: 3px solid var(--teal);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      #s8 .bottom-stripe .quote {
+        font-family: var(--font-head);
+        font-size: 0.95rem;
+        color: var(--ink);
+        font-weight: 500;
+        font-style: italic;
+      }
+      #s8 .bottom-stripe .src {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--body);
+        letter-spacing: 0.05em;
+      }
+
+      /* =========================================================
+   SLIDE 9 — DNI COMPARISON (DARK)
+   ========================================================= */
+      #s9 .header {
+        margin-top: 20px;
+        max-width: 90ch;
+      }
+      #s9 .header .subtitle {
+        color: var(--muted);
+      }
+      #s9 .body-wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 36px;
+        margin-top: 28px;
+        flex: 1;
+        min-height: 0;
+      }
+      #s9 .cmp-table {
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border-d);
+        font-size: 0.85rem;
+      }
+      #s9 .cmp-row {
+        display: grid;
+        grid-template-columns: 0.9fr 1fr 1fr;
+        border-bottom: 1px solid var(--border-d);
+      }
+      #s9 .cmp-row:last-child {
+        border-bottom: none;
+      }
+      #s9 .cmp-row > div {
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+      }
+      #s9 .cmp-row.head > div {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.2);
+      }
+      #s9 .cmp-row .dim {
+        font-family: var(--font-head);
+        font-weight: 600;
+        color: var(--white);
+        font-size: 0.8rem;
+        border-right: 1px solid var(--border-d);
+      }
+      #s9 .cmp-row .leg {
+        color: var(--muted);
+        border-right: 1px solid var(--border-d);
+      }
+      #s9 .cmp-row .rlm {
+        color: var(--white);
+        font-weight: 500;
+      }
+      #s9 .cmp-row .rlm.hilite {
+        background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.08));
+      }
+      #s9 .dni-viz {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+      }
+      #s9 .dni-viz img {
+        max-width: 100%;
+        max-height: 48vh;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #fff;
+        padding: 14px;
+      }
+      #s9 .dni-viz .cap {
+        font-family: var(--font-head);
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      /* =========================================================
+   SLIDE 10 — STANDARDS (LIGHT)
+   ========================================================= */
+      #s10 .header {
+        margin-top: 30px;
+        max-width: 90ch;
+      }
+      #s10 .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 32px;
+      }
+      #s10 .std {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 220px;
+      }
+      #s10 .std .badge {
+        align-self: flex-start;
+      }
+      #s10 .std .name {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      #s10 .std .desc {
+        font-size: 0.88rem;
+        color: var(--ink-2);
+        line-height: 1.5;
+        flex: 1;
+      }
+      #s10 .bottom-row {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 18px;
+      }
+      #s10 .bottom-row .panel {
+        padding: 18px 22px;
+        border: 1px solid var(--border-l);
+        border-radius: 10px;
+        background: var(--white);
+      }
+      #s10 .bottom-row .panel.slm {
+        border-left: 3px solid var(--teal);
+      }
+      #s10 .bottom-row .panel.custom {
+        border-left: 3px solid var(--purple);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      #s10 .bottom-row .lbl {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--ink);
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+      #s10 .bottom-row .slm-list {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      #s10 .bottom-row .slm-list .item {
+        font-size: 0.8rem;
+        color: var(--ink-2);
+        line-height: 1.45;
+        flex: 1;
+        min-width: 140px;
+        padding-left: 10px;
+        border-left: 2px solid var(--border-l);
+      }
+      #s10 .bottom-row .slm-list .item strong {
+        display: block;
+        color: var(--ink);
+        font-family: var(--font-head);
+        font-weight: 600;
+        margin-bottom: 2px;
+        font-size: 0.82rem;
+      }
+      #s10 .bottom-row .custom .ico {
+        font-family: var(--font-head);
+        font-size: 1.4rem;
+        color: var(--purple);
+        font-weight: 700;
+        line-height: 1;
+      }
+      #s10 .bottom-row .custom .body {
+        color: var(--ink-2);
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+      #s10 .bottom-row .custom .body strong {
+        color: var(--ink);
+        font-family: var(--font-head);
+        font-weight: 600;
+      }
+
+      /* =========================================================
+   SLIDE 11 — DEPLOYMENT (LIGHT)
+   ========================================================= */
+      #s11 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s11 .options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 32px;
+      }
+      #s11 .opt {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: relative;
+        overflow: hidden;
+      }
+      #s11 .opt .opt-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      #s11 .opt .num {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--teal);
+        letter-spacing: 0.1em;
+      }
+      #s11 .opt h3 {
+        font-family: var(--font-head);
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      #s11 .opt .dep-sub {
+        font-family: var(--font-head);
+        font-size: 0.82rem;
+        color: var(--purple);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      #s11 .opt p {
+        color: var(--ink-2);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      #s11 .infra {
+        margin-top: 28px;
+        padding: 22px 28px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      #s11 .infra .lbl {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--body);
+      }
+      #s11 .infra .logos {
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 3vw, 40px);
+        flex: 1;
+        justify-content: space-around;
+      }
+      #s11 .infra img {
+        height: 30px;
+        width: auto;
+        opacity: 0.75;
+      }
+      #s11 .enterprise-bar {
+        margin-top: 16px;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--body);
+        text-align: center;
+        letter-spacing: 0.04em;
+      }
+
+      /* =========================================================
+   SLIDE 12 — TEAM (LIGHT)
+   ========================================================= */
+      #s12 .header {
+        margin-top: 30px;
+        max-width: 80ch;
+      }
+      #s12 .leaders {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 26px;
+      }
+      #s12 .leader {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      #s12 .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #ebe8f5;
+        object-fit: cover;
+        display: block;
+        border: 2px solid var(--white);
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      }
+      #s12 .leader .name {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      #s12 .leader .role {
+        font-family: var(--font-head);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--purple);
+      }
+      #s12 .leader .bio {
+        font-size: 0.82rem;
+        color: var(--ink-2);
+        line-height: 1.5;
+      }
+      #s12 .bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+      #s12 .bottom .panel {
+        padding: 20px 24px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-radius: 12px;
+      }
+      #s12 .bottom .lbl {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--body);
+        margin-bottom: 10px;
+      }
+      #s12 .adv-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #s12 .adv-list div {
+        font-size: 0.88rem;
+        color: var(--ink);
+        font-family: var(--font-head);
+        font-weight: 500;
+      }
+      #s12 .adv-list div span {
+        color: var(--body);
+        font-weight: 400;
+        margin-left: 8px;
+      }
+      #s12 .inv-row {
+        display: flex;
+        align-items: center;
+        gap: clamp(14px, 2.4vw, 28px);
+        flex-wrap: wrap;
+      }
+      #s12 .inv-row img {
+        height: 28px;
+        width: auto;
+        opacity: 0.8;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+   SLIDE 13 — CTA (DARK)
+   ========================================================= */
+      #s13 {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        position: relative;
+      }
+      #s13 .bg-hero {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+      #s13 .bg-hero img {
+        max-height: 92%;
+        max-width: 55%;
+        object-fit: contain;
+        opacity: 0.22;
+        mix-blend-mode: screen;
+        filter: saturate(1.2);
+        transform: translateX(15%);
+      }
+      #s13 .ctab-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+      #s13 .eyebrow {
+        justify-content: center;
+        margin: 0 auto 22px;
+      }
+      #s13 h1 {
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        max-width: 22ch;
+        margin: 0 auto 22px;
+        line-height: 1;
+      }
+      #s13 h1 em {
+        font-style: normal;
+        background: linear-gradient(135deg, var(--teal), var(--purple-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      #s13 .sub {
+        text-align: center;
+        margin: 0 auto 36px;
+        color: var(--muted);
+        max-width: 50ch;
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+      }
+      #s13 .cta-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 48px;
+      }
+      #s13 .stats-footer {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      #s13 .url {
+        margin-top: 16px;
+        font-family: var(--font-mono);
+        color: var(--teal);
+        letter-spacing: 0.06em;
+      }
+
+      /* =========================================================
+   NAVIGATION
+   ========================================================= */
+      .nav-hint {
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.1em;
+        z-index: 10;
+        pointer-events: none;
+      }
+      .pdf-btn {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 20;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: all 0.2s;
+      }
+      .pdf-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* =========================================================
+   PRINT / PDF
+   ========================================================= */
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+      @media print {
+        html,
+        body {
+          width: 1920px;
+          height: auto;
+          overflow: visible;
+          background: #fff;
+        }
+        .deck {
+          width: 1920px;
+          height: auto;
+        }
+        .slide {
+          position: relative;
+          width: 1920px;
+          height: 1080px;
+          page-break-after: always;
+          break-after: page;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          display: flex;
+        }
+        .slide.active {
+          opacity: 1;
+        }
+        .nav-hint,
+        .pdf-btn {
+          display: none !important;
+        }
+        .slide.dark::before,
+        .slide.dark::after {
+          animation: none;
+        }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .slide.dark::before,
+        .slide.dark::after {
+          animation: none;
+        }
+        .slide {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="pdf-btn" onclick="window.print()">Save PDF ↓</button>
+    <div class="nav-hint">← → arrow keys · space · P to print</div>
+
+    <div class="deck" id="deck">
+      <!-- ============================================================
+     SLIDE 1 — TITLE (DARK)
+============================================================ -->
+      <section class="slide dark active" id="s1" data-idx="1">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="l">
+          <span class="pill teal dot">RSAC 2026 · Innovation Sandbox Finalist</span>
+          <h1>Ship AI Your<br />Customers <em>Trust</em>.</h1>
+          <p class="tagline">
+            Runtime AI trust, security &amp; observability — built for the enterprises racing AI
+            into production.
+          </p>
+          <div class="stats-footer stats-bar">
+            <span>Sub-50ms latency</span><span class="dot"></span> <span>100+ languages</span
+            ><span class="dot"></span> <span>12 hazard categories</span><span class="dot"></span>
+            <span>MLCommons certified</span>
+          </div>
+        </div>
+
+        <div class="hero-wrap">
+          <img src="assets/brain-viz.jpg" alt="Realm Labs runtime visualization" />
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">01 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 2 — THE PROBLEM (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s2" data-idx="2">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">The Problem</div>
+          <h1 class="slide-title">AI failures are happening right now.</h1>
+          <p class="subtitle">
+            Your AI is making decisions you can't see. Like Splunk for AI runtime, Realm gives you
+            real-time visibility into every inference, every agent, every policy violation — before
+            your customers find them.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card sev-card critical">
+            <div class="topbar"></div>
+            <span class="pill red dot">Critical</span>
+            <div class="cat">Customer-facing AI</div>
+            <div class="body">
+              Your chatbot recommended a competitor's product to a paying customer.
+            </div>
+          </div>
+          <div class="card sev-card high">
+            <div class="topbar"></div>
+            <span class="pill amber dot">High</span>
+            <div class="cat">Internal Copilot</div>
+            <div class="body">
+              Your copilot leaked confidential M&amp;A deal terms in a team channel.
+            </div>
+          </div>
+          <div class="card sev-card critical">
+            <div class="topbar"></div>
+            <span class="pill red dot">Critical</span>
+            <div class="cat">Agentic Workflow</div>
+            <div class="body">
+              Your AI agent approved an unauthorized transaction without audit trail.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          You found out from a customer complaint — not your monitoring tools.
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">02 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 3 — SOCIAL PROOF (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s3" data-idx="3">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Trusted by</div>
+          <h1 class="slide-title">AI labs &amp; enterprise leaders are building on Realm.</h1>
+        </div>
+
+        <div class="cust-row">
+          <div class="card cust-card">
+            <div class="cust-logo">
+              <svg viewBox="0 0 140 48" xmlns="http://www.w3.org/2000/svg">
+                <text
+                  x="0"
+                  y="36"
+                  font-family="Space Grotesk,sans-serif"
+                  font-size="40"
+                  font-weight="700"
+                  fill="#000"
+                  letter-spacing="-2"
+                >
+                  Uber
+                </text>
+              </svg>
+            </div>
+            <div class="cust-badge">Enterprise AI</div>
+            <div class="cust-body">
+              Customer-facing chatbots generating off-brand content at massive scale — now
+              inspected, classified and enforced in real time.
+            </div>
+          </div>
+
+          <div class="card cust-card">
+            <div class="cust-logo">
+              <svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8 38 L20 10 L32 38 L26 38 L23 30 L17 30 L14 38 Z M18.5 26 L21.5 26 L20 21 Z"
+                  fill="#CC785C"
+                />
+                <text
+                  x="42"
+                  y="34"
+                  font-family="Space Grotesk,sans-serif"
+                  font-size="22"
+                  font-weight="600"
+                  fill="#181818"
+                  letter-spacing="-.5"
+                >
+                  Anthropic
+                </text>
+              </svg>
+            </div>
+            <div class="cust-badge">Enterprise Customer</div>
+            <div class="cust-body">
+              Deputy CISO Jason Clinton: prompt injection remains the #1 unsolved threat for
+              enterprise AI deployments.
+            </div>
+          </div>
+
+          <div class="card cust-card">
+            <div class="cust-logo">
+              <svg viewBox="0 0 260 48" xmlns="http://www.w3.org/2000/svg">
+                <text
+                  x="0"
+                  y="34"
+                  font-family="Georgia, serif"
+                  font-size="24"
+                  font-weight="400"
+                  fill="#051C2C"
+                  letter-spacing=".5"
+                >
+                  McKinsey &amp; Company
+                </text>
+              </svg>
+            </div>
+            <div class="cust-badge">Advisory + Internal</div>
+            <div class="cust-body">
+              Internal copilot surfacing confidential client data across engagements — now governed
+              by runtime policy with full audit trails.
+            </div>
+          </div>
+        </div>
+
+        <div class="forrester">
+          <div class="quote-mark">"</div>
+          <div class="q-text">
+            Our pick: Realm Labs, with its runtime monitoring and visibility into how AI is
+            thinking, piqued our interest.
+            <div class="q-attr">— Forrester Research</div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">03 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 4 — WHY NOW (DARK)
+============================================================ -->
+      <section class="slide dark" id="s4" data-idx="4">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="eyebrow" style="justify-content: center; margin: 40px auto 12px">Why now</div>
+        <h1>The window to act is <em>closing</em>.</h1>
+        <p class="sub subtitle">
+          Regulators are enforcing. Attackers are exploiting. Every day without runtime AI controls
+          is a day of compounding risk.
+        </p>
+
+        <div class="cards">
+          <div class="card u-card">
+            <div class="u-label">EU AI Act</div>
+            <div class="u-stat">Aug 2026</div>
+            <div class="u-body">
+              Full enforcement begins. Runtime monitoring, risk classification and audit trails
+              become non-negotiable for AI in production.
+            </div>
+          </div>
+          <div class="card u-card">
+            <div class="u-label">OWASP LLM</div>
+            <div class="u-stat">Top 10</div>
+            <div class="u-body">
+              Vulnerabilities actively exploited today — prompt injection, data exfiltration,
+              jailbreaks. Your existing security stack wasn't built for them.
+            </div>
+          </div>
+          <div class="card u-card">
+            <div class="u-label">Compounding Risk</div>
+            <div class="u-stat">Every Day</div>
+            <div class="u-body">
+              Every unmonitored AI interaction is a potential brand incident, compliance violation
+              or data breach waiting to be discovered.
+            </div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">04 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 5 — HOW IT WORKS (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s5" data-idx="5">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">How it works</div>
+          <h1 class="slide-title">Inspect. Classify. Enforce — in under 50ms.</h1>
+          <p class="subtitle">
+            A purpose-built small language model reads the full reasoning chain of every AI
+            interaction, classifies risk against codified standards, and enforces your policy
+            automatically.
+          </p>
+        </div>
+
+        <div class="flow">
+          <div class="card step">
+            <div class="num">1</div>
+            <h3>Inspect every interaction</h3>
+            <p>
+              Every inference passes through Realm's purpose-built SLM. We read the full reasoning
+              chain — not just surface text.
+            </p>
+          </div>
+          <div class="card step">
+            <div class="num">2</div>
+            <h3>Classify risk in real time</h3>
+            <p>
+              12 MLCommons hazard categories evaluated live. Confidence scores, severity levels,
+              policy violations — all explained.
+            </p>
+          </div>
+          <div class="card step">
+            <div class="num">3</div>
+            <h3>Enforce policy automatically</h3>
+            <p>
+              Block. Reroute. Redact. Escalate. Automatically — with full audit trails ready for
+              compliance.
+            </p>
+          </div>
+        </div>
+
+        <div class="viz">
+          <img src="assets/platform-flow.png" alt="Prism and OmniGuard runtime flow" />
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">05 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 6 — PLATFORM (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s6" data-idx="6">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Defensive Intelligence at the Edge</div>
+          <h1 class="slide-title">One platform to observe and govern AI at runtime.</h1>
+        </div>
+
+        <div class="products">
+          <div class="card prod prism">
+            <div class="ico"><img src="assets/prism.svg" alt="Prism" /></div>
+            <div class="name">Prism</div>
+            <div class="tag">See everything — AI observability &amp; insight</div>
+            <ul>
+              <li>Real-time traces of every inference</li>
+              <li>Signal library &amp; query engine</li>
+              <li>Live dashboards and alerting</li>
+            </ul>
+          </div>
+          <div class="card prod omni">
+            <div class="ico"><img src="assets/omniguard.svg" alt="OmniGuard" /></div>
+            <div class="name">OmniGuard</div>
+            <div class="tag">Control everything — AI detection &amp; response</div>
+            <ul>
+              <li>Inline guardrails and adaptive routing</li>
+              <li>Policy enforcement with explainability</li>
+              <li>Real-time alerts on critical violations</li>
+            </ul>
+          </div>
+          <div class="card prod dr">
+            <div class="ico"><img src="assets/datarealm.svg" alt="DataRealm" /></div>
+            <div class="name">DataRealm</div>
+            <div class="tag">Protect everything — data discovery &amp; protection</div>
+            <ul>
+              <li>PII / PHI detection in context</li>
+              <li>Data flow mapping across models</li>
+              <li>Compliance scoring and audit trails</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="integrations">
+          <div class="lbl">Integrates with</div>
+          <div class="logos">
+            <img src="assets/int-gcp.svg" alt="Google Cloud" />
+            <img src="assets/int-aws.svg" alt="AWS" />
+            <img src="assets/int-azure.svg" alt="Azure" />
+            <img src="assets/int-oracle.svg" alt="Oracle" />
+            <img src="assets/int-docker.svg" alt="Docker" />
+            <img src="assets/int-nvidia.svg" alt="NVIDIA" />
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">06 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 7 — USE CASES (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s7" data-idx="7">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Deployment patterns</div>
+          <h1 class="slide-title">Built for your AI use case — whatever it is.</h1>
+        </div>
+
+        <div class="grid">
+          <div class="card uc a">
+            <div class="for">For Product Owners</div>
+            <h3>Quality &amp; brand enforcement</h3>
+            <p>
+              Find the silent failures that drive churn and quality regressions — fix them before a
+              user ever notices.
+            </p>
+            <div class="bot">AI quality monitoring across millions of interactions</div>
+          </div>
+          <div class="card uc b">
+            <div class="for">For Security Teams</div>
+            <h3>Threat detection &amp; response</h3>
+            <p>
+              Eliminate the top OWASP LLM risks your current SIEM, WAF and EDR stack simply can't
+              see.
+            </p>
+            <div class="bot">AI infrastructure protection for frontier AI companies</div>
+          </div>
+          <div class="card uc c">
+            <div class="for">For Compliance Leaders</div>
+            <h3>Compliance &amp; governance</h3>
+            <p>
+              Prove to regulators every AI interaction meets the standards they're about to start
+              enforcing.
+            </p>
+            <div class="bot">Runtime compliance with audit-ready evidence</div>
+          </div>
+          <div class="card uc d">
+            <div class="for">For Platform &amp; IT</div>
+            <h3>Multi-app command center</h3>
+            <p>
+              Cross-application observability, routing and alerting for every model, every agent —
+              from a single pane.
+            </p>
+            <div class="bot">Central AI governance for multi-model enterprises</div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">07 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
+============================================================ -->
+      <section class="slide light" id="s8" data-idx="8">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">The Business Case</div>
+          <h1 class="slide-title">Runtime AI trust — measurable from day one.</h1>
+          <p class="subtitle">
+            Realm translates AI risk into business outcomes your board can see. Faster detection,
+            fewer incidents, audit-ready evidence — all shipped as infrastructure, not another
+            dashboard you have to staff.
+          </p>
+        </div>
+
+        <div class="metrics">
+          <div class="card metric">
+            <div class="big">&lt;50<span style="font-size: 0.5em">ms</span></div>
+            <div class="lbl">Inspection latency</div>
+            <div class="desc">
+              Real-time enforcement on every call — no sampling, no trade-off with user experience.
+            </div>
+          </div>
+          <div class="card metric">
+            <div class="big">12</div>
+            <div class="lbl">Hazard categories</div>
+            <div class="desc">
+              MLCommons AILuminate codified and enforced automatically — no custom rules to write.
+            </div>
+          </div>
+          <div class="card metric">
+            <div class="big">100<span style="font-size: 0.5em">+</span></div>
+            <div class="lbl">Languages covered</div>
+            <div class="desc">
+              Native multilingual inspection — no per-locale tuning, no regex maintenance.
+            </div>
+          </div>
+          <div class="card metric">
+            <div class="big">24/7</div>
+            <div class="lbl">Audit coverage</div>
+            <div class="desc">
+              Every interaction logged, classified and policy-enforced — regulator-ready evidence on
+              demand.
+            </div>
+          </div>
+        </div>
+
+        <div class="outcomes">
+          <div class="out">
+            <div class="ico">$</div>
+            <div class="txt">
+              <strong style="color: var(--ink)">Protect revenue.</strong> Prevent brand-damaging
+              outputs reaching customers.
+            </div>
+          </div>
+          <div class="out">
+            <div class="ico">⚡</div>
+            <div class="txt">
+              <strong style="color: var(--ink)">Ship AI faster.</strong> Clear safety reviews in
+              days, not quarters.
+            </div>
+          </div>
+          <div class="out">
+            <div class="ico">⚖</div>
+            <div class="txt">
+              <strong style="color: var(--ink)">Reduce regulatory exposure.</strong> Pre-mapped to
+              EU AI Act, OWASP, SOC 2.
+            </div>
+          </div>
+          <div class="out">
+            <div class="ico">↓</div>
+            <div class="txt">
+              <strong style="color: var(--ink)">Lower security load.</strong> Automated policy beats
+              another team hire.
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-stripe">
+          <div class="quote">
+            Runtime AI controls turn AI from a board-level risk into a board-level advantage.
+          </div>
+          <div class="src">— Realm Labs POV</div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">08 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 9 — DNI COMPARISON (DARK)
+============================================================ -->
+      <section class="slide dark" id="s9" data-idx="9">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Architecture comparison</div>
+          <h1 class="slide-title">Inside the model — not around it.</h1>
+          <p class="subtitle">
+            Think of legacy AI safety tools as a metal detector at the door. Realm is the MRI — we
+            inspect what actually happens inside the model, in real time.
+          </p>
+        </div>
+
+        <div class="body-wrap">
+          <div class="cmp-table">
+            <div class="cmp-row head">
+              <div>Dimension</div>
+              <div>Legacy Filtering</div>
+              <div>Realm (DNI)</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Approach</div>
+              <div class="leg">Pattern match on I/O</div>
+              <div class="rlm hilite">Reasoning chain analysis</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Jailbreaks</div>
+              <div class="leg">Bypassed by rephrasing</div>
+              <div class="rlm hilite">Catches intent, not words</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Hallucinations</div>
+              <div class="leg">Cannot detect</div>
+              <div class="rlm hilite">Identified from internal signals</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Speed</div>
+              <div class="leg">200–500ms+</div>
+              <div class="rlm hilite">&lt;50ms</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Languages</div>
+              <div class="leg">Per-language rules</div>
+              <div class="rlm hilite">100+ natively</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Explainability</div>
+              <div class="leg">Black-box pass / fail</div>
+              <div class="rlm hilite">Full reasoning trace</div>
+            </div>
+            <div class="cmp-row">
+              <div class="dim">Cost model</div>
+              <div class="leg">Per-query LLM cost</div>
+              <div class="rlm hilite">Fixed platform fee</div>
+            </div>
+          </div>
+
+          <div class="dni-viz">
+            <img src="assets/dni-diagram.png" alt="Deep Neural Inspection" />
+            <div class="cap">Deep Neural Inspection™ · production-ready architecture</div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">09 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 10 — STANDARDS (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s10" data-idx="10">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Trust infrastructure</div>
+          <h1 class="slide-title">Standards-based safety — at runtime.</h1>
+          <p class="subtitle">
+            Every Realm deployment codifies MLCommons, EU AI Act, OWASP and SOC 2 into enforceable
+            runtime policy — not a checklist you have to maintain.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card std">
+            <span class="pill teal">Enforced</span>
+            <div class="name">MLCommons AILuminate</div>
+            <div class="desc">
+              12 hazard categories codified and enforced at runtime — the emerging industry
+              benchmark for AI safety.
+            </div>
+          </div>
+          <div class="card std">
+            <span class="pill teal">Enforced</span>
+            <div class="name">EU AI Act</div>
+            <div class="desc">
+              Risk classifications mapped to Articles 5–50 and enforced automatically on every
+              inference.
+            </div>
+          </div>
+          <div class="card std">
+            <span class="pill teal">Enforced</span>
+            <div class="name">OWASP Top 10 for LLMs</div>
+            <div class="desc">
+              LLM vulnerability defenses built into every inspection — prompt injection, data
+              exfiltration, and more.
+            </div>
+          </div>
+          <div class="card std">
+            <span class="pill purple">Compliant</span>
+            <div class="name">SOC 2 Type II</div>
+            <div class="desc">
+              Enterprise security controls and audit-ready evidence — deploy with confidence in
+              regulated environments.
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-row">
+          <div class="panel slm">
+            <div class="lbl">Why a purpose-built SLM, not another LLM?</div>
+            <div class="slm-list">
+              <div class="item">
+                <strong>Classifies, doesn't generate</strong>Zero hallucination risk by design.
+              </div>
+              <div class="item">
+                <strong>&lt;50ms vs 200–500ms+</strong>Real-time, not a secondary LLM call.
+              </div>
+              <div class="item">
+                <strong>Standards-trained</strong>MLCommons, EU AI Act &amp; OWASP baked in.
+              </div>
+            </div>
+          </div>
+          <div class="panel custom">
+            <div class="ico">+</div>
+            <div class="body">
+              <strong>Custom signals.</strong> Codify your organization's policies alongside
+              industry standards — your risk taxonomy becomes runtime code.
+            </div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">10 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 11 — DEPLOYMENT (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s11" data-idx="11">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">Deployment</div>
+          <h1 class="slide-title">Your infrastructure. Your rules.</h1>
+          <p class="subtitle">
+            Deploy Realm where your data already lives — SaaS for speed, VPC for sovereignty,
+            on-prem for air-gapped. One platform, three postures, zero compromise.
+          </p>
+        </div>
+
+        <div class="options">
+          <div class="card opt">
+            <div class="opt-head">
+              <span class="num">01</span>
+              <h3>SaaS</h3>
+            </div>
+            <div class="dep-sub">Realm Managed · Cloud</div>
+            <p>
+              Fastest time to value. Fully managed. SOC 2 compliant. Live in days, not quarters.
+            </p>
+          </div>
+          <div class="card opt">
+            <div class="opt-head">
+              <span class="num">02</span>
+              <h3>VPC</h3>
+            </div>
+            <div class="dep-sub">Your Cloud · AWS / GCP / Azure</div>
+            <p>
+              Deployed inside your own cloud account. Full data sovereignty, zero cross-boundary
+              data movement.
+            </p>
+          </div>
+          <div class="card opt">
+            <div class="opt-head">
+              <span class="num">03</span>
+              <h3>On-Prem</h3>
+            </div>
+            <div class="dep-sub">Self-hosted · Air-gapped</div>
+            <p>Full data residency. Classified environments and regulated workloads supported.</p>
+          </div>
+        </div>
+
+        <div class="infra">
+          <div class="lbl">Runs on</div>
+          <div class="logos">
+            <img src="assets/int-gcp.svg" alt="Google Cloud" />
+            <img src="assets/int-aws.svg" alt="AWS" />
+            <img src="assets/int-azure.svg" alt="Azure" />
+            <img src="assets/int-oracle.svg" alt="Oracle" />
+            <img src="assets/int-docker.svg" alt="Docker" />
+            <img src="assets/int-nvidia.svg" alt="NVIDIA" />
+          </div>
+        </div>
+
+        <div class="enterprise-bar">
+          Multi-model (OpenAI · Anthropic · Google · open source) · Custom policies · Sub-50ms
+          latency · 100+ languages · Compliance-ready
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">11 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 12 — TEAM (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s12" data-idx="12">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">The Team</div>
+          <h1 class="slide-title">Built by AI security veterans.</h1>
+        </div>
+
+        <div class="leaders">
+          <div class="card leader">
+            <img class="avatar" src="assets/head-saurabh.png" alt="Saurabh Shintre" />
+            <div class="name">Saurabh Shintre</div>
+            <div class="role">CEO &amp; Founder</div>
+            <div class="bio">
+              AI Security Leader at Symantec and Splunk. PhD Carnegie Mellon University. IIT Bombay.
+            </div>
+          </div>
+          <div class="card leader">
+            <img class="avatar" src="assets/head-akash.png" alt="Akash Mukherjee" />
+            <div class="name">Akash Mukherjee</div>
+            <div class="role">Head of Engineering</div>
+            <div class="bio">
+              Security lead for SLSA at Google and PCC at Apple. Published AI security author. IIT
+              BHU.
+            </div>
+          </div>
+          <div class="card leader">
+            <img class="avatar" src="assets/head-piotr.png" alt="Piotr Mardziel" />
+            <div class="name">Piotr Mardziel</div>
+            <div class="role">Head of AI</div>
+            <div class="bio">
+              Trustworthy ML expert. Ex-TruEra, ex-Snowflake. PhD University of Maryland.
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="panel">
+            <div class="lbl">Advisors</div>
+            <div class="adv-list">
+              <div>Jason Clinton<span>Deputy CISO, Anthropic</span></div>
+              <div>Paul Kocher<span>Inventor · Marconi Prize winner</span></div>
+              <div>Nicole Perlroth<span>Cybersecurity journalist &amp; author</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="lbl">Backed by</div>
+            <div class="inv-row">
+              <img src="assets/inv-tola.png" alt="Tola Capital" />
+              <img src="assets/inv-firstrays.png" alt="First Rays Venture Partners" />
+              <img src="assets/inv-silverbuckshot.png" alt="Silver Buckshot" />
+              <img src="assets/inv-crosspoint.png" alt="Crosspoint Capital" />
+            </div>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">12 / 13</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 13 — CTA (DARK)
+============================================================ -->
+      <section class="slide dark" id="s13" data-idx="13">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="bg-hero"><img src="assets/brain-viz.jpg" alt="" /></div>
+
+        <div class="ctab-inner">
+          <div class="eyebrow">Let's ship safely.</div>
+          <h1>See where your AI <em>is failing</em>.</h1>
+          <p class="sub">
+            60 minutes. Your AI stack. Risks you didn't know existed — and a roadmap to fix them.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn teal" href="https://realmlabs.ai" target="_blank"
+              >Book your risk assessment →</a
+            >
+            <a class="btn ghost" href="https://realmlabs.ai" target="_blank">realmlabs.ai</a>
+          </div>
+
+          <div class="stats-footer stats-bar">
+            <span>Sub-50ms</span><span class="dot"></span> <span>100+ languages</span
+            ><span class="dot"></span> <span>12 hazard categories</span><span class="dot"></span>
+            <span>RSAC 2026 Finalist</span>
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">13 / 13</span>
+      </section>
+    </div>
+
+    <script>
+      (function () {
+        const slides = Array.from(document.querySelectorAll('.slide'));
+        let idx = 0;
+        function show(i) {
+          idx = Math.max(0, Math.min(slides.length - 1, i));
+          slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+        }
+        document.addEventListener('keydown', e => {
+          if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+            e.preventDefault();
+            show(idx + 1);
+          } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            e.preventDefault();
+            show(idx - 1);
+          } else if (e.key === 'Home') {
+            show(0);
+          } else if (e.key === 'End') {
+            show(slides.length - 1);
+          } else if (e.key === 'p' || e.key === 'P') {
+            window.print();
+          }
+        });
+        // Click right/left halves to navigate
+        document.addEventListener('click', e => {
+          if (e.target.closest('a,button')) return;
+          const x = e.clientX / window.innerWidth;
+          if (x > 0.5) show(idx + 1);
+          else show(idx - 1);
+        });
+        // Touch swipe
+        let tx = 0;
+        document.addEventListener('touchstart', e => {
+          tx = e.touches[0].clientX;
+        });
+        document.addEventListener('touchend', e => {
+          const dx = e.changedTouches[0].clientX - tx;
+          if (Math.abs(dx) > 40) {
+            show(idx + (dx < 0 ? 1 : -1));
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
