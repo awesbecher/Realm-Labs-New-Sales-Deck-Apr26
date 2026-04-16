@@ -1363,17 +1363,30 @@
         justify-content: space-around;
       }
       #s11 .infra img {
-        height: 30px;
+        height: 32px;
         width: auto;
-        opacity: 0.75;
+        opacity: 1;
+        filter: grayscale(100%) brightness(0.55) contrast(1.2);
       }
       #s11 .enterprise-bar {
-        margin-top: 16px;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
+        margin-top: 14px;
+        margin-bottom: 4px;
+        font-family: var(--font-body);
+        font-size: 0.78rem;
         color: var(--body);
         text-align: center;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.01em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      #s11 .enterprise-bar .sep {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--muted);
       }
 
       /* =========================================================
@@ -2301,7 +2314,7 @@
           <h1 class="slide-title">Your infrastructure. Your rules.</h1>
           <p class="subtitle">
             Deploy Realm where your data already lives. SaaS for speed, VPC for sovereignty,
-            on-prem for air-gapped. One platform, three postures, zero compromise.
+            on-prem for air&#8209;gapped environments. One platform, three postures, zero compromise.
           </p>
         </div>
 
@@ -2350,8 +2363,11 @@
         </div>
 
         <div class="enterprise-bar">
-          Multi-model (OpenAI · Anthropic · Google · open source) · Custom policies · Sub-50ms
-          latency · 100+ languages · Compliance-ready
+          <span>Multi-model</span><span class="sep"></span>
+          <span>Custom policies</span><span class="sep"></span>
+          <span>Sub-50ms latency</span><span class="sep"></span>
+          <span>100+ languages</span><span class="sep"></span>
+          <span>Compliance-ready</span>
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
