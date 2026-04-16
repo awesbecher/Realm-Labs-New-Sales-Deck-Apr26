@@ -684,8 +684,10 @@
         max-width: 90ch;
       }
       #s3 h1.slide-title {
-        font-size: clamp(1.9rem, 3.8vw, 3rem);
+        font-size: clamp(1.4rem, 2.6vw, 2.3rem);
         margin-bottom: 22px;
+        white-space: nowrap;
+        letter-spacing: -0.02em;
       }
       #s3 h1.slide-title em {
         font-style: normal;
@@ -703,27 +705,73 @@
         min-height: 0;
       }
       #s3 .kind {
-        padding: 30px 32px;
+        padding: 32px 34px;
         border-radius: 14px;
         background: var(--surface);
         border: 1px solid var(--border-d);
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 14px;
         position: relative;
         overflow: hidden;
       }
+      #s3 .kind::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 1px 1px, rgba(162, 167, 178, 0.08) 1px, transparent 0);
+        background-size: 22px 22px;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+      #s3 .kind > * {
+        position: relative;
+        z-index: 1;
+      }
       #s3 .kind.invisible {
-        background: linear-gradient(145deg, rgba(64, 14, 190, 0.22), rgba(139, 92, 246, 0.08));
+        background: linear-gradient(145deg, rgba(64, 14, 190, 0.24), rgba(139, 92, 246, 0.08));
         border: 1px solid rgba(139, 92, 246, 0.4);
         box-shadow: 0 12px 44px rgba(64, 14, 190, 0.25);
+      }
+      #s3 .kind.invisible::before {
+        background-image: radial-gradient(circle at 1px 1px, rgba(17, 214, 119, 0.14) 1px, transparent 0);
+        opacity: 0.7;
+      }
+      #s3 .kind-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      #s3 .kind-meta .kind-ico {
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+      #s3 .kind.invisible .kind-meta .kind-ico {
+        color: var(--teal);
+      }
+      #s3 .kind-tag {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(162, 167, 178, 0.08);
+        border: 1px solid rgba(162, 167, 178, 0.2);
+      }
+      #s3 .kind.invisible .kind-tag {
+        color: var(--teal);
+        background: rgba(17, 214, 119, 0.1);
+        border: 1px solid rgba(17, 214, 119, 0.3);
       }
       #s3 .kind-label {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
         letter-spacing: -0.02em;
         color: var(--muted);
+        line-height: 1;
       }
       #s3 .kind.invisible .kind-label {
         background: linear-gradient(135deg, var(--teal), #A78BFA);
@@ -735,6 +783,7 @@
         color: var(--muted);
         font-size: 1rem;
         line-height: 1.5;
+        max-width: 42ch;
       }
       #s3 .kind.invisible .kind-desc {
         color: #E9D5FF;
@@ -744,27 +793,30 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        margin-top: 8px;
+        margin-top: 10px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border-d);
+      }
+      #s3 .kind.invisible ul {
+        border-top: 1px solid rgba(139, 92, 246, 0.25);
       }
       #s3 .kind li {
         font-size: 0.92rem;
         line-height: 1.45;
-        padding-left: 18px;
-        position: relative;
         color: var(--white);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
       }
-      #s3 .kind li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 9px;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--muted);
+      #s3 .kind .li-ico {
+        flex-shrink: 0;
+        margin-top: 3px;
+        color: var(--muted);
+        opacity: 0.7;
       }
-      #s3 .kind.invisible li::before {
-        background: var(--teal);
+      #s3 .kind.invisible .li-ico {
+        color: var(--teal);
+        opacity: 1;
       }
       #s3 .kind-footer {
         margin-top: 22px;
@@ -1951,25 +2003,33 @@
 
         <div class="kinds">
           <div class="kind">
+            <div class="kind-meta">
+              <svg class="kind-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span class="kind-tag">Caught by your stack</span>
+            </div>
             <div class="kind-label">Visible</div>
             <p class="kind-desc">
               User complains. System errors. Your filter blocks. Your current tools catch these.
             </p>
             <ul>
-              <li>Hard refusal / safety block</li>
-              <li>Hallucinated answer the user flagged</li>
-              <li>Output the user rated thumbs-down</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Hard refusal / safety block</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Hallucinated answer the user flagged</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Output the user rated thumbs-down</li>
             </ul>
           </div>
           <div class="kind invisible">
+            <div class="kind-meta">
+              <svg class="kind-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              <span class="kind-tag">Missed by your stack</span>
+            </div>
             <div class="kind-label">Invisible</div>
             <p class="kind-desc">
               AI is confidently wrong. Drifts off-task. Contradicts itself. Nothing fires.
             </p>
             <ul>
-              <li>Drift: answer slowly loses the plot across turns</li>
-              <li>Silent mismatch: response looks fine but misses the user's real ask</li>
-              <li>Walkaway: user gives up mid-conversation with no complaint filed</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Drift: answer slowly loses the plot across turns</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Silent mismatch: response looks fine but misses the user's real ask</li>
+              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Walkaway: user gives up mid-conversation with no complaint filed</li>
             </ul>
           </div>
         </div>
