@@ -136,12 +136,13 @@
         flex-direction: column;
         padding: clamp(32px, 4vw, 72px) clamp(40px, 5vw, 96px);
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: opacity 0.35s ease;
         overflow: hidden;
       }
       .slide.active {
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
         z-index: 2;
       }
@@ -382,12 +383,16 @@
       .stats-bar {
         display: flex;
         align-items: center;
-        gap: clamp(16px, 2vw, 32px);
-        flex-wrap: wrap;
+        gap: clamp(12px, 1.6vw, 22px);
+        flex-wrap: nowrap;
         font-family: var(--font-mono);
-        font-size: clamp(0.65rem, 0.9vw, 0.8rem);
+        font-size: clamp(0.62rem, 0.85vw, 0.78rem);
         color: var(--muted);
         letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      .stats-bar span:not(.dot) {
+        white-space: nowrap;
       }
       .stats-bar .dot {
         width: 4px;
@@ -395,6 +400,7 @@
         border-radius: 50%;
         background: var(--teal);
         display: inline-block;
+        flex-shrink: 0;
       }
 
       /* =========================================================
@@ -719,17 +725,31 @@
         line-height: 1.55;
       }
       #s5 .viz {
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex: 1;
         min-height: 0;
+        position: relative;
+      }
+      #s5 .viz::before {
+        content: "Realm runtime in production";
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--body);
       }
       #s5 .viz img {
-        max-width: 78%;
-        max-height: 32vh;
+        max-width: 82%;
+        max-height: 40vh;
         object-fit: contain;
+        border-radius: 10px;
       }
 
       /* =========================================================
@@ -768,10 +788,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 10px;
+        padding: 12px;
       }
+      #s6 .prod .ico svg,
+      #s6 .prod .ico img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      /* Product icon backgrounds match brand tint per product */
       #s6 .prod.prism .ico {
-        background: rgba(16, 185, 129, 0.1);
+        background: rgba(17, 214, 119, 0.12);
       }
       #s6 .prod.omni .ico {
         background: rgba(139, 92, 246, 0.1);
@@ -1089,13 +1116,22 @@
         justify-content: center;
         gap: 14px;
       }
+      #s9 .dni-viz .frame {
+        width: 100%;
+        max-height: 48vh;
+        background: linear-gradient(180deg, #FAFAFC 0%, #F1EEF9 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 32px rgba(64, 14, 190, 0.25);
+      }
       #s9 .dni-viz img {
         max-width: 100%;
-        max-height: 48vh;
+        max-height: 42vh;
         object-fit: contain;
-        border-radius: 10px;
-        background: #fff;
-        padding: 14px;
       }
       #s9 .dni-viz .cap {
         font-family: var(--font-head);
@@ -1143,23 +1179,45 @@
       #s10 .bottom-row {
         margin-top: 20px;
         display: grid;
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: 1.5fr 1fr;
         gap: 18px;
+        align-items: stretch;
       }
       #s10 .bottom-row .panel {
         padding: 18px 22px;
         border: 1px solid var(--border-l);
         border-radius: 10px;
         background: var(--white);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
       #s10 .bottom-row .panel.slm {
         border-left: 3px solid var(--teal);
       }
       #s10 .bottom-row .panel.custom {
         border-left: 3px solid var(--purple);
+      }
+      #s10 .bottom-row .custom-head {
         display: flex;
-        align-items: flex-start;
-        gap: 16px;
+        align-items: center;
+        gap: 10px;
+      }
+      #s10 .bottom-row .chips {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 4px;
+      }
+      #s10 .bottom-row .chips span {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.04em;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(64, 14, 190, 0.06);
+        color: var(--purple);
+        border: 1px solid rgba(64, 14, 190, 0.14);
       }
       #s10 .bottom-row .lbl {
         font-family: var(--font-head);
@@ -2110,7 +2168,9 @@
           </div>
 
           <div class="dni-viz">
-            <img src="assets/dni-diagram.png" alt="Deep Neural Inspection" />
+            <div class="frame">
+              <img src="assets/dni-diagram.png" alt="Deep Neural Inspection" />
+            </div>
             <div class="cap">Deep Neural Inspection™ · production-ready architecture</div>
           </div>
         </div>
@@ -2185,10 +2245,19 @@
             </div>
           </div>
           <div class="panel custom">
-            <div class="ico">+</div>
+            <div class="custom-head">
+              <div class="ico">+</div>
+              <div class="lbl">Your policy, codified</div>
+            </div>
             <div class="body">
               <strong>Custom signals.</strong> Codify your organization's policies alongside
               industry standards — your risk taxonomy becomes runtime code.
+            </div>
+            <div class="chips">
+              <span>Brand voice</span>
+              <span>Legal risk</span>
+              <span>Competitor mentions</span>
+              <span>Internal IP</span>
             </div>
           </div>
         </div>
