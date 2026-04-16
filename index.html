@@ -783,23 +783,18 @@
         border-top-color: var(--blue);
       }
       #s6 .prod .ico {
-        width: 60px;
-        height: 60px;
-        border-radius: 14px;
+        width: 56px;
+        height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 12px;
       }
       #s6 .prod .ico svg,
       #s6 .prod .ico img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-      }
-      /* Product icon backgrounds match brand tint per product */
-      #s6 .prod.prism .ico {
-        background: rgba(17, 214, 119, 0.12);
+        filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.12));
       }
       #s6 .prod.omni .ico {
         background: rgba(139, 92, 246, 0.1);
@@ -895,17 +890,20 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        gap: 22px;
-        margin-top: 32px;
+        gap: 18px;
+        margin-top: 24px;
+        margin-bottom: 40px;
         flex: 1;
         min-height: 0;
       }
       #s7 .uc {
-        padding: 28px;
+        padding: 22px 24px;
         border-left: 3px solid var(--teal);
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        min-height: 0;
+        overflow: hidden;
       }
       #s7 .uc.b {
         border-left-color: var(--red);
@@ -926,22 +924,22 @@
       }
       #s7 .uc h3 {
         font-family: var(--font-head);
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: -0.01em;
       }
       #s7 .uc p {
         color: var(--ink-2);
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 0.88rem;
+        line-height: 1.45;
         flex: 1;
       }
       #s7 .uc .bot {
         font-family: var(--font-head);
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         font-weight: 500;
         color: var(--ink);
-        padding-top: 12px;
+        padding-top: 10px;
         border-top: 1px solid var(--border-l);
       }
 
@@ -1001,16 +999,16 @@
         background: var(--white);
       }
       #s8 .out .ico {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: rgba(64, 14, 190, 0.08);
         color: var(--purple);
-        font-size: 0.9rem;
         margin-bottom: 10px;
+        flex-shrink: 0;
         font-weight: 700;
       }
       #s8 .out .txt {
@@ -1104,11 +1102,31 @@
         border-right: 1px solid var(--border-d);
       }
       #s9 .cmp-row .rlm {
-        color: var(--white);
-        font-weight: 500;
+        color: #E9FBF3;
+        font-weight: 600;
       }
       #s9 .cmp-row .rlm.hilite {
-        background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.08));
+        background: linear-gradient(90deg, rgba(17, 214, 119, 0.05), rgba(17, 214, 119, 0.15));
+        position: relative;
+      }
+      #s9 .cmp-row.head .rlm {
+        color: var(--teal);
+        font-weight: 700;
+      }
+      #s9 .cmp-table {
+        position: relative;
+      }
+      #s9 .cmp-table::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 33.33%;
+        border-left: 1px solid rgba(17, 214, 119, 0.3);
+        border-right: 1px solid rgba(17, 214, 119, 0.3);
+        pointer-events: none;
+        border-radius: 0 12px 12px 0;
       }
       #s9 .dni-viz {
         display: flex;
@@ -2066,28 +2084,36 @@
 
         <div class="outcomes">
           <div class="out">
-            <div class="ico">$</div>
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
             <div class="txt">
               <strong style="color: var(--ink)">Protect revenue.</strong> Prevent brand-damaging
               outputs reaching customers.
             </div>
           </div>
           <div class="out">
-            <div class="ico">⚡</div>
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
             <div class="txt">
               <strong style="color: var(--ink)">Ship AI faster.</strong> Clear safety reviews in
               days, not quarters.
             </div>
           </div>
           <div class="out">
-            <div class="ico">⚖</div>
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <div class="txt">
               <strong style="color: var(--ink)">Reduce regulatory exposure.</strong> Pre-mapped to
               EU AI Act, OWASP, SOC 2.
             </div>
           </div>
           <div class="out">
-            <div class="ico">↓</div>
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 3h18M6 8h12M9 13h6M11 18h2"/></svg>
+            </div>
             <div class="txt">
               <strong style="color: var(--ink)">Lower security load.</strong> Automated policy beats
               another team hire.
