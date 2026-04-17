@@ -1126,6 +1126,17 @@
         padding: 28px;
         position: relative;
       }
+      #s6 .step .step-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      #s6 .step .step-ico {
+        width: 44px;
+        height: 44px;
+        opacity: 0.9;
+      }
       #s6 .step .num {
         display: inline-flex;
         align-items: center;
@@ -1138,7 +1149,6 @@
         font-family: var(--font-head);
         font-weight: 700;
         font-size: 1.1rem;
-        margin-bottom: 16px;
       }
       #s6 .step:not(:last-child)::after {
         content: '→';
@@ -1196,6 +1206,16 @@
       #s7 .header {
         margin-top: 22px;
         max-width: 90ch;
+      }
+      #s7 .s7-mark {
+        position: absolute;
+        top: 32px;
+        right: 40px;
+        width: 64px;
+        height: 64px;
+        opacity: 0.5;
+        z-index: 3;
+        pointer-events: none;
       }
       #s7 h1.slide-title {
         font-size: clamp(1.9rem, 3.6vw, 3rem);
@@ -1433,6 +1453,19 @@
       }
       #s9 .uc.d {
         border-left-color: var(--purple-2);
+      }
+      #s9 .uc .uc-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 4px;
+      }
+      #s9 .uc .uc-ico {
+        width: 36px;
+        height: 36px;
+        opacity: 0.9;
+        flex-shrink: 0;
       }
       #s9 .uc .for {
         font-family: var(--font-head);
@@ -1743,6 +1776,17 @@
       }
       #s12 .bottom-row .panel.slm {
         border-left: 3px solid var(--teal);
+      }
+      #s12 .bottom-row .slm-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      #s12 .bottom-row .slm-ico {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
       }
       #s12 .bottom-row .panel.custom {
         border-left: 3px solid var(--purple);
@@ -2114,6 +2158,18 @@
         border-radius: 14px;
         max-width: 860px;
       }
+      #s15 .assess-block .ab-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      #s15 .assess-block .ab-ico {
+        width: 40px;
+        height: 40px;
+        opacity: 0.85;
+        flex-shrink: 0;
+      }
       #s15 .assess-block .ab-eyebrow {
         font-family: var(--font-head);
         font-weight: 600;
@@ -2121,7 +2177,6 @@
         letter-spacing: 0.22em;
         text-transform: uppercase;
         color: var(--teal);
-        margin-bottom: 12px;
       }
       #s15 .assess-block h3 {
         font-family: var(--font-head);
@@ -2727,7 +2782,10 @@
 
         <div class="flow">
           <div class="card step">
-            <div class="num">1</div>
+            <div class="step-head">
+              <div class="num">1</div>
+              <img class="step-ico" src="assets/realtime-sidecar-icon.svg" alt="" />
+            </div>
             <h3>Inspect every interaction</h3>
             <p>
               Every inference passes through Realm's purpose-built SLM. We read the full reasoning
@@ -2735,7 +2793,10 @@
             </p>
           </div>
           <div class="card step">
-            <div class="num">2</div>
+            <div class="step-head">
+              <div class="num">2</div>
+              <img class="step-ico" src="assets/batch-analysis-icon.svg" alt="" />
+            </div>
             <h3>Classify risk in real time</h3>
             <p>
               12 MLCommons hazard categories evaluated live. Confidence scores, severity levels,
@@ -2743,7 +2804,10 @@
             </p>
           </div>
           <div class="card step">
-            <div class="num">3</div>
+            <div class="step-head">
+              <div class="num">3</div>
+              <img class="step-ico" src="assets/inline-guardrails-icon.svg" alt="" />
+            </div>
             <h3>Enforce policy automatically</h3>
             <p>
               Block. Reroute. Redact. Escalate. Automatically, with full audit trails ready for
@@ -2766,6 +2830,8 @@
 ============================================================ -->
       <section class="slide dark" id="s7" data-idx="7">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <img class="s7-mark" src="assets/realm-prism-icon.svg" alt="" />
 
         <div class="header">
           <div class="eyebrow">The Breakthrough</div>
@@ -2900,7 +2966,10 @@
 
         <div class="grid">
           <div class="card uc a">
-            <div class="for">Product Owners</div>
+            <div class="uc-head">
+              <div class="for">Product Owners</div>
+              <img class="uc-ico" src="assets/generative-endpoint-icon.svg" alt="" />
+            </div>
             <h3>Ship fast and safely.</h3>
             <p>
               Launch AI features without waiting on security. Every release is pre-cleared with
@@ -2908,7 +2977,10 @@
             </p>
           </div>
           <div class="card uc b">
-            <div class="for">Security Teams</div>
+            <div class="uc-head">
+              <div class="for">Security Teams</div>
+              <img class="uc-ico" src="assets/advanced-protection-icon.svg" alt="" />
+            </div>
             <h3>Eliminate the OWASP Top 10 for LLMs.</h3>
             <p>
               Prompt injection, jailbreaks, data exfiltration, tool misuse. Surfaced at runtime with
@@ -2916,7 +2988,10 @@
             </p>
           </div>
           <div class="card uc c">
-            <div class="for">C-Suite (CIO / CFO)</div>
+            <div class="uc-head">
+              <div class="for">C-Suite (CIO / CFO)</div>
+              <img class="uc-ico" src="assets/basic-protection-icon.svg" alt="" />
+            </div>
             <h3>AI transformation is survival.</h3>
             <p>
               "In five years, you are either an AI-first company or a dead company." Realm is the
@@ -2925,7 +3000,10 @@
             </p>
           </div>
           <div class="card uc d">
-            <div class="for">For Platform &amp; IT</div>
+            <div class="uc-head">
+              <div class="for">For Platform &amp; IT</div>
+              <img class="uc-ico" src="assets/datarealm-agent-icon.svg" alt="" />
+            </div>
             <h3>Multi-app command center</h3>
             <p>
               Cross-application observability, routing and alerting for every model, every agent,
@@ -3146,7 +3224,7 @@
 
           <div class="dni-viz">
             <div class="frame">
-              <img src="assets/dni-diagram.png" alt="Deep Neural Inspection" />
+              <img src="assets/dni-diagram.svg" alt="Deep Neural Inspection" />
             </div>
             <div class="cap">Deep Neural Inspection™ · production-ready architecture</div>
           </div>
@@ -3208,7 +3286,10 @@
 
         <div class="bottom-row">
           <div class="panel slm">
-            <div class="lbl">Why a purpose-built SLM, not another LLM?</div>
+            <div class="slm-head">
+              <img class="slm-ico" src="assets/datarealm-api-icon.svg" alt="" />
+              <div class="lbl">Why a purpose-built SLM, not another LLM?</div>
+            </div>
             <div class="slm-list">
               <div class="item">
                 <strong>Classifies, doesn't generate</strong>Zero hallucination risk by design.
@@ -3421,7 +3502,10 @@
         </div>
 
         <div class="assess-block">
-          <div class="ab-eyebrow">The AI Runtime Risk Assessment</div>
+          <div class="ab-head">
+            <img class="ab-ico" src="assets/realm-guard-icon.svg" alt="" />
+            <div class="ab-eyebrow">The AI Runtime Risk Assessment</div>
+          </div>
           <h3>60 minutes. One of your live workloads. An auditor-aligned gap report.</h3>
           <p class="ab-body">
             We run one of your live AI workloads through Prism and hand you a gap report mapped to
