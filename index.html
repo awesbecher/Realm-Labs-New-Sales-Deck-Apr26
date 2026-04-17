@@ -688,35 +688,31 @@
       }
 
       /* =========================================================
-   SLIDE 3 — TWO KINDS OF AI FAILURE (DARK) - NEW
+   SLIDE 2 — READING THE SIGNAL (DARK) - diagnostic readout
    ========================================================= */
       #s2 .header {
-        margin-top: 28px;
+        margin-top: 20px;
         max-width: 90ch;
       }
       #s2 h1.slide-title {
-        font-size: clamp(1.4rem, 2.6vw, 2.3rem);
-        margin-bottom: 22px;
-        white-space: nowrap;
+        font-size: clamp(1.6rem, 3vw, 2.6rem);
+        margin-bottom: 10px;
         letter-spacing: -0.02em;
       }
-      #s2 h1.slide-title em {
-        font-style: normal;
-        background: linear-gradient(135deg, var(--teal), var(--purple-2));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+      #s2 .subtitle {
+        color: var(--muted);
+        max-width: 72ch;
       }
-      #s2 .kinds {
+      #s2 .signals {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 28px;
-        margin-top: 12px;
+        gap: 22px;
+        margin-top: 20px;
         flex: 1;
         min-height: 0;
       }
-      #s2 .kind {
-        padding: 32px 34px;
+      #s2 .signal {
+        padding: 22px 26px;
         border-radius: 14px;
         background: var(--surface);
         border: 1px solid var(--border-d);
@@ -726,118 +722,161 @@
         position: relative;
         overflow: hidden;
       }
-      #s2 .kind::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle at 1px 1px, rgba(162, 167, 178, 0.08) 1px, transparent 0);
-        background-size: 22px 22px;
-        pointer-events: none;
-        opacity: 0.5;
-      }
-      #s2 .kind > * {
-        position: relative;
-        z-index: 1;
-      }
-      #s2 .kind.invisible {
-        background: linear-gradient(145deg, rgba(64, 14, 190, 0.24), rgba(139, 92, 246, 0.08));
-        border: 1px solid rgba(139, 92, 246, 0.4);
+      #s2 .signal.dni {
+        background: linear-gradient(145deg, rgba(64, 14, 190, 0.24), rgba(17, 214, 119, 0.05));
+        border: 1px solid rgba(17, 214, 119, 0.35);
         box-shadow: 0 12px 44px rgba(64, 14, 190, 0.25);
       }
-      #s2 .kind.invisible::before {
-        background-image: radial-gradient(circle at 1px 1px, rgba(17, 214, 119, 0.14) 1px, transparent 0);
-        opacity: 0.7;
-      }
-      #s2 .kind-meta {
+      #s2 .signal-head {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 3px;
       }
-      #s2 .kind-meta .kind-ico {
-        color: var(--muted);
-        flex-shrink: 0;
+      #s2 .signal-meta {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
       }
-      #s2 .kind.invisible .kind-meta .kind-ico {
-        color: var(--teal);
-      }
-      #s2 .kind-tag {
+      #s2 .signal-tag {
         font-family: var(--font-mono);
         font-size: 0.68rem;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--muted);
-        padding: 4px 12px;
-        border-radius: 999px;
-        background: rgba(162, 167, 178, 0.08);
-        border: 1px solid rgba(162, 167, 178, 0.2);
       }
-      #s2 .kind.invisible .kind-tag {
+      #s2 .signal.dni .signal-tag {
         color: var(--teal);
-        background: rgba(17, 214, 119, 0.1);
-        border: 1px solid rgba(17, 214, 119, 0.3);
       }
-      #s2 .kind-label {
+      #s2 .signal-pct {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+        font-size: 1.8rem;
         letter-spacing: -0.02em;
         color: var(--muted);
         line-height: 1;
       }
-      #s2 .kind.invisible .kind-label {
+      #s2 .signal.dni .signal-pct {
         background: linear-gradient(135deg, var(--teal), #A78BFA);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
-      #s2 .kind-desc {
+      #s2 .signal-sub {
+        font-family: var(--font-body);
+        font-size: 0.78rem;
         color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.5;
-        max-width: 42ch;
       }
-      #s2 .kind.invisible .kind-desc {
-        color: #E9D5FF;
+      #s2 .readout {
+        padding: 14px 16px;
+        border: 1px solid rgba(162, 167, 178, 0.2);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.25);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
       }
-      #s2 .kind ul {
+      #s2 .readout.flat {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      #s2 .readout-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      #s2 .marker {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        min-width: 72px;
+      }
+      #s2 .marker.err { color: #EF4444; }
+      #s2 .marker.refused { color: #F59E0B; }
+      #s2 .marker.blocked { color: #EF4444; }
+      #s2 .bar {
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(162, 167, 178, 0.3);
+      }
+      #s2 .bar-short { width: 24%; }
+      #s2 .bar-mid { width: 48%; }
+      #s2 .bar-long { width: 76%; }
+      #s2 .readout.wave {
+        position: relative;
+        height: 80px;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid rgba(17, 214, 119, 0.25);
+        background: rgba(10, 15, 28, 0.45);
+      }
+      #s2 .readout.wave svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #s2 .readout-grid {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        pointer-events: none;
+      }
+      #s2 .readout-grid span {
+        border-right: 1px solid rgba(17, 214, 119, 0.08);
+      }
+      #s2 .readout-grid span:last-child {
+        border-right: none;
+      }
+      #s2 .signal-list {
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-        padding-top: 14px;
-        border-top: 1px solid var(--border-d);
+        gap: 6px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(162, 167, 178, 0.15);
       }
-      #s2 .kind.invisible ul {
-        border-top: 1px solid rgba(139, 92, 246, 0.25);
+      #s2 .signal.dni .signal-list {
+        border-top: 1px solid rgba(17, 214, 119, 0.2);
       }
-      #s2 .kind li {
-        font-size: 0.92rem;
-        line-height: 1.45;
+      #s2 .signal-list li {
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        line-height: 1.4;
         color: var(--white);
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
+        padding-left: 14px;
+        position: relative;
       }
-      #s2 .kind .li-ico {
-        flex-shrink: 0;
-        margin-top: 3px;
+      #s2 .signal-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--muted);
+      }
+      #s2 .signal.dni .signal-list li::before {
+        background: var(--teal);
+      }
+      #s2 .signal-caption {
+        font-family: var(--font-body);
+        font-size: 0.78rem;
         color: var(--muted);
-        opacity: 0.7;
+        font-style: italic;
+        margin-top: auto;
       }
-      #s2 .kind.invisible .li-ico {
-        color: var(--teal);
-        opacity: 1;
-      }
-      #s2 .kind-footer {
-        margin-top: 22px;
-        padding: 14px 24px;
+      #s2 .signal-footer {
+        margin-top: 16px;
+        padding: 12px 22px;
         text-align: center;
         background: linear-gradient(90deg, rgba(64, 14, 190, 0.18), rgba(17, 214, 119, 0.12));
         border: 1px solid rgba(139, 92, 246, 0.3);
         border-radius: 999px;
         font-family: var(--font-head);
-        font-size: 0.92rem;
+        font-size: 0.85rem;
         color: var(--white);
         font-weight: 500;
       }
@@ -1025,86 +1064,168 @@
       }
 
       /* =========================================================
-   SLIDE 6 — PLATFORM (LIGHT)
+   SLIDE 7 — DEEP NEURAL INSPECTION (DARK) - NEW
    ========================================================= */
       #s7 .header {
+        margin-top: 22px;
+        max-width: 90ch;
+      }
+      #s7 h1.slide-title {
+        font-size: clamp(1.9rem, 3.6vw, 3rem);
+        margin-bottom: 14px;
+        letter-spacing: -0.02em;
+      }
+      #s7 .dni-lede {
+        font-family: var(--font-head);
+        font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+        color: var(--white);
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 58ch;
+      }
+      #s7 .dni-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 32px;
+        flex: 1;
+        min-height: 0;
+      }
+      #s7 .dni-pillar {
+        padding: 26px 28px;
+        background: var(--surface);
+        border: 1px solid var(--border-d);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      #s7 .dni-pillar.highlight {
+        background: linear-gradient(145deg, rgba(64, 14, 190, 0.24), rgba(17, 214, 119, 0.06));
+        border: 1px solid rgba(17, 214, 119, 0.35);
+        box-shadow: 0 12px 44px rgba(64, 14, 190, 0.25);
+      }
+      #s7 .dni-num {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        color: var(--teal);
+      }
+      #s7 .dni-pillar h3 {
+        font-family: var(--font-head);
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--white);
+        line-height: 1.15;
+      }
+      #s7 .dni-pillar.highlight h3 {
+        background: linear-gradient(135deg, var(--teal), #A78BFA);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      #s7 .dni-pillar p {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+      #s7 .dni-footer {
+        margin-top: 22px;
+        padding: 12px 22px;
+        text-align: center;
+        background: linear-gradient(90deg, rgba(64, 14, 190, 0.18), rgba(17, 214, 119, 0.12));
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 999px;
+        font-family: var(--font-head);
+        font-size: 0.9rem;
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      /* =========================================================
+   SLIDE 8 — PLATFORM (LIGHT)
+   ========================================================= */
+      #s8 .header {
         margin-top: 24px;
         max-width: 80ch;
       }
-      #s7 .products {
+      #s8 .products {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 18px;
         margin-top: 24px;
       }
-      #s7 .prod {
+      #s8 .prod {
         padding: 22px 24px;
         display: flex;
         flex-direction: column;
         gap: 12px;
         border-top: 3px solid transparent;
       }
-      #s7 .prod.prism {
+      #s8 .prod.prism {
         border-top-color: var(--teal);
       }
-      #s7 .prod.omni {
+      #s8 .prod.omni {
         border-top-color: var(--purple-2);
       }
-      #s7 .prod.ar {
+      #s8 .prod.ar {
         border-top-color: var(--blue);
       }
-      #s7 .prod .ico {
+      #s8 .prod .ico {
         width: 56px;
         height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      #s7 .prod .ico svg,
-      #s7 .prod .ico img {
+      #s8 .prod .ico svg,
+      #s8 .prod .ico img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         filter: drop-shadow(0 6px 16px rgba(15, 23, 42, 0.12));
       }
-      #s7 .prod.omni .ico {
+      #s8 .prod.omni .ico {
         background: rgba(139, 92, 246, 0.1);
       }
-      #s7 .prod.ar .ico {
+      #s8 .prod.ar .ico {
         background: rgba(59, 130, 246, 0.1);
       }
-      #s7 .prod .ico img {
+      #s8 .prod .ico img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
-      #s7 .prod .name {
+      #s8 .prod .name {
         font-family: var(--font-head);
         font-size: 1.4rem;
         font-weight: 700;
         letter-spacing: -0.01em;
       }
-      #s7 .prod .tag {
+      #s8 .prod .tag {
         font-family: var(--font-head);
         font-size: 0.95rem;
         font-weight: 500;
         color: var(--ink-2);
       }
-      #s7 .prod ul {
+      #s8 .prod ul {
         list-style: none;
         margin-top: 4px;
         display: flex;
         flex-direction: column;
         gap: 6px;
       }
-      #s7 .prod li {
+      #s8 .prod li {
         font-size: 0.82rem;
         color: var(--body);
         padding-left: 16px;
         position: relative;
         line-height: 1.4;
       }
-      #s7 .prod li::before {
+      #s8 .prod li::before {
         content: '';
         position: absolute;
         left: 0;
@@ -1115,7 +1236,7 @@
         background: currentColor;
         opacity: 0.4;
       }
-      #s7 .integrations {
+      #s8 .integrations {
         margin-top: 18px;
         margin-bottom: 24px;
         padding: 14px 22px;
@@ -1128,7 +1249,7 @@
         justify-content: space-between;
         flex-wrap: nowrap;
       }
-      #s7 .integrations .lbl {
+      #s8 .integrations .lbl {
         font-family: var(--font-head);
         font-weight: 600;
         font-size: 0.7rem;
@@ -1137,14 +1258,14 @@
         color: var(--body);
         flex-shrink: 0;
       }
-      #s7 .integrations .logos {
+      #s8 .integrations .logos {
         display: flex;
         align-items: center;
         gap: clamp(20px, 3vw, 40px);
         flex: 1;
         justify-content: space-around;
       }
-      #s7 .integrations img {
+      #s8 .integrations img {
         height: 24px;
         width: auto;
         opacity: 1;
@@ -1154,11 +1275,11 @@
       /* =========================================================
    SLIDE 7 — USE CASES (LIGHT)
    ========================================================= */
-      #s8 .header {
+      #s9 .header {
         margin-top: 30px;
         max-width: 80ch;
       }
-      #s8 .grid {
+      #s9 .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -1168,7 +1289,7 @@
         flex: 1;
         min-height: 0;
       }
-      #s8 .uc {
+      #s9 .uc {
         padding: 22px 24px;
         border-left: 3px solid var(--teal);
         display: flex;
@@ -1177,16 +1298,16 @@
         min-height: 0;
         overflow: hidden;
       }
-      #s8 .uc.b {
+      #s9 .uc.b {
         border-left-color: var(--red);
       }
-      #s8 .uc.c {
+      #s9 .uc.c {
         border-left-color: var(--amber);
       }
-      #s8 .uc.d {
+      #s9 .uc.d {
         border-left-color: var(--purple-2);
       }
-      #s8 .uc .for {
+      #s9 .uc .for {
         font-family: var(--font-head);
         font-size: 0.7rem;
         letter-spacing: 0.14em;
@@ -1194,19 +1315,19 @@
         color: var(--body);
         font-weight: 600;
       }
-      #s8 .uc h3 {
+      #s9 .uc h3 {
         font-family: var(--font-head);
         font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: -0.01em;
       }
-      #s8 .uc p {
+      #s9 .uc p {
         color: var(--ink-2);
         font-size: 0.88rem;
         line-height: 1.45;
         flex: 1;
       }
-      #s8 .uc .bot {
+      #s9 .uc .bot {
         font-family: var(--font-head);
         font-size: 0.78rem;
         font-weight: 500;
@@ -1218,23 +1339,23 @@
       /* =========================================================
    SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
    ========================================================= */
-      #s9 .header {
+      #s10 .header {
         margin-top: 22px;
         max-width: 80ch;
       }
-      #s9 .metrics {
+      #s10 .metrics {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 16px;
         margin-top: 22px;
       }
-      #s9 .metric {
+      #s10 .metric {
         padding: 28px;
         text-align: left;
         position: relative;
         overflow: hidden;
       }
-      #s9 .metric .big {
+      #s10 .metric .big {
         font-family: var(--font-head);
         font-weight: 700;
         font-size: clamp(2.4rem, 4.4vw, 3.8rem);
@@ -1246,31 +1367,31 @@
         color: transparent;
         margin-bottom: 10px;
       }
-      #s9 .metric .lbl {
+      #s10 .metric .lbl {
         font-family: var(--font-head);
         font-weight: 600;
         font-size: 0.95rem;
         color: var(--ink);
         margin-bottom: 8px;
       }
-      #s9 .metric .desc {
+      #s10 .metric .desc {
         font-size: 0.82rem;
         line-height: 1.5;
         color: var(--body);
       }
-      #s9 .outcomes {
+      #s10 .outcomes {
         margin-top: 16px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 12px;
       }
-      #s9 .out {
+      #s10 .out {
         padding: 12px 16px;
         border: 1px solid var(--border-l);
         border-radius: 10px;
         background: var(--white);
       }
-      #s9 .out .ico {
+      #s10 .out .ico {
         width: 26px;
         height: 26px;
         border-radius: 7px;
@@ -1283,13 +1404,13 @@
         flex-shrink: 0;
         font-weight: 700;
       }
-      #s9 .out .txt {
+      #s10 .out .txt {
         font-size: 0.76rem;
         line-height: 1.45;
         color: var(--ink-2);
         font-weight: 500;
       }
-      #s9 .bottom-stripe {
+      #s10 .bottom-stripe {
         margin-top: 14px;
         margin-bottom: 24px;
         padding: 12px 20px;
@@ -1302,14 +1423,14 @@
         justify-content: space-between;
         gap: 20px;
       }
-      #s9 .bottom-stripe .quote {
+      #s10 .bottom-stripe .quote {
         font-family: var(--font-head);
         font-size: 0.95rem;
         color: var(--ink);
         font-weight: 500;
         font-style: italic;
       }
-      #s9 .bottom-stripe .src {
+      #s10 .bottom-stripe .src {
         font-family: var(--font-mono);
         font-size: 0.72rem;
         color: var(--body);
@@ -1319,14 +1440,14 @@
       /* =========================================================
    SLIDE 9 — DNI COMPARISON (DARK)
    ========================================================= */
-      #s10 .header {
+      #s11 .header {
         margin-top: 20px;
         max-width: 90ch;
       }
-      #s10 .header .subtitle {
+      #s11 .header .subtitle {
         color: var(--muted);
       }
-      #s10 .body-wrap {
+      #s11 .body-wrap {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
         gap: 36px;
@@ -1334,27 +1455,27 @@
         flex: 1;
         min-height: 0;
       }
-      #s10 .cmp-table {
+      #s11 .cmp-table {
         border-radius: 12px;
         overflow: hidden;
         background: var(--surface);
         border: 1px solid var(--border-d);
         font-size: 0.85rem;
       }
-      #s10 .cmp-row {
+      #s11 .cmp-row {
         display: grid;
         grid-template-columns: 0.9fr 1fr 1fr;
         border-bottom: 1px solid var(--border-d);
       }
-      #s10 .cmp-row:last-child {
+      #s11 .cmp-row:last-child {
         border-bottom: none;
       }
-      #s10 .cmp-row > div {
+      #s11 .cmp-row > div {
         padding: 12px 16px;
         display: flex;
         align-items: center;
       }
-      #s10 .cmp-row.head > div {
+      #s11 .cmp-row.head > div {
         font-family: var(--font-head);
         font-weight: 600;
         font-size: 0.7rem;
@@ -1363,33 +1484,33 @@
         color: var(--muted);
         background: rgba(0, 0, 0, 0.2);
       }
-      #s10 .cmp-row .dim {
+      #s11 .cmp-row .dim {
         font-family: var(--font-head);
         font-weight: 600;
         color: var(--white);
         font-size: 0.8rem;
         border-right: 1px solid var(--border-d);
       }
-      #s10 .cmp-row .leg {
+      #s11 .cmp-row .leg {
         color: var(--muted);
         border-right: 1px solid var(--border-d);
       }
-      #s10 .cmp-row .rlm {
+      #s11 .cmp-row .rlm {
         color: #E9FBF3;
         font-weight: 600;
       }
-      #s10 .cmp-row .rlm.hilite {
+      #s11 .cmp-row .rlm.hilite {
         background: linear-gradient(90deg, rgba(17, 214, 119, 0.05), rgba(17, 214, 119, 0.15));
         position: relative;
       }
-      #s10 .cmp-row.head .rlm {
+      #s11 .cmp-row.head .rlm {
         color: var(--teal);
         font-weight: 700;
       }
-      #s10 .cmp-table {
+      #s11 .cmp-table {
         position: relative;
       }
-      #s10 .cmp-table::after {
+      #s11 .cmp-table::after {
         content: "";
         position: absolute;
         top: 0;
@@ -1401,14 +1522,14 @@
         pointer-events: none;
         border-radius: 0 12px 12px 0;
       }
-      #s10 .dni-viz {
+      #s11 .dni-viz {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 14px;
       }
-      #s10 .dni-viz .frame {
+      #s11 .dni-viz .frame {
         width: 100%;
         max-height: 48vh;
         background: linear-gradient(180deg, #FAFAFC 0%, #F1EEF9 100%);
@@ -1420,12 +1541,12 @@
         justify-content: center;
         box-shadow: 0 8px 32px rgba(64, 14, 190, 0.25);
       }
-      #s10 .dni-viz img {
+      #s11 .dni-viz img {
         max-width: 100%;
         max-height: 42vh;
         object-fit: contain;
       }
-      #s10 .dni-viz .cap {
+      #s11 .dni-viz .cap {
         font-family: var(--font-head);
         font-size: 0.75rem;
         color: var(--muted);
@@ -1436,39 +1557,39 @@
       /* =========================================================
    SLIDE 10 — STANDARDS (LIGHT)
    ========================================================= */
-      #s11 .header {
+      #s12 .header {
         margin-top: 22px;
         max-width: 90ch;
       }
-      #s11 .cards {
+      #s12 .cards {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 14px;
         margin-top: 22px;
       }
-      #s11 .std {
+      #s12 .std {
         padding: 18px 20px;
         display: flex;
         flex-direction: column;
         gap: 8px;
         min-height: 0;
       }
-      #s11 .std .badge {
+      #s12 .std .badge {
         align-self: flex-start;
       }
-      #s11 .std .name {
+      #s12 .std .name {
         font-family: var(--font-head);
         font-size: 1rem;
         font-weight: 700;
         letter-spacing: -0.01em;
       }
-      #s11 .std .desc {
+      #s12 .std .desc {
         font-size: 0.8rem;
         color: var(--ink-2);
         line-height: 1.45;
         flex: 1;
       }
-      #s11 .bottom-row {
+      #s12 .bottom-row {
         margin-top: 14px;
         margin-bottom: 24px;
         display: grid;
@@ -1476,7 +1597,7 @@
         gap: 14px;
         align-items: stretch;
       }
-      #s11 .bottom-row .panel {
+      #s12 .bottom-row .panel {
         padding: 14px 18px;
         border: 1px solid var(--border-l);
         border-radius: 10px;
@@ -1485,24 +1606,24 @@
         flex-direction: column;
         gap: 8px;
       }
-      #s11 .bottom-row .panel.slm {
+      #s12 .bottom-row .panel.slm {
         border-left: 3px solid var(--teal);
       }
-      #s11 .bottom-row .panel.custom {
+      #s12 .bottom-row .panel.custom {
         border-left: 3px solid var(--purple);
       }
-      #s11 .bottom-row .custom-head {
+      #s12 .bottom-row .custom-head {
         display: flex;
         align-items: center;
         gap: 10px;
       }
-      #s11 .bottom-row .chips {
+      #s12 .bottom-row .chips {
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
         margin-top: 4px;
       }
-      #s11 .bottom-row .chips span {
+      #s12 .bottom-row .chips span {
         font-family: var(--font-mono);
         font-size: 0.65rem;
         letter-spacing: 0.04em;
@@ -1512,7 +1633,7 @@
         color: var(--purple);
         border: 1px solid rgba(64, 14, 190, 0.14);
       }
-      #s11 .bottom-row .lbl {
+      #s12 .bottom-row .lbl {
         font-family: var(--font-head);
         font-weight: 700;
         font-size: 0.85rem;
@@ -1520,12 +1641,12 @@
         margin-bottom: 8px;
         letter-spacing: -0.01em;
       }
-      #s11 .bottom-row .slm-list {
+      #s12 .bottom-row .slm-list {
         display: flex;
         gap: 18px;
         flex-wrap: wrap;
       }
-      #s11 .bottom-row .slm-list .item {
+      #s12 .bottom-row .slm-list .item {
         font-size: 0.8rem;
         color: var(--ink-2);
         line-height: 1.45;
@@ -1534,7 +1655,7 @@
         padding-left: 10px;
         border-left: 2px solid var(--border-l);
       }
-      #s11 .bottom-row .slm-list .item strong {
+      #s12 .bottom-row .slm-list .item strong {
         display: block;
         color: var(--ink);
         font-family: var(--font-head);
@@ -1542,19 +1663,19 @@
         margin-bottom: 2px;
         font-size: 0.82rem;
       }
-      #s11 .bottom-row .custom .ico {
+      #s12 .bottom-row .custom .ico {
         font-family: var(--font-head);
         font-size: 1.4rem;
         color: var(--purple);
         font-weight: 700;
         line-height: 1;
       }
-      #s11 .bottom-row .custom .body {
+      #s12 .bottom-row .custom .body {
         color: var(--ink-2);
         font-size: 0.85rem;
         line-height: 1.5;
       }
-      #s11 .bottom-row .custom .body strong {
+      #s12 .bottom-row .custom .body strong {
         color: var(--ink);
         font-family: var(--font-head);
         font-weight: 600;
@@ -1563,17 +1684,17 @@
       /* =========================================================
    SLIDE 11 — DEPLOYMENT (LIGHT)
    ========================================================= */
-      #s12 .header {
+      #s13 .header {
         margin-top: 30px;
         max-width: 80ch;
       }
-      #s12 .options {
+      #s13 .options {
         display: grid;
         grid-template-columns: 1.2fr 1.2fr 0.8fr;
         gap: 20px;
         margin-top: 28px;
       }
-      #s12 .opt {
+      #s13 .opt {
         padding: 28px;
         display: flex;
         flex-direction: column;
@@ -1581,53 +1702,53 @@
         position: relative;
         overflow: hidden;
       }
-      #s12 .opt.hero {
+      #s13 .opt.hero {
         border-top: 3px solid var(--purple);
         box-shadow: 0 4px 16px rgba(64, 14, 190, 0.08);
       }
-      #s12 .opt.hero h3 {
+      #s13 .opt.hero h3 {
         font-size: 1.4rem;
       }
-      #s12 .opt.secondary {
+      #s13 .opt.secondary {
         opacity: 0.85;
         padding: 22px 24px;
         background: var(--offwhite);
       }
-      #s12 .opt.secondary h3 {
+      #s13 .opt.secondary h3 {
         font-size: 1.05rem;
       }
-      #s12 .opt.secondary p {
+      #s13 .opt.secondary p {
         font-size: 0.82rem;
       }
-      #s12 .opt .opt-head {
+      #s13 .opt .opt-head {
         display: flex;
         align-items: center;
         gap: 14px;
       }
-      #s12 .opt .num {
+      #s13 .opt .num {
         font-family: var(--font-mono);
         font-size: 0.75rem;
         color: var(--teal);
         letter-spacing: 0.1em;
       }
-      #s12 .opt h3 {
+      #s13 .opt h3 {
         font-family: var(--font-head);
         font-size: 1.2rem;
         font-weight: 700;
       }
-      #s12 .opt .dep-sub {
+      #s13 .opt .dep-sub {
         font-family: var(--font-head);
         font-size: 0.82rem;
         color: var(--purple);
         font-weight: 600;
         letter-spacing: 0.02em;
       }
-      #s12 .opt p {
+      #s13 .opt p {
         color: var(--ink-2);
         font-size: 0.9rem;
         line-height: 1.5;
       }
-      #s12 .infra {
+      #s13 .infra {
         margin-top: 28px;
         padding: 22px 28px;
         background: var(--white);
@@ -1639,7 +1760,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
       }
-      #s12 .infra .lbl {
+      #s13 .infra .lbl {
         font-family: var(--font-head);
         font-weight: 600;
         font-size: 0.7rem;
@@ -1647,20 +1768,20 @@
         text-transform: uppercase;
         color: var(--body);
       }
-      #s12 .infra .logos {
+      #s13 .infra .logos {
         display: flex;
         align-items: center;
         gap: clamp(20px, 3vw, 40px);
         flex: 1;
         justify-content: space-around;
       }
-      #s12 .infra img {
+      #s13 .infra img {
         height: 32px;
         width: auto;
         opacity: 1;
         filter: grayscale(100%) brightness(0.55) contrast(1.2);
       }
-      #s12 .enterprise-bar {
+      #s13 .enterprise-bar {
         margin-top: 14px;
         margin-bottom: 4px;
         font-family: var(--font-body);
@@ -1674,7 +1795,7 @@
         gap: 14px;
         flex-wrap: wrap;
       }
-      #s12 .enterprise-bar .sep {
+      #s13 .enterprise-bar .sep {
         width: 3px;
         height: 3px;
         border-radius: 50%;
@@ -1684,24 +1805,24 @@
       /* =========================================================
    SLIDE 12 — TEAM (LIGHT)
    ========================================================= */
-      #s13 .header {
+      #s14 .header {
         margin-top: 30px;
         max-width: 80ch;
       }
-      #s13 .leaders {
+      #s14 .leaders {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 22px;
         margin-top: 26px;
       }
-      #s13 .leader {
+      #s14 .leader {
         padding: 24px;
         display: flex;
         flex-direction: column;
         gap: 12px;
         align-items: flex-start;
       }
-      #s13 .avatar {
+      #s14 .avatar {
         width: 96px;
         height: 96px;
         border-radius: 50%;
@@ -1713,36 +1834,36 @@
         outline: 1px solid var(--border-l);
         box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
       }
-      #s13 .leader .name {
+      #s14 .leader .name {
         font-family: var(--font-head);
         font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: -0.01em;
       }
-      #s13 .leader .role {
+      #s14 .leader .role {
         font-family: var(--font-head);
         font-size: 0.85rem;
         font-weight: 600;
         color: var(--purple);
       }
-      #s13 .leader .bio {
+      #s14 .leader .bio {
         font-size: 0.82rem;
         color: var(--ink-2);
         line-height: 1.5;
       }
-      #s13 .bottom {
+      #s14 .bottom {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px;
         margin-top: 24px;
       }
-      #s13 .bottom .panel {
+      #s14 .bottom .panel {
         padding: 20px 24px;
         background: var(--white);
         border: 1px solid var(--border-l);
         border-radius: 12px;
       }
-      #s13 .bottom .lbl {
+      #s14 .bottom .lbl {
         font-family: var(--font-head);
         font-weight: 600;
         font-size: 0.7rem;
@@ -1751,19 +1872,19 @@
         color: var(--body);
         margin-bottom: 10px;
       }
-      #s13 .adv-list {
+      #s14 .adv-list {
         display: flex;
         flex-direction: column;
         gap: 6px;
       }
-      #s13 .adv-list div {
+      #s14 .adv-list div {
         font-size: 0.78rem;
         color: var(--ink);
         font-family: var(--font-head);
         font-weight: 600;
         line-height: 1.45;
       }
-      #s13 .adv-list div span {
+      #s14 .adv-list div span {
         color: var(--body);
         font-weight: 400;
         margin-left: 6px;
@@ -1771,7 +1892,7 @@
         font-size: 0.72rem;
         line-height: 1.35;
       }
-      #s13 .inv-row {
+      #s14 .inv-row {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         align-items: center;
@@ -1779,7 +1900,7 @@
         gap: 14px;
         width: 100%;
       }
-      #s13 .inv-row img {
+      #s14 .inv-row img {
         height: 24px;
         max-width: 130px;
         width: auto;
@@ -1787,7 +1908,7 @@
         object-fit: contain;
         filter: grayscale(100%) brightness(0.65) contrast(1.15);
       }
-      #s13 .inv-row .inv-text {
+      #s14 .inv-row .inv-text {
         font-family: var(--font-head);
         font-weight: 700;
         font-size: 1.4rem;
@@ -1798,13 +1919,13 @@
       /* =========================================================
    SLIDE 13 — CTA (DARK)
    ========================================================= */
-      #s14 {
+      #s15 {
         justify-content: center;
         text-align: center;
         align-items: center;
         position: relative;
       }
-      #s14 .bg-hero {
+      #s15 .bg-hero {
         position: absolute;
         inset: 0;
         display: flex;
@@ -1814,7 +1935,7 @@
         pointer-events: none;
         z-index: 0;
       }
-      #s14 .bg-hero img {
+      #s15 .bg-hero img {
         max-height: 80%;
         max-width: 45%;
         object-fit: contain;
@@ -1825,11 +1946,11 @@
         -webkit-mask-image: radial-gradient(circle at 40% 50%, black 30%, transparent 72%);
         mask-image: radial-gradient(circle at 40% 50%, black 30%, transparent 72%);
       }
-      #s14 .ctab-inner h1,
-      #s14 .ctab-inner .sub {
+      #s15 .ctab-inner h1,
+      #s15 .ctab-inner .sub {
         text-shadow: 0 2px 16px rgba(10, 15, 28, 0.6);
       }
-      #s14 .ctab-inner {
+      #s15 .ctab-inner {
         position: relative;
         z-index: 2;
         display: flex;
@@ -1837,44 +1958,44 @@
         align-items: center;
         gap: 0;
       }
-      #s14 .eyebrow {
+      #s15 .eyebrow {
         justify-content: center;
         margin: 0 auto 22px;
       }
-      #s14 h1 {
+      #s15 h1 {
         font-size: clamp(2.8rem, 6vw, 5.2rem);
         max-width: 22ch;
         margin: 0 auto 22px;
         line-height: 1;
       }
-      #s14 h1 em {
+      #s15 h1 em {
         font-style: normal;
         background: linear-gradient(135deg, var(--teal), var(--purple-2));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
-      #s14 .sub {
+      #s15 .sub {
         text-align: center;
         margin: 0 auto 36px;
         color: var(--muted);
         max-width: 50ch;
         font-size: clamp(1rem, 1.5vw, 1.25rem);
       }
-      #s14 .cta-row {
+      #s15 .cta-row {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 14px;
         margin-bottom: 48px;
       }
-      #s14 .stats-footer {
+      #s15 .stats-footer {
         justify-content: center;
         display: flex;
         align-items: center;
         gap: 24px;
       }
-      #s14 .url {
+      #s15 .url {
         margin-top: 16px;
         font-family: var(--font-mono);
         color: var(--teal);
@@ -2002,60 +2123,81 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">01 / 14</span>
+        <span class="slide-number">01 / 15</span>
       </section>
 
 
       <!-- ============================================================
-     SLIDE 3 — TWO KINDS OF AI FAILURE (DARK) - NEW
+     SLIDE 2 — READING THE SIGNAL, NOT THE OUTPUT (DARK)
 ============================================================ -->
       <section class="slide dark" id="s2" data-idx="2">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
 
         <div class="header">
-          <div class="eyebrow">The Failure Map</div>
-          <h1 class="slide-title">Two kinds of AI failure. You're only catching <em>one</em>.</h1>
+          <div class="eyebrow">The Signal</div>
+          <h1 class="slide-title">The signal everyone is missing.</h1>
+          <p class="subtitle">Output monitoring catches 10% of AI failures. Deep Neural Inspection catches the other 90%.</p>
         </div>
 
-        <div class="kinds">
-          <div class="kind">
-            <div class="kind-meta">
-              <svg class="kind-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-              <span class="kind-tag">Caught by your stack</span>
+        <div class="signals">
+          <div class="signal legacy">
+            <div class="signal-head">
+              <div class="signal-meta">
+                <span class="signal-tag">Output Monitoring</span>
+                <span class="signal-pct">10%</span>
+              </div>
+              <div class="signal-sub">What legacy tools see</div>
             </div>
-            <div class="kind-label">Visible</div>
-            <p class="kind-desc">
-              User complains. System errors. Your filter blocks. Your current tools catch these.
-            </p>
-            <ul>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Hard refusal / safety block</li>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Hallucinated answer the user flagged</li>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>Output the user rated thumbs-down</li>
+            <div class="readout flat">
+              <div class="readout-row"><span class="marker err">ERROR</span><span class="bar bar-short"></span></div>
+              <div class="readout-row"><span class="marker refused">REFUSED</span><span class="bar bar-mid"></span></div>
+              <div class="readout-row"><span class="marker thumbs">👎</span><span class="bar bar-short"></span></div>
+              <div class="readout-row"><span class="marker blocked">BLOCKED</span><span class="bar bar-long"></span></div>
+            </div>
+            <ul class="signal-list">
+              <li>API errors</li>
+              <li>Hard refusals / safety blocks</li>
+              <li>Thumbs-down ratings</li>
+              <li>Filter blocks</li>
             </ul>
+            <div class="signal-caption">Catches what the user already complained about.</div>
           </div>
-          <div class="kind invisible">
-            <div class="kind-meta">
-              <svg class="kind-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-              <span class="kind-tag">Missed by your stack</span>
+          <div class="signal dni">
+            <div class="signal-head">
+              <div class="signal-meta">
+                <span class="signal-tag">Deep Neural Inspection</span>
+                <span class="signal-pct">90%</span>
+              </div>
+              <div class="signal-sub">What only Realm sees</div>
             </div>
-            <div class="kind-label">Invisible</div>
-            <p class="kind-desc">
-              AI is confidently wrong. Drifts off-task. Contradicts itself. Nothing fires.
-            </p>
-            <ul>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Drift: answer slowly loses the plot across turns</li>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Silent mismatch: response looks fine but misses the user's real ask</li>
-              <li><svg class="li-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Walkaway: user gives up mid-conversation with no complaint filed</li>
+            <div class="readout wave">
+              <svg viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0 50 Q 20 20, 40 40 T 80 50 T 120 30 T 160 55 T 200 25 T 240 45 T 280 35 T 320 50" stroke="var(--teal)" stroke-width="1.5" fill="none" opacity="0.9"/>
+                <path d="M0 40 Q 25 60, 50 35 T 100 50 T 150 40 T 200 60 T 250 40 T 320 45" stroke="#A78BFA" stroke-width="1.2" fill="none" opacity="0.7"/>
+                <path d="M0 55 Q 30 35, 60 50 T 120 45 T 180 55 T 240 50 T 320 40" stroke="#8B5CF6" stroke-width="1" fill="none" opacity="0.5"/>
+              </svg>
+              <div class="readout-grid">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <ul class="signal-list">
+              <li>Drift across conversation turns</li>
+              <li>Responses that miss the user's real intent</li>
+              <li>Silent mismatches. Looks fine, wrong answer.</li>
+              <li>Confidently wrong reasoning</li>
+              <li>Harmful content below the filter threshold</li>
+              <li>Walkaways. User gives up, no complaint filed.</li>
             </ul>
+            <div class="signal-caption">Catches what the user never reports. And what legacy monitoring can never see.</div>
           </div>
         </div>
 
-        <div class="kind-footer">
-          Realm is the only platform that surfaces both, and reports your invisible-failure percentage as a single number.
+        <div class="signal-footer">
+          Every conversation carries both signals. Realm is the only platform that reads both, and reports your invisible-failure percentage as a single number.
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">02 / 14</span>
+        <span class="slide-number">02 / 15</span>
       </section>
 
       <!-- ============================================================
@@ -2157,7 +2299,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">03 / 14</span>
+        <span class="slide-number">03 / 15</span>
       </section>
 
       <!-- ============================================================
@@ -2256,7 +2398,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">04 / 14</span>
+        <span class="slide-number">04 / 15</span>
       </section>
 
       <!-- ============================================================
@@ -2297,7 +2439,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">05 / 14</span>
+        <span class="slide-number">05 / 15</span>
       </section>
 
       <!-- ============================================================
@@ -2348,13 +2490,51 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">06 / 14</span>
+        <span class="slide-number">06 / 15</span>
       </section>
 
       <!-- ============================================================
-     SLIDE 6 — PLATFORM (LIGHT)
+     SLIDE 7 — DEEP NEURAL INSPECTION (DARK) - NEW
 ============================================================ -->
-      <section class="slide light" id="s7" data-idx="7">
+      <section class="slide dark" id="s7" data-idx="7">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="header">
+          <div class="eyebrow">The Breakthrough</div>
+          <h1 class="slide-title">Deep Neural Inspection. The breakthrough.</h1>
+          <p class="dni-lede">Models think in numbers, not text. DNI inspects the numbers.</p>
+        </div>
+
+        <div class="dni-pillars">
+          <div class="dni-pillar">
+            <div class="dni-num">01</div>
+            <h3>Neurons, not tokens.</h3>
+            <p>We read vector activations inside the model's reasoning. Not text output after the fact. Text-based red-teaming tests what the model says. DNI watches what the model thinks.</p>
+          </div>
+          <div class="dni-pillar highlight">
+            <div class="dni-num">02</div>
+            <h3>10,000+ unique signals.</h3>
+            <p>Across 100+ languages. Every message. Real-time. This is the signal density that makes invisible failures visible.</p>
+          </div>
+          <div class="dni-pillar">
+            <div class="dni-num">03</div>
+            <h3>Superior to red-teaming.</h3>
+            <p>Red-teaming tests a finite set of attack prompts. DNI detects novel failures you never thought to test for. Because it understands intent at the numerical level, not the surface level.</p>
+          </div>
+        </div>
+
+        <div class="dni-footer">
+          This is why we catch what everyone else misses.
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">07 / 15</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 8 — PLATFORM (LIGHT)
+============================================================ -->
+      <section class="slide light" id="s8" data-idx="8">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2408,13 +2588,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">07 / 14</span>
+        <span class="slide-number">08 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 7 — USE CASES (LIGHT)
 ============================================================ -->
-      <section class="slide light" id="s8" data-idx="8">
+      <section class="slide light" id="s9" data-idx="9">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2455,13 +2635,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">08 / 14</span>
+        <span class="slide-number">09 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
 ============================================================ -->
-      <section class="slide light" id="s9" data-idx="9">
+      <section class="slide light" id="s10" data-idx="10">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2553,13 +2733,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">09 / 14</span>
+        <span class="slide-number">10 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 9 — DNI COMPARISON (DARK)
 ============================================================ -->
-      <section class="slide dark" id="s10" data-idx="10">
+      <section class="slide dark" id="s11" data-idx="11">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2629,13 +2809,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">10 / 14</span>
+        <span class="slide-number">11 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 10 — STANDARDS (LIGHT)
 ============================================================ -->
-      <section class="slide light" id="s11" data-idx="11">
+      <section class="slide light" id="s12" data-idx="12">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2716,13 +2896,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">11 / 14</span>
+        <span class="slide-number">12 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 11 — DEPLOYMENT (LIGHT)
 ============================================================ -->
-      <section class="slide light" id="s12" data-idx="12">
+      <section class="slide light" id="s13" data-idx="13">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2787,13 +2967,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">12 / 14</span>
+        <span class="slide-number">13 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 12 — TEAM (LIGHT)
 ============================================================ -->
-      <section class="slide light" id="s13" data-idx="13">
+      <section class="slide light" id="s14" data-idx="14">
         <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
 
         <div class="header">
@@ -2853,13 +3033,13 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">13 / 14</span>
+        <span class="slide-number">14 / 15</span>
       </section>
 
       <!-- ============================================================
      SLIDE 13 — CTA (DARK)
 ============================================================ -->
-      <section class="slide dark" id="s14" data-idx="14">
+      <section class="slide dark" id="s15" data-idx="15">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
 
         <div class="bg-hero"><img src="assets/brain-viz.jpg" alt="" /></div>
@@ -2886,7 +3066,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">14 / 14</span>
+        <span class="slide-number">15 / 15</span>
       </section>
     </div>
 
