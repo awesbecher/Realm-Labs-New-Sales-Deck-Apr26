@@ -153,12 +153,18 @@
         z-index: 2;
       }
       .slide.light {
-        background: var(--white);
         color: var(--ink);
       }
       .slide.dark {
-        background: var(--navy);
+        background: radial-gradient(ellipse at 85% 8%, rgba(106, 63, 232, 0.18) 0%, transparent 45%),
+          radial-gradient(ellipse at 8% 95%, rgba(17, 214, 119, 0.08) 0%, transparent 50%),
+          var(--navy);
         color: var(--white);
+        box-shadow: inset 0 0 160px 40px rgba(0, 0, 0, 0.45);
+      }
+      .slide.light {
+        background: radial-gradient(ellipse at 5% 0%, rgba(64, 14, 190, 0.035) 0%, transparent 40%),
+          var(--white);
       }
 
       /* Animated gradient orbs for dark slides */
@@ -267,9 +273,10 @@
         font-size: 0.95rem;
         letter-spacing: -0.01em;
         z-index: 4;
+        opacity: 0.78;
       }
       .brand-mark img {
-        height: 28px;
+        height: 22px;
         width: auto;
       }
       .slide-number {
@@ -277,9 +284,11 @@
         bottom: 24px;
         right: 40px;
         font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.08em;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         color: var(--muted);
+        opacity: 0.35;
         z-index: 4;
       }
       .footer-copy {
@@ -287,14 +296,17 @@
         bottom: 24px;
         left: 40px;
         font-family: var(--font-mono);
-        font-size: 0.65rem;
-        letter-spacing: 0.06em;
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         color: var(--muted);
+        opacity: 0.35;
         z-index: 4;
       }
       .slide.light .footer-copy,
       .slide.light .slide-number {
-        color: #94a3b8;
+        color: #64748b;
+        opacity: 0.45;
       }
 
       /* ============ PILLS / BADGES ============ */
@@ -372,18 +384,42 @@
 
       /* ============ CARDS ============ */
       .card {
-        background: var(--white);
-        border: 1px solid var(--border-l);
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(12px) saturate(1.05);
+        -webkit-backdrop-filter: blur(12px) saturate(1.05);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-top: 1px solid rgba(15, 23, 42, 0.1);
         border-radius: 14px;
         padding: 28px;
         box-shadow:
           0 1px 2px rgba(15, 23, 42, 0.04),
-          0 4px 12px rgba(15, 23, 42, 0.04);
+          0 8px 24px rgba(15, 23, 42, 0.05);
+      }
+      .slide.light .card {
+        background: var(--white);
       }
       .slide.dark .card {
-        background: var(--surface);
-        border: 1px solid var(--border-d);
-        box-shadow: none;
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(14px) saturate(1.1);
+        -webkit-backdrop-filter: blur(14px) saturate(1.1);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.04) inset,
+          0 12px 32px rgba(0, 0, 0, 0.35);
+      }
+      /* Print fallback: drop the translucency so cards stay readable in PDF */
+      @media print {
+        .card {
+          background: #ffffff !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          border: 1px solid #e6e4ee !important;
+        }
+        .slide.dark .card {
+          background: #14161c !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
       }
 
       /* ============ STATS BAR ============ */
@@ -483,6 +519,8 @@
         height: 100%;
         object-fit: contain;
         object-position: center center;
+        filter: drop-shadow(0 12px 32px rgba(17, 214, 119, 0.18))
+          drop-shadow(0 4px 16px rgba(64, 14, 190, 0.12));
       }
       #s1 .stats-footer {
         margin-top: 28px;
@@ -600,37 +638,54 @@
       }
       #s4 .forrester {
         margin-top: 28px;
-        padding: 24px 28px;
-        border-radius: 12px;
-        background: var(--white);
-        border: 1px solid var(--border-l);
-        border-left: 3px solid var(--purple);
+        padding: 32px 44px 32px 80px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(15, 23, 42, 0.05);
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
         display: flex;
         align-items: center;
         gap: 24px;
+        position: relative;
+        overflow: hidden;
       }
       #s4 .forrester .quote-mark {
-        font-family: var(--font-head);
-        font-size: 3.6rem;
-        font-weight: 700;
+        position: absolute;
+        top: -24px;
+        left: 8px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 14rem;
+        font-weight: 400;
         color: var(--purple);
-        line-height: 0.6;
+        opacity: 0.08;
+        line-height: 1;
+        pointer-events: none;
+        z-index: 0;
       }
       #s4 .forrester .q-text {
-        font-size: 1rem;
-        line-height: 1.5;
+        position: relative;
+        z-index: 1;
+        font-family: var(--font-body);
+        font-size: 1.35rem;
+        line-height: 1.45;
         color: var(--ink);
         font-style: italic;
+        font-weight: 300;
+        letter-spacing: -0.005em;
         flex: 1;
       }
       #s4 .forrester .q-attr {
         font-family: var(--font-head);
-        font-size: 0.78rem;
+        font-size: 0.7rem;
         color: var(--muted);
-        letter-spacing: 0.04em;
-        margin-top: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin-top: 16px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 500;
+        opacity: 0.7;
       }
 
       /* =========================================================
@@ -1551,30 +1606,35 @@
       #s11 .cmp-row.head > div {
         font-family: var(--font-head);
         font-weight: 600;
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
+        opacity: 0.7;
         color: var(--muted);
         background: rgba(0, 0, 0, 0.2);
       }
       #s11 .cmp-row .dim {
         font-family: var(--font-head);
-        font-weight: 600;
-        color: var(--white);
-        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--muted);
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         border-right: 1px solid var(--border-d);
       }
       #s11 .cmp-row .leg {
         color: var(--muted);
         border-right: 1px solid var(--border-d);
+        opacity: 0.45;
       }
       #s11 .cmp-row .rlm {
         color: #e9fbf3;
         font-weight: 600;
       }
       #s11 .cmp-row .rlm.hilite {
-        background: linear-gradient(90deg, rgba(17, 214, 119, 0.05), rgba(17, 214, 119, 0.15));
+        background: linear-gradient(90deg, rgba(17, 214, 119, 0.06), rgba(17, 214, 119, 0.18));
         position: relative;
+        box-shadow: inset 2px 0 0 rgba(17, 214, 119, 0.55);
       }
       #s11 .cmp-row.head .rlm {
         color: var(--teal);
@@ -1618,6 +1678,8 @@
         max-width: 100%;
         max-height: 42vh;
         object-fit: contain;
+        filter: drop-shadow(0 8px 28px rgba(17, 214, 119, 0.35))
+          drop-shadow(0 2px 10px rgba(64, 14, 190, 0.2));
       }
       #s11 .dni-viz .cap {
         font-family: var(--font-head);
