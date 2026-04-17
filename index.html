@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Runtime AI Trust, Security, and Observability. Ship AI your customers trust." />
+    <meta property="og:title" content="Realm Labs: Ship AI Your Customers Trust" />
+    <meta property="og:description" content="Runtime AI Trust, Security, and Observability." />
     <title>Realm Labs: Ship AI Your Customers Trust</title>
     <style>
       /* ============ BRAND FONTS ============ */
@@ -442,6 +445,13 @@
         color: var(--ink-2);
         max-width: 46ch;
         margin-top: 4px;
+      }
+      #s1 .latency {
+        font-family: var(--font-mono);
+        font-size: clamp(0.78rem, 1.1vw, 0.95rem);
+        color: var(--teal-dark);
+        letter-spacing: 0.02em;
+        margin-top: -6px;
       }
       #s1 .hero-wrap {
         position: absolute;
@@ -926,6 +936,18 @@
       #s6 .header {
         margin-top: 30px;
         max-width: 80ch;
+      }
+      #s6 .ebpf-addendum {
+        margin-top: 28px;
+        padding: 16px 24px;
+        background: var(--white);
+        border: 1px solid var(--border-l);
+        border-left: 3px solid var(--teal);
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--ink-2);
+        line-height: 1.5;
       }
       #s6 .flow {
         display: grid;
@@ -1547,9 +1569,9 @@
       }
       #s12 .options {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
-        margin-top: 32px;
+        grid-template-columns: 1.2fr 1.2fr 0.8fr;
+        gap: 20px;
+        margin-top: 28px;
       }
       #s12 .opt {
         padding: 28px;
@@ -1558,6 +1580,24 @@
         gap: 14px;
         position: relative;
         overflow: hidden;
+      }
+      #s12 .opt.hero {
+        border-top: 3px solid var(--purple);
+        box-shadow: 0 4px 16px rgba(64, 14, 190, 0.08);
+      }
+      #s12 .opt.hero h3 {
+        font-size: 1.4rem;
+      }
+      #s12 .opt.secondary {
+        opacity: 0.85;
+        padding: 22px 24px;
+        background: var(--offwhite);
+      }
+      #s12 .opt.secondary h3 {
+        font-size: 1.05rem;
+      }
+      #s12 .opt.secondary p {
+        font-size: 0.82rem;
       }
       #s12 .opt .opt-head {
         display: flex;
@@ -1714,34 +1754,45 @@
       #s13 .adv-list {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
       }
       #s13 .adv-list div {
-        font-size: 0.88rem;
+        font-size: 0.78rem;
         color: var(--ink);
         font-family: var(--font-head);
-        font-weight: 500;
+        font-weight: 600;
+        line-height: 1.45;
       }
       #s13 .adv-list div span {
         color: var(--body);
         font-weight: 400;
-        margin-left: 8px;
+        margin-left: 6px;
+        display: block;
+        font-size: 0.72rem;
+        line-height: 1.35;
       }
       #s13 .inv-row {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         align-items: center;
         justify-items: center;
-        gap: 18px;
+        gap: 14px;
         width: 100%;
       }
       #s13 .inv-row img {
-        height: 26px;
-        max-width: 140px;
+        height: 24px;
+        max-width: 130px;
         width: auto;
         opacity: 0.85;
         object-fit: contain;
         filter: grayscale(100%) brightness(0.65) contrast(1.15);
+      }
+      #s13 .inv-row .inv-text {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: var(--ink-2);
+        letter-spacing: 0.02em;
       }
 
       /* =========================================================
@@ -1936,9 +1987,9 @@
           <span class="pill teal dot">RSAC 2026 · Innovation Sandbox Finalist</span>
           <h1>Ship AI Your<br />Customers <em>Trust</em>.</h1>
           <p class="tagline">
-            Runtime AI trust, security &amp; observability, built for the enterprises racing AI
-            into production.
+            Runtime AI Trust, Security, and Observability.
           </p>
+          <p class="latency">&lt;15ms latency. Fast as hell.</p>
           <div class="stats-footer stats-bar">
             <span>Sub-50ms latency</span><span class="dot"></span> <span>100+ languages</span
             ><span class="dot"></span> <span>12 hazard categories</span><span class="dot"></span>
@@ -2223,27 +2274,24 @@
 
         <div class="cards">
           <div class="card u-card">
-            <div class="u-label">EU AI Act</div>
-            <div class="u-stat">Aug 2026</div>
+            <div class="u-label">Top Line Impact</div>
+            <div class="u-stat">Lost Sale</div>
             <div class="u-body">
-              Full enforcement begins. Runtime monitoring, risk classification and audit trails
-              become non-negotiable for AI in production.
+              Users walk away from a broken chatbot in silence. No refund request, no complaint. Just a lost customer and a hit to retention. Invisible failures compound into revenue loss you cannot trace.
             </div>
           </div>
           <div class="card u-card">
-            <div class="u-label">OWASP LLM</div>
-            <div class="u-stat">Top 10</div>
+            <div class="u-label">Bottom Line Impact</div>
+            <div class="u-stat">Runaway Cost</div>
             <div class="u-body">
-              Vulnerabilities actively exploited today: prompt injection, data exfiltration,
-              jailbreaks. Your existing security stack wasn't built for them.
+              Loops, recursion traps, and denial-of-service prompts force models into expensive, verbose outputs. One Airbnb-scale deployment saw budgets blown in weeks by a handful of malformed conversations. Every extra token is margin gone.
             </div>
           </div>
           <div class="card u-card">
-            <div class="u-label">Compounding Risk</div>
-            <div class="u-stat">Every Day</div>
+            <div class="u-label">Regulatory Risk</div>
+            <div class="u-stat">EU AI Act</div>
             <div class="u-body">
-              Every unmonitored AI interaction is a potential brand incident, compliance violation
-              or data breach waiting to be discovered.
+              EU AI Act enforcement has begun. OWASP Top 10 for LLMs is the baseline auditors now use. Without a per-conversation evidence trail, you are non-compliant by default.
             </div>
           </div>
         </div>
@@ -2295,6 +2343,9 @@
           </div>
         </div>
 
+        <div class="ebpf-addendum">
+          Powered by eBPF-based sensors that capture the full agentic chain. Limiting blast radius through tool authorization.
+        </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
         <span class="slide-number">06 / 14</span>
@@ -2373,27 +2424,24 @@
 
         <div class="grid">
           <div class="card uc a">
-            <div class="for">For Product Owners</div>
-            <h3>Quality &amp; brand enforcement</h3>
+            <div class="for">Product Owners</div>
+            <h3>Ship fast and safely.</h3>
             <p>
-              Find the silent failures that drive churn and quality regressions. Fix them before a
-              user ever notices.
+              Launch AI features without waiting on security. Every release is pre-cleared with per-conversation evidence. Adoption goes up because trust goes up.
             </p>
           </div>
           <div class="card uc b">
-            <div class="for">For Security Teams</div>
-            <h3>Threat detection &amp; response</h3>
+            <div class="for">Security Teams</div>
+            <h3>Eliminate the OWASP Top 10 for LLMs.</h3>
             <p>
-              Eliminate the top OWASP LLM risks your current SIEM, WAF and EDR stack simply can't
-              see.
+              Prompt injection, jailbreaks, data exfiltration, tool misuse. Surfaced at runtime with token-level evidence. Stop chasing model-level risk with perimeter tools.
             </p>
           </div>
           <div class="card uc c">
-            <div class="for">For Compliance Leaders</div>
-            <h3>Compliance &amp; governance</h3>
+            <div class="for">C-Suite (CIO / CFO)</div>
+            <h3>AI transformation is survival.</h3>
             <p>
-              Prove to regulators every AI interaction meets the standards they're about to start
-              enforcing.
+              "In five years, you are either an AI-first company or a dead company." Realm is the trust infrastructure that makes AI deployment board-defensible. ROI the CFO can model, risk the CIO can own.
             </p>
           </div>
           <div class="card uc d">
@@ -2565,6 +2613,11 @@
               <div class="leg">Per-query LLM cost</div>
               <div class="rlm hilite">Fixed platform fee</div>
             </div>
+            <div class="cmp-row">
+              <div class="dim">Failure coverage</div>
+              <div class="leg">Visible failures only</div>
+              <div class="rlm hilite">Visible + 8 invisible archetypes</div>
+            </div>
           </div>
 
           <div class="dni-viz">
@@ -2674,42 +2727,42 @@
 
         <div class="header">
           <div class="eyebrow">Deployment</div>
-          <h1 class="slide-title">Your infrastructure. Your rules.</h1>
+          <h1 class="slide-title">We will be in your house.</h1>
           <p class="subtitle">
-            Deploy Realm where your data already lives. SaaS for speed, VPC for sovereignty,
-            on-prem for air&#8209;gapped environments. One platform, three postures, zero compromise.
+            VPC and On-Prem are the default. Your data never leaves your perimeter. SaaS is available when speed beats sovereignty.
           </p>
         </div>
 
         <div class="options">
-          <div class="card opt">
+          <div class="card opt hero">
             <div class="opt-head">
               <span class="num">01</span>
-              <h3>SaaS</h3>
+              <h3>VPC Deployment</h3>
             </div>
-            <div class="dep-sub">Realm Managed · Cloud</div>
+            <div class="dep-sub">Inside your perimeter.</div>
             <p>
-              Fastest time to value. Fully managed. SOC 2 compliant. Live in days, not quarters.
+              Deployed entirely within your cloud account. Your data never leaves. Full compliance isolation. The enterprise default.
             </p>
           </div>
-          <div class="card opt">
+          <div class="card opt hero">
             <div class="opt-head">
               <span class="num">02</span>
-              <h3>VPC</h3>
+              <h3>On-Premise</h3>
             </div>
-            <div class="dep-sub">Your Cloud · AWS / GCP / Azure</div>
+            <div class="dep-sub">Air-gapped where it matters.</div>
             <p>
-              Deployed inside your own cloud account. Full data sovereignty, zero cross-boundary
-              data movement.
+              Classified workloads, regulated industries, sovereign deployments. Realm runs in your datacenter with zero external callouts.
             </p>
           </div>
-          <div class="card opt">
+          <div class="card opt secondary">
             <div class="opt-head">
               <span class="num">03</span>
-              <h3>On-Prem</h3>
+              <h3>SaaS</h3>
             </div>
-            <div class="dep-sub">Self-hosted · Air-gapped</div>
-            <p>Full data residency. Classified environments and regulated workloads supported.</p>
+            <div class="dep-sub">Fastest path to pilot.</div>
+            <p>
+              For teams that want to be live in a week. Available today. V2 bridges SaaS customers into VPC without migration.
+            </p>
           </div>
         </div>
 
@@ -2780,6 +2833,8 @@
           <div class="panel">
             <div class="lbl">Advisors</div>
             <div class="adv-list">
+              <div>Greg Clark<span>Managing Partner, Crosspoint Capital · Former CEO, Symantec · Founder &amp; Former CEO, Blue Coat Systems</span></div>
+              <div>Dr. Hugh Thompson<span>Managing Partner, Crosspoint Capital · Program Committee Chair, RSA Conference</span></div>
               <div>Jason Clinton<span>Deputy CISO, Anthropic</span></div>
               <div>Paul Kocher<span>Inventor · Marconi Prize winner</span></div>
               <div>Nicole Perlroth<span>Cybersecurity journalist &amp; author</span></div>
@@ -2788,10 +2843,11 @@
           <div class="panel">
             <div class="lbl">Backed by</div>
             <div class="inv-row">
+              <img src="assets/inv-crosspoint.png" alt="Crosspoint Capital" />
+              <div class="inv-text">RSA</div>
               <img src="assets/inv-tola.png" alt="Tola Capital" />
               <img src="assets/inv-firstrays.png" alt="First Rays Venture Partners" />
               <img src="assets/inv-silverbuckshot.png" alt="Silver Buckshot" />
-              <img src="assets/inv-crosspoint.png" alt="Crosspoint Capital" />
             </div>
           </div>
         </div>
