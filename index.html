@@ -118,7 +118,7 @@
       }
       html,
       body {
-        background: #000;
+        background: #0a0a0c;
         color: var(--ink);
         font-family: var(--font-body);
         -webkit-font-smoothing: antialiased;
@@ -211,9 +211,10 @@
         font-family: var(--font-head);
         font-weight: 600;
         font-size: clamp(0.65rem, 0.85vw, 0.8rem);
-        letter-spacing: 0.22em;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
         color: var(--teal);
+        opacity: 0.82;
         margin-bottom: 18px;
         display: flex;
         align-items: center;
@@ -441,7 +442,8 @@
         line-height: 1.02;
       }
       #s1 h1 em {
-        font-style: normal;
+        font-style: italic;
+        font-weight: 600;
         background: linear-gradient(135deg, var(--teal-dark), var(--purple));
         -webkit-background-clip: text;
         background-clip: text;
@@ -644,7 +646,8 @@
         margin: 0 auto 20px;
       }
       #s5 h1 em {
-        font-style: normal;
+        font-style: italic;
+        font-weight: 600;
         color: var(--teal);
       }
       #s5 .sub {
@@ -716,62 +719,87 @@
       }
       #s2 .signals {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 22px;
-        margin-top: 20px;
+        grid-template-columns: 1fr 1px 1fr;
+        gap: 0;
+        margin-top: 24px;
         flex: 1;
         min-height: 0;
+        position: relative;
+      }
+      #s2 .signals::after {
+        content: '';
+        grid-column: 2;
+        grid-row: 1;
+        width: 1px;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(255, 255, 255, 0.18) 15%,
+          rgba(255, 255, 255, 0.18) 85%,
+          transparent 100%
+        );
+        justify-self: center;
       }
       #s2 .signal {
-        padding: 22px 26px;
-        border-radius: 14px;
-        background: var(--surface);
-        border: 1px solid var(--border-d);
+        padding: 18px 36px;
+        background: transparent;
+        border: 0;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 16px;
         position: relative;
         overflow: hidden;
       }
+      #s2 .signal.legacy {
+        grid-column: 1;
+        grid-row: 1;
+        padding-right: 44px;
+      }
       #s2 .signal.dni {
-        background: linear-gradient(145deg, rgba(64, 14, 190, 0.24), rgba(17, 214, 119, 0.05));
-        border: 1px solid rgba(17, 214, 119, 0.35);
-        box-shadow: 0 12px 44px rgba(64, 14, 190, 0.25);
+        grid-column: 3;
+        grid-row: 1;
+        padding-left: 44px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
       }
       #s2 .signal-head {
         display: flex;
         flex-direction: column;
-        gap: 3px;
+        gap: 4px;
+        margin-bottom: 6px;
       }
       #s2 .signal-meta {
         display: flex;
-        align-items: baseline;
-        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      #s2 .signal.dni .signal-meta {
+        align-items: flex-end;
       }
       #s2 .signal-tag {
         font-family: var(--font-mono);
-        font-size: 0.9rem;
-        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
         color: var(--muted);
         font-weight: 500;
+        opacity: 0.8;
       }
       #s2 .signal.dni .signal-tag {
         color: var(--teal);
       }
       #s2 .signal-sep {
-        font-family: var(--font-head);
-        font-size: 1rem;
-        color: var(--muted);
-        opacity: 0.6;
+        display: none;
       }
       #s2 .signal-pct {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 1.4rem;
-        letter-spacing: -0.02em;
+        font-size: clamp(5rem, 11vw, 9rem);
+        letter-spacing: -0.04em;
         color: var(--muted);
-        line-height: 1;
+        line-height: 0.95;
       }
       #s2 .signal.dni .signal-pct {
         background: linear-gradient(135deg, var(--teal), #a78bfa);
@@ -781,10 +809,17 @@
       }
       #s2 .signal-sub {
         font-family: var(--font-body);
-        font-size: 0.78rem;
+        font-size: 0.86rem;
         color: var(--muted);
+        margin-top: 2px;
+      }
+      #s2 .signal.dni .signal-sub {
+        text-align: right;
       }
       #s2 .readout {
+        display: none;
+      }
+      #s2 .readout-unused {
         padding: 14px 16px;
         border: 1px solid rgba(162, 167, 178, 0.2);
         border-radius: 8px;
@@ -872,8 +907,8 @@
       }
       #s2 .signal-list li {
         font-family: var(--font-body);
-        font-size: 0.82rem;
-        line-height: 1.4;
+        font-size: 0.88rem;
+        line-height: 1.45;
         color: var(--white);
         padding-left: 14px;
         position: relative;
@@ -882,13 +917,20 @@
         content: '';
         position: absolute;
         left: 0;
-        top: 8px;
+        top: 9px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
         background: var(--muted);
       }
+      #s2 .signal.dni .signal-list li {
+        padding-left: 0;
+        padding-right: 14px;
+        text-align: right;
+      }
       #s2 .signal.dni .signal-list li::before {
+        left: auto;
+        right: 0;
         background: var(--teal);
       }
       #s2 .signal-caption {
@@ -1868,10 +1910,16 @@
         overflow: hidden;
         background: #ebe8f5;
         object-fit: cover;
+        object-position: center top;
         display: block;
         border: 3px solid var(--white);
         outline: 1px solid var(--border-l);
         box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+        filter: grayscale(100%) contrast(1.05);
+        transition: filter 0.35s ease;
+      }
+      #s14 .leader:hover .avatar {
+        filter: grayscale(0%) contrast(1);
       }
       #s14 .leader .name {
         font-family: var(--font-head);
@@ -1980,7 +2028,8 @@
         color: var(--white);
       }
       #s15 .cta-head h1 em {
-        font-style: normal;
+        font-style: italic;
+        font-weight: 600;
         background: linear-gradient(135deg, var(--teal), var(--purple-2));
         -webkit-background-clip: text;
         background-clip: text;
@@ -2130,30 +2179,49 @@
    PRINT / PDF
    ========================================================= */
       @page {
-        size: 1920px 1080px;
+        size: 16in 9in;
         margin: 0;
       }
       @media print {
         html,
         body {
-          width: 1920px;
+          width: 16in;
           height: auto;
+          margin: 0;
+          padding: 0;
           overflow: visible;
           background: #fff;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+        *,
+        *::before,
+        *::after {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
         }
         .deck {
-          width: 1920px;
+          width: 16in;
           height: auto;
         }
         .slide {
           position: relative;
-          width: 1920px;
-          height: 1080px;
+          width: 16in;
+          height: 9in;
           page-break-after: always;
           break-after: page;
+          page-break-inside: avoid;
+          break-inside: avoid;
           opacity: 1 !important;
           pointer-events: auto !important;
           display: flex;
+          overflow: hidden;
+        }
+        .slide:last-child {
+          page-break-after: auto;
+          break-after: auto;
         }
         .slide.active {
           opacity: 1;
@@ -2165,6 +2233,21 @@
         .slide.dark::before,
         .slide.dark::after {
           animation: none;
+        }
+        /* Defensive: keep interior blocks from splitting across pages */
+        .slide .card,
+        .slide .cust-card,
+        .slide .signal,
+        .slide .arch,
+        .slide .leader,
+        .slide .assess-block,
+        .slide .bottom,
+        .slide .cmp-table,
+        .slide .options,
+        .slide .metrics,
+        .slide .outcomes {
+          page-break-inside: avoid;
+          break-inside: avoid;
         }
       }
 
