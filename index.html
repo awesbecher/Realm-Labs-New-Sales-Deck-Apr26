@@ -2621,25 +2621,16 @@
         color: var(--teal);
       }
       /* Giant italic watermark: callback to Slide 1 tagline, low-opacity signature */
+      /* Oversized Realm Labs diamond monogram — low-opacity brand watermark */
       #s15 .ghost-mark {
         position: absolute;
-        right: clamp(56px, 8vw, 120px);
-        top: clamp(56px, 8vh, 120px);
-        font-family: var(--font-head);
-        font-style: italic;
-        font-weight: 600;
-        font-size: clamp(2.6rem, 6vw, 5.4rem);
-        line-height: 0.95;
-        letter-spacing: -0.03em;
-        color: rgba(255, 255, 255, 0.04);
-        text-align: right;
-        max-width: 14ch;
+        top: clamp(60px, 8vh, 120px);
+        right: clamp(64px, 8vw, 140px);
+        width: clamp(320px, 42vw, 560px);
+        height: auto;
+        color: rgba(255, 255, 255, 0.06);
         pointer-events: none;
         z-index: 0;
-        background: linear-gradient(135deg, rgba(17, 214, 119, 0.08), rgba(106, 63, 232, 0.06));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
       }
     </style>
   </head>
@@ -3759,10 +3750,15 @@
       <section class="slide dark" id="s15" data-idx="15">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
 
-        <div class="ghost-mark">Ship AI<br />they trust.</div>
+        <svg class="ghost-mark" viewBox="-2 0 178 162" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M41.1851 81C41.1851 81 72.7357 102.22 80.5854 126.197C88.4351 150.174 74.3323 161 74.3323 161C74.3323 161 -1.3055 105 0.0171575 81H41.1851Z" fill="currentColor"/>
+          <path d="M41.2033 80.9536C41.2033 80.9536 78.1117 47.6396 80.5864 35.7827C88.4327 11.8191 74.336 0.999885 74.336 0.999885C74.336 0.999885 0.407092 54.3322 0.0533463 80.9536C0.0533463 80.9536 -1.2741 88.9491 9.31451 102.275C17.0331 111.988 33.8483 127.42 33.8483 127.42C33.8483 127.42 27.8327 115.115 27.8327 106.272C27.8327 92.6836 41.2033 80.9536 41.2033 80.9536Z" fill="currentColor"/>
+          <path d="M133.006 81C133.006 81 101.456 59.7805 93.6061 35.803C85.7565 11.8255 99.8592 1 99.8592 1C99.8592 1 175.497 57 174.174 81H133.006Z" fill="currentColor"/>
+          <path d="M132.988 81.0464C132.988 81.0464 96.0798 114.36 93.6051 126.217C85.7589 150.181 99.8555 161 99.8555 161C99.8555 161 173.784 107.668 174.138 81.0464C174.138 81.0464 175.466 73.0509 164.877 59.7254C157.158 50.0117 140.343 34.5804 140.343 34.5804C140.343 34.5804 146.359 46.8851 146.359 55.7277C146.359 69.3164 132.988 81.0464 132.988 81.0464Z" fill="currentColor"/>
+        </svg>
 
         <div class="eyebrow">The Next Move</div>
-        <h1>Put Realm in front of your <em>AI roadmap</em>.</h1>
+        <h1>Put Realm in front of your <em>AI roadmap</em></h1>
         <p class="sub">
           Book 45 minutes with our team. We'll show you the platform live and map it to the AI
           initiatives you're running right now. You leave with a clear picture of where Realm
