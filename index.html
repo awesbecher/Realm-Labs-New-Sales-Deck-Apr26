@@ -10,6 +10,15 @@
     <meta property="og:title" content="Realm Labs: Ship AI Your Customers Trust" />
     <meta property="og:description" content="Runtime AI Trust, Security, and Observability." />
     <title>Realm Labs: Ship AI Your Customers Trust</title>
+    <!-- Font preloads: prevent system-font fallback during rapid PDF export -->
+    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Regular.otf" crossorigin />
+    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Medium.otf" crossorigin />
+    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Semibold.otf" crossorigin />
+    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Bold.otf" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Italic.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Bold.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/otf" href="assets/fonts/GeistMono-Regular.otf" crossorigin />
     <style>
       /* ============ BRAND FONTS ============ */
       @font-face {
@@ -124,12 +133,27 @@
         -webkit-font-smoothing: antialiased;
         overflow: hidden;
         height: 100%;
+        width: 100%;
       }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Master canvas: rigid 16:9 letterboxed stage. Prevents stretch on ultra-wide / spatial canvases. */
       .deck {
         position: relative;
+        aspect-ratio: 16 / 9;
         width: 100vw;
-        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        margin: auto;
         overflow: hidden;
+        /* Ambient brand-accent glow anchored to top-right corner */
+        background:
+          radial-gradient(ellipse at 92% 4%, rgba(64, 14, 190, 0.10) 0%, transparent 42%),
+          radial-gradient(ellipse at 4% 96%, rgba(17, 214, 119, 0.05) 0%, transparent 48%),
+          #0a0a0c;
       }
 
       /* Each slide = 16:9, sized via aspect-ratio box */
@@ -2292,24 +2316,22 @@
       }
 
       /* =========================================================
-   PRINT / PDF
+   PRINT / PDF — S-tier locked 16:9 dark-mode export
    ========================================================= */
       @page {
-        size: 16in 9in;
-        margin: 0;
+        size: 16in 9in; /* Forces 16:9 aspect ratio */
+        margin: 0; /* Kills default browser margins */
       }
       @media print {
+        /* Enforce Dark Mode & Backgrounds on every stacking layer */
         html,
-        body {
-          width: 16in;
-          height: auto;
-          margin: 0;
-          padding: 0;
-          overflow: visible;
-          background: #fff;
+        body,
+        .deck,
+        .slide {
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
           color-adjust: exact !important;
+          background-color: #0a0a0c !important;
         }
         *,
         *::before,
@@ -2318,22 +2340,38 @@
           print-color-adjust: exact !important;
           color-adjust: exact !important;
         }
-        .deck {
+        html,
+        body {
           width: 16in;
           height: auto;
+          margin: 0;
+          padding: 0;
+          overflow: visible;
+          display: block;
         }
+        .deck {
+          width: 16in !important;
+          max-width: 16in !important;
+          max-height: none !important;
+          height: auto !important;
+          aspect-ratio: auto !important;
+          margin: 0 !important;
+          background: #0a0a0c !important;
+        }
+        /* Prevent Slide Bleed / Pagination Control */
         .slide {
           position: relative;
-          width: 16in;
-          height: 9in;
           page-break-after: always;
           break-after: page;
           page-break-inside: avoid;
           break-inside: avoid;
+          height: 9in !important;
+          width: 16in !important;
+          overflow: hidden;
           opacity: 1 !important;
+          visibility: visible !important;
           pointer-events: auto !important;
           display: flex;
-          overflow: hidden;
         }
         .slide:last-child {
           page-break-after: auto;
@@ -2342,9 +2380,23 @@
         .slide.active {
           opacity: 1;
         }
+        /* Slay the UI elements */
+        .no-print,
+        #ui-controls,
+        .navigation-hints,
         .nav-hint,
         .pdf-btn {
           display: none !important;
+        }
+        /* Flatten heavy filters to prevent PDF rasterization blur */
+        .bento-card,
+        .glass-panel,
+        .card,
+        .cust-card,
+        .forrester,
+        .slide.dark .card {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
         }
         .slide.dark::before,
         .slide.dark::after {
@@ -2375,6 +2427,196 @@
         }
         .slide {
           transition: none;
+        }
+      }
+
+      /* =========================================================
+         S-TIER VISUAL QA PASS — cinematic lighting, typography,
+         asset fidelity, and peripheral restraint overrides.
+         Appended last so rules win on specificity-tie.
+         ========================================================= */
+
+      /* ---- §3 Cinematic Lighting & Glass Layering ---- */
+
+      /* True-dark + off-white text on dark slides (reduces eye strain) */
+      .slide.dark {
+        color: #f5f5f7;
+      }
+      .slide.dark .subtitle,
+      .slide.dark p,
+      .slide.dark li {
+        color: rgba(245, 245, 247, 0.82);
+      }
+
+      /* Vignette perimeter on every slide (inset shadow + subtle inner border) */
+      .slide::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+        box-shadow: inset 0 0 140px 28px rgba(0, 0, 0, 0.38);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .slide.light::after {
+        box-shadow: inset 0 0 120px 20px rgba(15, 23, 42, 0.05);
+        border-color: rgba(15, 23, 42, 0.03);
+      }
+      /* Don't let the vignette overlay swallow the existing dark-slide orb pseudo */
+      .slide.dark::before { z-index: 0; }
+
+      /* Glass layering: microscopic top-border highlight on dark cards */
+      .slide.dark .card,
+      .slide.dark .cust-card,
+      .slide.dark .bento-card,
+      .slide.dark .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px) saturate(1.1);
+        -webkit-backdrop-filter: blur(12px) saturate(1.1);
+      }
+
+      /* ---- §4 Typography Precision ---- */
+
+      /* Eyebrow labels: uppercase, 10-11px, aggressive tracking, whisper opacity */
+      .eyebrow {
+        font-size: 11px !important;
+        letter-spacing: 0.15em !important;
+        text-transform: uppercase;
+        opacity: 0.6;
+      }
+
+      /* H1 line-height polish */
+      h1,
+      h1.slide-title,
+      .slide h1 {
+        line-height: 1.05;
+      }
+      #s1 h1 { line-height: 1.02; }
+
+      /* Grid orphans — prevent runt words in headlines and paragraphs inside grids */
+      .slide h1,
+      .slide h2,
+      .slide h3,
+      .slide p,
+      .slide .body,
+      .slide .subtitle,
+      .slide .sub,
+      .slide .cust-body,
+      .slide .arch-body,
+      .slide .dni-lede,
+      .slide li {
+        text-wrap: balance;
+      }
+      .slide p,
+      .slide li,
+      .slide .subtitle,
+      .slide .cust-body {
+        text-wrap: pretty;
+      }
+
+      /* Slide 2: extreme typographic scale for 10% / 90% */
+      #s2 .signal-pct {
+        font-size: clamp(7rem, 16vw, 13rem) !important;
+        letter-spacing: -0.055em !important;
+        line-height: 0.9 !important;
+      }
+      #s2 .signals {
+        column-gap: clamp(24px, 3vw, 48px);
+      }
+      #s2 .signal.legacy { padding-left: 8px; }
+      #s2 .signal.dni { padding-right: 8px; }
+
+      /* Slide 4: cinematic Forrester pull-quote */
+      #s4 .forrester .quote-mark {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 22rem !important;
+        font-weight: 400;
+        color: var(--purple);
+        opacity: 0.07 !important;
+        line-height: 0.8;
+        top: -80px !important;
+        left: -8px !important;
+        letter-spacing: -0.05em;
+      }
+      #s4 .forrester .q-text {
+        font-size: 1.55rem;
+        font-style: italic;
+        font-weight: 300;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
+      }
+
+      /* ---- §5 Asset Fidelity & Data Viz ---- */
+
+      /* Strict SVG icon sizing fallback — prevents blow-up during PDF raster */
+      img[src$=".svg"].icon,
+      img[src$=".svg"][class*="-ico"],
+      img[src$=".svg"][class*="-icon"] {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Slide 14 headshot cohesion — grayscale already set; harmonize ring + crop */
+      #s14 .avatar {
+        filter: grayscale(100%) contrast(1.05);
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        outline: 1px solid var(--border-l);
+      }
+
+      /* Neural diagram glow on Slide 7 (DNI pillars) — highlight the active pillar */
+      #s7 .dni-pillar.highlight {
+        filter: drop-shadow(0 0 14px rgba(17, 214, 119, 0.45));
+      }
+      #s7 .dni-pillar:not(.highlight) {
+        opacity: 0.3;
+      }
+
+      /* Contrast preservation — fine print over gradients/glows gets a legibility halo */
+      .slide.dark .signal-caption,
+      .slide.dark .signal-sub,
+      .slide.dark .footer-copy,
+      .slide.dark .slide-number,
+      .slide.dark .cap {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      /* ---- §6 Peripheral Restraint ---- */
+
+      /* Whisper the brand mark — 20% smaller, lower opacity */
+      .brand-mark { opacity: 0.55; }
+      .brand-mark img { height: 18px; }
+
+      /* Footer + slide number: restrained opacity, exact coordinates */
+      .footer-copy,
+      .slide-number {
+        opacity: 0.3;
+      }
+      .slide.light .footer-copy,
+      .slide.light .slide-number {
+        opacity: 0.4;
+      }
+
+      /* Mathematical safe zone — lock perimeter anchors at exact coords across all slides */
+      .slide { padding: clamp(44px, 5vh, 64px) clamp(64px, 7vw, 96px); }
+      .brand-mark { top: clamp(28px, 3.5vh, 40px); left: clamp(44px, 5vw, 64px); }
+      .footer-copy { bottom: clamp(22px, 2.8vh, 32px); left: clamp(44px, 5vw, 64px); }
+      .slide-number { bottom: clamp(22px, 2.8vh, 32px); right: clamp(44px, 5vw, 64px); }
+
+      /* Print-mode pass-through for new rules */
+      @media print {
+        .slide::after {
+          box-shadow: inset 0 0 140px 28px rgba(0, 0, 0, 0.38) !important;
+          border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        }
+        .slide.light::after {
+          box-shadow: inset 0 0 120px 20px rgba(15, 23, 42, 0.05) !important;
+        }
+        #s4 .forrester .quote-mark {
+          color: var(--purple) !important;
+          opacity: 0.07 !important;
         }
       }
     </style>
@@ -2704,7 +2946,7 @@
         </div>
 
         <div class="forrester">
-          <div class="quote-mark">"</div>
+          <div class="quote-mark" aria-hidden="true">&#8220;</div>
           <div class="q-text">
             Our pick: Realm Labs, with its runtime monitoring and visibility into how AI is
             thinking, piqued our interest.
