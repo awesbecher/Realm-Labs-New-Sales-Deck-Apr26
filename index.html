@@ -2619,6 +2619,172 @@
           opacity: 0.07 !important;
         }
       }
+
+      /* =========================================================
+         SLIDE 16 — CLOSING CTA: LIVE DEMO (DARK)
+         ========================================================= */
+      #s16 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        position: relative;
+      }
+      #s16 .eyebrow {
+        margin-bottom: 20px;
+      }
+      #s16 h1 {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+        line-height: 1;
+        letter-spacing: -0.025em;
+        color: #f5f5f7;
+        margin: 0;
+        max-width: 22ch;
+        text-wrap: balance;
+        position: relative;
+        z-index: 2;
+      }
+      #s16 h1 em {
+        font-style: italic;
+        font-weight: 600;
+        background: linear-gradient(135deg, var(--teal), var(--purple-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      #s16 .sub {
+        font-family: var(--font-body);
+        font-weight: 400;
+        font-size: clamp(1rem, 1.45vw, 1.22rem);
+        line-height: 1.5;
+        color: rgba(245, 245, 247, 0.78);
+        margin: 22px 0 0;
+        max-width: 62ch;
+        text-wrap: pretty;
+        position: relative;
+        z-index: 2;
+      }
+      #s16 .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 12px;
+        margin-top: 28px;
+        max-width: 960px;
+        position: relative;
+        z-index: 2;
+      }
+      #s16 .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-top-color: rgba(255, 255, 255, 0.18);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        color: rgba(245, 245, 247, 0.82);
+        backdrop-filter: blur(10px) saturate(1.1);
+        -webkit-backdrop-filter: blur(10px) saturate(1.1);
+      }
+      #s16 .chip::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 8px rgba(17, 214, 119, 0.6);
+        flex-shrink: 0;
+      }
+      #s16 .cta-row {
+        margin-top: 34px;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+      #s16 .cta-meta {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+      }
+      #s16 .proof-strip {
+        margin-top: 40px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.72);
+        position: relative;
+        z-index: 2;
+      }
+      #s16 .proof-strip .proof-lbl {
+        font-weight: 600;
+        font-size: 0.66rem;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+      #s16 .proof-strip .proof-dot {
+        width: 3px;
+        height: 3px;
+        background: var(--muted);
+        border-radius: 50%;
+        opacity: 0.6;
+      }
+      #s16 .contact-line {
+        position: absolute;
+        bottom: clamp(48px, 5vh, 68px);
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        z-index: 4;
+      }
+      #s16 .contact-line a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      #s16 .contact-line a:hover {
+        color: var(--teal);
+      }
+      /* Giant italic watermark: callback to Slide 1 tagline, low-opacity signature */
+      #s16 .ghost-mark {
+        position: absolute;
+        right: clamp(56px, 8vw, 120px);
+        top: clamp(56px, 8vh, 120px);
+        font-family: var(--font-head);
+        font-style: italic;
+        font-weight: 600;
+        font-size: clamp(2.6rem, 6vw, 5.4rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: rgba(255, 255, 255, 0.04);
+        text-align: right;
+        max-width: 14ch;
+        pointer-events: none;
+        z-index: 0;
+        background: linear-gradient(135deg, rgba(17, 214, 119, 0.08), rgba(106, 63, 232, 0.06));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
     </style>
   </head>
   <body>
@@ -2643,7 +2809,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">01 / 15</span>
+        <span class="slide-number">01 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -2747,7 +2913,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">02 / 15</span>
+        <span class="slide-number">02 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -2857,7 +3023,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">03 / 15</span>
+        <span class="slide-number">03 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -2955,7 +3121,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">04 / 15</span>
+        <span class="slide-number">04 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3002,7 +3168,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">05 / 15</span>
+        <span class="slide-number">05 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3063,7 +3229,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">06 / 15</span>
+        <span class="slide-number">06 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3112,7 +3278,7 @@
         <div class="dni-footer">This is why we catch what everyone else misses.</div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">07 / 15</span>
+        <span class="slide-number">07 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3191,7 +3357,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">08 / 15</span>
+        <span class="slide-number">08 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3254,7 +3420,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">09 / 15</span>
+        <span class="slide-number">09 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3396,7 +3562,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">10 / 15</span>
+        <span class="slide-number">10 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3472,7 +3638,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">11 / 15</span>
+        <span class="slide-number">11 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3575,7 +3741,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">12 / 15</span>
+        <span class="slide-number">12 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3649,7 +3815,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">13 / 15</span>
+        <span class="slide-number">13 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3725,7 +3891,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">14 / 15</span>
+        <span class="slide-number">14 / 16</span>
       </section>
 
       <!-- ============================================================
@@ -3779,7 +3945,61 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">15 / 15</span>
+        <span class="slide-number">15 / 16</span>
+      </section>
+
+      <!-- ============================================================
+         SLIDE 16 — CLOSING CTA: LIVE DEMO (DARK)
+      ============================================================ -->
+      <section class="slide dark" id="s16" data-idx="16">
+        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+
+        <div class="ghost-mark">Ship AI<br />they trust.</div>
+
+        <div class="eyebrow">Let's Meet</div>
+        <h1>Let's make the <em>invisible</em> visible.</h1>
+        <p class="sub">
+          A 45 minute live demo on a redacted slice of your own AI traffic. We run Prism against
+          it and surface the failures your current stack can't see. You leave with a concrete
+          path to ship AI your customers trust.
+        </p>
+
+        <div class="chip-row">
+          <span class="chip">The 10% visibility gap</span>
+          <span class="chip">8 invisible failure archetypes</span>
+          <span class="chip">Runtime control plane</span>
+          <span class="chip">Audit-ready compliance evidence</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn teal" href="https://realmlabs.ai/demo" target="_blank"
+            >Book a Live Demo →</a
+          >
+          <a class="btn ghost" href="https://realmlabs.ai/founders" target="_blank"
+            >Intro Call with Founders →</a
+          >
+          <span class="cta-meta">45 minutes · Your workload · No slides</span>
+        </div>
+
+        <div class="proof-strip">
+          <span class="proof-lbl">Proven with</span>
+          <span>Uber</span>
+          <span class="proof-dot"></span>
+          <span>Anthropic</span>
+          <span class="proof-dot"></span>
+          <span>McKinsey</span>
+          <span class="proof-dot"></span>
+          <span>RSAC 2026 Innovation Sandbox Finalist</span>
+        </div>
+
+        <div class="contact-line">
+          <a href="mailto:awesbecher@realmlabs.ai">awesbecher@realmlabs.ai</a>
+          · <a href="mailto:saurabh@realmlabs.ai">saurabh@realmlabs.ai</a> ·
+          <a href="https://realmlabs.ai" target="_blank">realmlabs.ai</a>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">16 / 16</span>
       </section>
     </div>
 
