@@ -3761,46 +3761,24 @@
 
         <div class="ghost-mark">Ship AI<br />they trust.</div>
 
-        <div class="eyebrow">Let's Meet</div>
-        <h1>Let's make the <em>invisible</em> visible.</h1>
+        <div class="eyebrow">The Next Move</div>
+        <h1>Put Realm in front of your <em>AI roadmap</em>.</h1>
         <p class="sub">
-          A 45 minute live demo on a redacted slice of your own AI traffic. We run Prism against
-          it and surface the failures your current stack can't see. You leave with a concrete
-          path to ship AI your customers trust.
+          Book 45 minutes with our team. We'll show you the platform live and map it to the AI
+          initiatives you're running right now. You leave with a clear picture of where Realm
+          fits, what it catches, and what a pilot looks like on your workload.
         </p>
 
         <div class="chip-row">
-          <span class="chip">The 10% visibility gap</span>
-          <span class="chip">8 invisible failure archetypes</span>
-          <span class="chip">Runtime control plane</span>
-          <span class="chip">Audit-ready compliance evidence</span>
+          <span class="chip">Live platform walkthrough</span>
+          <span class="chip">Mapped to your initiatives</span>
+          <span class="chip">Deployment path</span>
+          <span class="chip">Pilot scoping</span>
         </div>
 
         <div class="cta-row">
-          <a class="btn teal" href="https://realmlabs.ai/demo" target="_blank"
-            >Book a Live Demo →</a
-          >
-          <a class="btn ghost" href="https://realmlabs.ai/founders" target="_blank"
-            >Intro Call with Founders →</a
-          >
-          <span class="cta-meta">45 minutes · Your workload · No slides</span>
-        </div>
-
-        <div class="proof-strip">
-          <span class="proof-lbl">Proven with</span>
-          <span>Uber</span>
-          <span class="proof-dot"></span>
-          <span>Anthropic</span>
-          <span class="proof-dot"></span>
-          <span>McKinsey</span>
-          <span class="proof-dot"></span>
-          <span>RSAC 2026 Innovation Sandbox Finalist</span>
-        </div>
-
-        <div class="contact-line">
-          <a href="mailto:awesbecher@realmlabs.ai">awesbecher@realmlabs.ai</a>
-          · <a href="mailto:saurabh@realmlabs.ai">saurabh@realmlabs.ai</a> ·
-          <a href="https://realmlabs.ai" target="_blank">realmlabs.ai</a>
+          <a class="btn teal" href="https://realmlabs.ai" target="_blank">Book a Meeting →</a>
+          <span class="cta-meta">45 minutes. Demo plus fit discussion.</span>
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
@@ -3849,88 +3827,6 @@
             show(idx + (dx < 0 ? 1 : -1));
           }
         });
-      })();
-    </script>
-
-    <!-- ================================================================
-         TEMP: Slide 15 content QA switcher. Visit ?opt=1|2|3|4 to preview.
-         Remove this block once a final variant is chosen.
-    ================================================================ -->
-    <script>
-      (function () {
-        const opt = new URLSearchParams(location.search).get('opt');
-        if (!opt || !['1', '2', '3', '4'].includes(opt)) return;
-
-        const OPTIONS = {
-          '1': {
-            eyebrow: "Let's Talk",
-            h1: 'See Realm on your <em>AI initiatives</em>.',
-            sub: "Book 45 minutes. We'll walk you through Prism, OmniGuard, and DataRealm live, then spend the rest of the time on your AI stack and where Realm plugs in.",
-            chips: ['Live product demo', 'Your AI use cases', 'Architecture fit check', 'Clear next steps'],
-            ctaLabel: 'Book a Meeting →',
-            ctaMeta: '45 minutes. Demo plus discussion.'
-          },
-          '2': {
-            eyebrow: 'Next Step',
-            h1: "Let's look at Realm on your <em>stack</em>.",
-            sub: "Grab 45 minutes with us. We demo the platform, then turn it into a working conversation about what you're shipping, what's blocking you, and where Realm fits. You leave with concrete next steps.",
-            chips: ['Live platform demo', 'Your workloads in focus', 'Fit and deployment review', 'Concrete next steps'],
-            ctaLabel: 'Book a Meeting →',
-            ctaMeta: '45 minutes. Your AI. Next steps.'
-          },
-          '3': {
-            eyebrow: "Let's Meet",
-            h1: 'See Realm. <em>Then</em> talk about your AI.',
-            sub: '45 minutes, split in two. First half: live demo of Prism, OmniGuard, and DataRealm. Second half: a working conversation about your AI initiatives and how Realm applies. No slides. No scripted pitch.',
-            chips: ['Live demo', 'Your AI roadmap', 'Deployment options', 'Open Q&A'],
-            ctaLabel: 'Book a Meeting →',
-            ctaMeta: '45 minutes. Demo plus working session.'
-          },
-          '4': {
-            eyebrow: 'The Next Move',
-            h1: 'Put Realm in front of your <em>AI roadmap</em>.',
-            sub: "Book 45 minutes with our team. We'll show you the platform live and map it to the AI initiatives you're running right now. You leave with a clear picture of where Realm fits, what it catches, and what a pilot looks like on your workload.",
-            chips: ['Live platform walkthrough', 'Mapped to your initiatives', 'Deployment path', 'Pilot scoping'],
-            ctaLabel: 'Book a Meeting →',
-            ctaMeta: '45 minutes. Demo plus fit discussion.'
-          }
-        };
-
-        const o = OPTIONS[opt];
-        const s15 = document.getElementById('s15');
-        if (!s15) return;
-
-        s15.querySelector('.eyebrow').textContent = o.eyebrow;
-        s15.querySelector('h1').innerHTML = o.h1;
-        s15.querySelector('.sub').textContent = o.sub;
-        s15.querySelectorAll('.chip').forEach((c, i) => {
-          if (o.chips[i]) c.textContent = o.chips[i];
-          else c.style.display = 'none';
-        });
-
-        const ctaRow = s15.querySelector('.cta-row');
-        ctaRow.innerHTML =
-          '<a class="btn teal" href="#">' + o.ctaLabel + '</a>' +
-          '<span class="cta-meta">' + o.ctaMeta + '</span>';
-
-        const ps = s15.querySelector('.proof-strip');
-        if (ps) ps.style.display = 'none';
-        const cl = s15.querySelector('.contact-line');
-        if (cl) cl.style.display = 'none';
-
-        const badge = document.createElement('div');
-        badge.textContent = 'OPTION ' + opt + ' PREVIEW';
-        badge.style.cssText =
-          'position:fixed;top:16px;left:50%;transform:translateX(-50%);' +
-          'background:rgba(17,214,119,0.14);color:#11d677;' +
-          'border:1px solid rgba(17,214,119,0.4);padding:7px 16px;' +
-          'border-radius:999px;font-family:"Rebond Grotesque",system-ui,sans-serif;' +
-          'font-weight:600;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;' +
-          'z-index:9999;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);';
-        document.body.appendChild(badge);
-
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach((s, i) => s.classList.toggle('active', i === slides.length - 1));
       })();
     </script>
   </body>
