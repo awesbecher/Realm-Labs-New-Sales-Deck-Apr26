@@ -2180,7 +2180,10 @@
         margin: 0; /* Kills default browser margins */
       }
       @media print {
-        /* Enforce Dark Mode & Backgrounds on every stacking layer */
+        /* Force browsers to print background colors + gradients on every stacking layer.
+           DO NOT override .slide background here — each slide must keep its native
+           .slide.light (white) or .slide.dark (navy) background so the PDF matches
+           what's rendered on screen. */
         html,
         body,
         .deck,
@@ -2188,6 +2191,10 @@
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
           color-adjust: exact !important;
+        }
+        html,
+        body,
+        .deck {
           background-color: #0a0a0c !important;
         }
         *,
