@@ -1107,23 +1107,45 @@
         min-height: 0;
         display: flex;
         flex-direction: column;
-        background: var(--white);
-        border-radius: 18px;
-        border: 1px solid var(--border-l);
+        background:
+          radial-gradient(ellipse at 12% 0%, rgba(64, 14, 190, 0.28) 0%, transparent 60%),
+          radial-gradient(ellipse at 96% 100%, rgba(17, 214, 119, 0.18) 0%, transparent 55%),
+          linear-gradient(180deg, #110d22 0%, #0a0717 100%);
+        border-radius: 16px;
+        border: 1px solid rgba(124, 92, 255, 0.22);
         box-shadow:
-          0 0 0 1px rgba(64, 14, 190, 0.06),
-          0 34px 80px rgba(13, 10, 31, 0.08),
-          0 10px 32px rgba(13, 10, 31, 0.05);
+          0 0 0 1px rgba(255, 255, 255, 0.03),
+          0 34px 80px rgba(13, 10, 31, 0.22),
+          0 10px 32px rgba(64, 14, 190, 0.18);
         overflow: hidden;
+        color: rgba(255, 255, 255, 0.9);
+        position: relative;
+      }
+      #s3 .detect::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          repeating-linear-gradient(
+            180deg,
+            transparent 0,
+            transparent 3px,
+            rgba(255, 255, 255, 0.015) 3px,
+            rgba(255, 255, 255, 0.015) 4px
+          );
+        opacity: 0.5;
+        z-index: 0;
       }
       #s3 .detect-head {
-        padding: 10px 26px;
+        position: relative;
+        z-index: 1;
+        padding: 12px 26px;
         display: flex;
         align-items: center;
         gap: 16px;
-        border-bottom: 1px solid var(--border-l);
-        background:
-          linear-gradient(180deg, rgba(64, 14, 190, 0.035) 0%, transparent 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.015);
       }
       #s3 .detect-head .live {
         display: inline-flex;
@@ -1133,7 +1155,7 @@
         font-size: 0.72rem;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: var(--teal-dark);
+        color: #6ee7a9;
         font-weight: 500;
       }
       #s3 .detect-head .live::before {
@@ -1142,7 +1164,7 @@
         height: 8px;
         border-radius: 50%;
         background: var(--teal);
-        box-shadow: 0 0 10px var(--teal), 0 0 0 4px rgba(17, 214, 119, 0.18);
+        box-shadow: 0 0 12px var(--teal), 0 0 0 4px rgba(17, 214, 119, 0.2);
         animation: s3pulse 1.8s ease-in-out infinite;
       }
       @keyframes s3pulse {
@@ -1153,92 +1175,93 @@
         margin-left: auto;
         font-family: var(--font-mono);
         font-size: 0.72rem;
-        color: var(--muted);
+        color: rgba(255, 255, 255, 0.45);
         letter-spacing: 0.18em;
         text-transform: uppercase;
       }
       #s3 .rows {
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         flex: 1;
         min-height: 0;
       }
       #s3 .det {
-        display: flex;
+        display: grid;
+        grid-template-columns: 14px 28px 26px 1fr auto;
         align-items: center;
-        gap: 18px;
-        padding: 6px 26px;
-        border-bottom: 1px solid var(--border-l);
-        flex: 1;
+        column-gap: 14px;
+        padding: 10px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
         min-height: 0;
         overflow: hidden;
       }
-      #s3 .det:last-child { border-bottom: 0; }
+      #s3 .det:nth-child(2n) { border-right: 0; }
+      #s3 .det:nth-last-child(-n+2) { border-bottom: 0; }
       #s3 .det .dot {
         width: 9px;
         height: 9px;
         border-radius: 50%;
-        flex-shrink: 0;
         background: var(--tone);
-        box-shadow: 0 0 0 4px var(--tone-halo);
+        box-shadow: 0 0 0 4px var(--tone-halo), 0 0 12px var(--tone);
+        justify-self: center;
       }
       #s3 .det .num {
         font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: var(--muted);
-        letter-spacing: 0.2em;
-        min-width: 24px;
-        flex-shrink: 0;
+        font-size: 0.68rem;
+        color: rgba(255, 255, 255, 0.38);
+        letter-spacing: 0.22em;
       }
       #s3 .det .ico {
         width: 24px;
         height: 24px;
         color: var(--tone);
-        flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      #s3 .det .ico svg {
-        width: 100%;
-        height: 100%;
-      }
+      #s3 .det .ico svg { width: 100%; height: 100%; }
       #s3 .det .nm {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: -0.015em;
-        color: var(--ink);
-        flex: 1;
+        font-size: 0.98rem;
+        letter-spacing: -0.01em;
+        color: #ffffff;
       }
       #s3 .det .tag {
         font-family: var(--font-head);
         font-style: italic;
         font-weight: 500;
-        font-size: 0.92rem;
+        font-size: 0.85rem;
         color: var(--tone);
         text-align: right;
+        white-space: nowrap;
       }
-      #s3 .det:nth-child(1) { --tone: #dc2626; --tone-halo: rgba(239, 68, 68, 0.14); }
-      #s3 .det:nth-child(2) { --tone: #d97706; --tone-halo: rgba(245, 158, 11, 0.16); }
-      #s3 .det:nth-child(3) { --tone: #2563eb; --tone-halo: rgba(59, 130, 246, 0.14); }
-      #s3 .det:nth-child(4) { --tone: #7c3aed; --tone-halo: rgba(124, 58, 237, 0.14); }
-      #s3 .det:nth-child(5) { --tone: #475569; --tone-halo: rgba(100, 116, 139, 0.14); }
-      #s3 .det:nth-child(6) { --tone: #db2777; --tone-halo: rgba(236, 72, 153, 0.14); }
-      #s3 .det:nth-child(7) { --tone: #00925c; --tone-halo: rgba(17, 214, 119, 0.16); }
-      #s3 .det:nth-child(8) { --tone: #4338ca; --tone-halo: rgba(79, 70, 229, 0.14); }
+      /* per-row tones (slightly brighter for dark bg) */
+      #s3 .det:nth-child(1) { --tone: #fb7185; --tone-halo: rgba(251, 113, 133, 0.15); }
+      #s3 .det:nth-child(2) { --tone: #fbbf24; --tone-halo: rgba(251, 191, 36, 0.16); }
+      #s3 .det:nth-child(3) { --tone: #60a5fa; --tone-halo: rgba(96, 165, 250, 0.16); }
+      #s3 .det:nth-child(4) { --tone: #a78bfa; --tone-halo: rgba(167, 139, 250, 0.18); }
+      #s3 .det:nth-child(5) { --tone: #94a3b8; --tone-halo: rgba(148, 163, 184, 0.16); }
+      #s3 .det:nth-child(6) { --tone: #f472b6; --tone-halo: rgba(244, 114, 182, 0.16); }
+      #s3 .det:nth-child(7) { --tone: #34d399; --tone-halo: rgba(52, 211, 153, 0.18); }
+      #s3 .det:nth-child(8) { --tone: #818cf8; --tone-halo: rgba(129, 140, 248, 0.18); }
       #s3 .detect-foot {
-        padding: 10px 26px;
-        border-top: 1px solid var(--border-l);
-        background: linear-gradient(180deg, transparent 0%, rgba(64, 14, 190, 0.035) 100%);
+        position: relative;
+        z-index: 1;
+        padding: 12px 26px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.015);
         display: flex;
         align-items: center;
         gap: 10px;
         font-family: var(--font-body);
         font-size: 0.88rem;
-        color: var(--body);
+        color: rgba(255, 255, 255, 0.72);
       }
-      #s3 .detect-foot strong { color: var(--ink); font-weight: 600; }
+      #s3 .detect-foot strong { color: #ffffff; font-weight: 600; }
       #s3 .detect-foot .pin {
         display: inline-flex;
         align-items: center;
@@ -1247,11 +1270,11 @@
         font-size: 0.68rem;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: var(--purple);
+        color: #c4b5fd;
         padding: 4px 10px;
         border-radius: 999px;
-        border: 1px solid rgba(64, 14, 190, 0.22);
-        background: rgba(64, 14, 190, 0.05);
+        border: 1px solid rgba(167, 139, 250, 0.35);
+        background: rgba(124, 92, 255, 0.12);
         margin-left: auto;
       }
 
