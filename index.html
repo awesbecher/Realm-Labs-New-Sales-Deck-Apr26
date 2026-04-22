@@ -1310,27 +1310,34 @@
         overflow: hidden;
       }
       #s7 .dni-pillar:nth-child(1) {
-        background: linear-gradient(
-          155deg,
-          rgba(64, 14, 190, 0.18) 0%,
-          rgba(22, 14, 48, 0.92) 55%,
-          rgba(13, 10, 28, 0.95) 100%
-        );
-        border: 1px solid rgba(167, 139, 250, 0.18);
+        background:
+          radial-gradient(ellipse at 0% 0%, rgba(139, 92, 246, 0.38) 0%, transparent 60%),
+          linear-gradient(160deg, rgba(64, 14, 190, 0.4) 0%, rgba(26, 12, 58, 0.88) 60%, rgba(18, 10, 40, 0.9) 100%);
+        border: 1px solid rgba(167, 139, 250, 0.45);
+        box-shadow: 0 14px 44px rgba(64, 14, 190, 0.3);
+      }
+      #s7 .dni-pillar:nth-child(1) .dni-num {
+        color: #c4b5fd;
       }
       #s7 .dni-pillar:nth-child(3) {
-        background: linear-gradient(
-          155deg,
-          rgba(56, 189, 248, 0.14) 0%,
-          rgba(12, 30, 48, 0.92) 55%,
-          rgba(9, 18, 32, 0.95) 100%
-        );
-        border: 1px solid rgba(56, 189, 248, 0.18);
+        background:
+          radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.36) 0%, transparent 60%),
+          linear-gradient(160deg, rgba(59, 130, 246, 0.32) 0%, rgba(10, 28, 48, 0.88) 60%, rgba(8, 20, 36, 0.9) 100%);
+        border: 1px solid rgba(56, 189, 248, 0.48);
+        box-shadow: 0 14px 44px rgba(56, 189, 248, 0.26);
+      }
+      #s7 .dni-pillar:nth-child(3) .dni-num {
+        color: #7dd3fc;
       }
       #s7 .dni-pillar.highlight {
-        background: linear-gradient(145deg, rgba(64, 14, 190, 0.28), rgba(17, 214, 119, 0.08));
-        border: 1px solid rgba(17, 214, 119, 0.4);
-        box-shadow: 0 16px 52px rgba(64, 14, 190, 0.3);
+        background:
+          radial-gradient(ellipse at 0% 0%, rgba(52, 241, 166, 0.36) 0%, transparent 60%),
+          linear-gradient(160deg, rgba(17, 214, 119, 0.32) 0%, rgba(8, 40, 28, 0.88) 60%, rgba(6, 28, 20, 0.9) 100%);
+        border: 1px solid rgba(17, 214, 119, 0.55);
+        box-shadow: 0 18px 56px rgba(17, 214, 119, 0.3);
+      }
+      #s7 .dni-pillar.highlight .dni-num {
+        color: #6ee7a9;
       }
       #s7 .dni-num {
         font-family: var(--font-mono);
