@@ -1897,114 +1897,148 @@
         align-items: center;
         justify-content: center;
       }
-      /* Inline DNI diagram (replaces PNG) */
+      /* Inline DNI diagram (replaces PNG) — floats on dark slide */
       #s11 .dni-viz .frame, #s11 .dni-viz img { display: none; }
       #s11 .dni-diagram {
         width: 100%;
         height: 100%;
-        padding: 18px 24px 20px;
-        border-radius: 16px;
-        background: linear-gradient(180deg, #f9f8fd 0%, #f1eef9 100%);
-        color: var(--ink);
+        padding: 4px 8px;
         display: flex;
         flex-direction: column;
         gap: 14px;
         position: relative;
-        box-shadow:
-          0 0 0 1px rgba(124, 92, 255, 0.18),
-          0 24px 56px rgba(0, 0, 0, 0.42),
-          0 8px 28px rgba(64, 14, 190, 0.22);
+        color: rgba(255, 255, 255, 0.95);
+        background: transparent;
       }
       #s11 .dni-card-head {
         align-self: center;
-        text-align: center;
-        padding: 7px 20px;
-        background: #ffffff;
-        border: 1px solid rgba(64, 14, 190, 0.1);
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(13, 10, 31, 0.05);
-        max-width: 520px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 7px 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(124, 92, 255, 0.28);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 0 24px rgba(124, 92, 255, 0.18);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      #s11 .dni-card-head::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 10px var(--teal), 0 0 0 3px rgba(17, 214, 119, 0.18);
       }
       #s11 .dni-card-head .t {
         font-family: var(--font-mono);
-        font-weight: 600;
-        font-size: 0.84rem;
-        color: var(--ink);
-        letter-spacing: 0.02em;
+        font-weight: 500;
+        font-size: 0.74rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.95);
       }
       #s11 .dni-card-head .sub {
-        display: block;
-        font-family: var(--font-body);
-        font-size: 0.7rem;
-        color: var(--body);
-        margin-top: 2px;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+        padding-left: 12px;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
       }
       #s11 .dni-flow {
         display: grid;
         grid-template-columns: 1.05fr 1.5fr 1.05fr;
         align-items: center;
-        gap: 18px;
+        gap: 22px;
         flex: 1;
         min-height: 0;
       }
       #s11 .dni-bub {
         position: relative;
         padding: 16px 16px 14px;
-        border-radius: 12px;
-        background: #ffffff;
-        border: 1px solid rgba(13, 10, 31, 0.08);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         font-family: var(--font-mono);
         font-size: 0.7rem;
         line-height: 1.5;
-        color: var(--ink);
-        box-shadow: 0 4px 14px rgba(13, 10, 31, 0.06);
+        color: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(14px) saturate(1.1);
+        -webkit-backdrop-filter: blur(14px) saturate(1.1);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 10px 32px rgba(0, 0, 0, 0.35);
+      }
+      #s11 .dni-bub.user {
+        border-color: rgba(124, 92, 255, 0.28);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 12px 36px rgba(64, 14, 190, 0.22);
       }
       #s11 .dni-bub.ai {
-        background: linear-gradient(180deg, #efe5ff 0%, #e5d9ff 100%);
-        border-color: rgba(124, 92, 255, 0.22);
+        background: rgba(124, 92, 255, 0.1);
+        border-color: rgba(167, 139, 250, 0.4);
+        color: #efeaff;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+          0 14px 42px rgba(17, 214, 119, 0.12),
+          0 6px 20px rgba(124, 92, 255, 0.25);
       }
       #s11 .dni-bub .chip {
         position: absolute;
-        top: -10px;
+        top: -11px;
         left: 14px;
-        background: #ffffff;
+        background: #131028;
         padding: 3px 10px;
         border-radius: 999px;
-        border: 1px solid rgba(13, 10, 31, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.14);
         font-family: var(--font-mono);
         font-size: 0.64rem;
-        letter-spacing: 0.2em;
-        color: var(--muted);
+        letter-spacing: 0.22em;
+        color: rgba(255, 255, 255, 0.6);
         text-transform: uppercase;
       }
       #s11 .dni-bub.ai .chip {
-        background: linear-gradient(180deg, #efe5ff, #e5d9ff);
-        border-color: rgba(124, 92, 255, 0.28);
-        color: var(--purple);
+        background: #170f30;
+        border-color: rgba(167, 139, 250, 0.4);
+        color: #c4b5fd;
       }
       #s11 .dni-bub .ico {
         width: 16px;
         height: 16px;
-        color: var(--teal-dark);
+        color: #a7f3d0;
         display: block;
         margin-bottom: 6px;
       }
-      #s11 .dni-bub.ai .ico { color: var(--purple-2); }
+      #s11 .dni-bub.ai .ico { color: #d8c8ff; }
       #s11 .dni-bub .msg { display: block; }
       #s11 .dni-stages {
         position: relative;
-        padding: 36px 12px 24px;
+        padding: 38px 16px 26px;
       }
       #s11 .dni-line {
         position: absolute;
         top: 50%;
         left: 0;
         right: 0;
-        height: 4px;
+        height: 3px;
         transform: translateY(-50%);
-        background: linear-gradient(90deg, var(--purple-2) 0%, var(--purple) 40%, #ef4444 55%, var(--purple) 68%, var(--teal) 100%);
+        background: linear-gradient(
+          90deg,
+          rgba(124, 92, 255, 0.15) 0%,
+          var(--purple-2) 18%,
+          #ef4444 48%,
+          var(--purple-2) 62%,
+          var(--teal) 88%,
+          rgba(17, 214, 119, 0.15) 100%
+        );
         border-radius: 2px;
-        box-shadow: 0 0 14px rgba(124, 92, 255, 0.4);
+        box-shadow: 0 0 20px rgba(124, 92, 255, 0.5);
         z-index: 1;
       }
       #s11 .dni-slabs {
@@ -2013,32 +2047,36 @@
         align-items: center;
         position: relative;
         z-index: 2;
-        padding: 0 12px;
+        padding: 0 14px;
       }
       #s11 .dni-slab {
         position: relative;
-        width: 64px;
-        height: 72px;
-        background: linear-gradient(140deg, rgba(196, 181, 253, 0.75) 0%, rgba(139, 92, 246, 0.55) 100%);
-        border: 1px solid rgba(124, 92, 255, 0.35);
-        border-radius: 6px;
+        width: 68px;
+        height: 76px;
+        background: linear-gradient(140deg, rgba(196, 181, 253, 0.32) 0%, rgba(124, 92, 255, 0.18) 100%);
+        border: 1px solid rgba(167, 139, 250, 0.45);
+        border-radius: 7px;
         transform: skewY(-10deg);
         box-shadow:
-          inset 0 0 0 1px rgba(255, 255, 255, 0.45),
-          0 8px 20px rgba(124, 92, 255, 0.22);
+          inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+          inset 0 10px 20px rgba(255, 255, 255, 0.06),
+          0 12px 28px rgba(124, 92, 255, 0.28);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
       }
       #s11 .dni-slab .label {
         position: absolute;
-        top: -42px;
+        top: -44px;
         left: 50%;
         transform: translateX(-50%) skewY(10deg);
         font-family: var(--font-mono);
         font-size: 0.62rem;
-        color: var(--ink);
+        color: rgba(255, 255, 255, 0.75);
         white-space: nowrap;
         text-align: center;
         font-weight: 500;
-        line-height: 1.2;
+        line-height: 1.25;
+        letter-spacing: 0.04em;
       }
       #s11 .dni-mark {
         position: absolute;
@@ -2052,67 +2090,97 @@
       #s11 .dni-mark.risk {
         left: 46%;
         background: #ef4444;
-        box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.22), 0 0 14px rgba(239, 68, 68, 0.65);
+        box-shadow:
+          0 0 0 5px rgba(239, 68, 68, 0.25),
+          0 0 18px rgba(239, 68, 68, 0.8),
+          0 0 40px rgba(239, 68, 68, 0.4);
         animation: dnirisk 1.8s ease-in-out infinite;
       }
       #s11 .dni-mark.control {
         left: 74%;
         background: var(--teal);
-        box-shadow: 0 0 0 5px rgba(17, 214, 119, 0.28), 0 0 14px rgba(17, 214, 119, 0.6);
+        box-shadow:
+          0 0 0 5px rgba(17, 214, 119, 0.28),
+          0 0 18px rgba(17, 214, 119, 0.7),
+          0 0 40px rgba(17, 214, 119, 0.3);
       }
       #s11 .dni-mark.control::after {
         content: '\2713';
-        color: #ffffff;
+        color: #0a0f1c;
         position: absolute;
         inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 10px;
-        font-weight: 700;
+        font-weight: 800;
       }
       @keyframes dnirisk {
-        0%, 100% { box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.22), 0 0 14px rgba(239, 68, 68, 0.6); }
-        50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.08), 0 0 20px rgba(239, 68, 68, 0.35); }
+        0%, 100% {
+          box-shadow:
+            0 0 0 5px rgba(239, 68, 68, 0.25),
+            0 0 18px rgba(239, 68, 68, 0.7),
+            0 0 40px rgba(239, 68, 68, 0.4);
+        }
+        50% {
+          box-shadow:
+            0 0 0 12px rgba(239, 68, 68, 0.08),
+            0 0 28px rgba(239, 68, 68, 0.45),
+            0 0 56px rgba(239, 68, 68, 0.22);
+        }
       }
       #s11 .dni-overlays {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 14px;
       }
       #s11 .dni-ov {
         display: grid;
-        grid-template-columns: 32px 1fr;
-        gap: 12px;
-        padding: 10px 14px;
-        background: linear-gradient(180deg, #1a132a 0%, #110d20 100%);
-        color: rgba(255, 255, 255, 0.9);
-        border-radius: 10px;
+        grid-template-columns: 36px 1fr;
+        gap: 14px;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
         align-items: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: rgba(255, 255, 255, 0.9);
       }
+      #s11 .dni-ov.risk { border-color: rgba(239, 68, 68, 0.28); }
+      #s11 .dni-ov.control { border-color: rgba(17, 214, 119, 0.3); }
       #s11 .dni-ov .ic {
-        width: 28px;
-        height: 28px;
-        border-radius: 8px;
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
       }
       #s11 .dni-ov .ic svg { width: 18px; height: 18px; }
-      #s11 .dni-ov.risk .ic { background: rgba(239, 68, 68, 0.18); color: #fca5a5; }
-      #s11 .dni-ov.control .ic { background: rgba(17, 214, 119, 0.18); color: #6ee7a9; }
+      #s11 .dni-ov.risk .ic {
+        background: rgba(239, 68, 68, 0.15);
+        color: #fca5a5;
+        box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.28);
+      }
+      #s11 .dni-ov.control .ic {
+        background: rgba(17, 214, 119, 0.15);
+        color: #6ee7a9;
+        box-shadow: inset 0 0 0 1px rgba(17, 214, 119, 0.3);
+      }
       #s11 .dni-ov .t {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 0.82rem;
+        font-size: 0.84rem;
         color: #ffffff;
         line-height: 1.2;
+        letter-spacing: -0.01em;
       }
       #s11 .dni-ov .d {
         font-family: var(--font-body);
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.62);
         line-height: 1.35;
         margin-top: 2px;
       }
