@@ -303,6 +303,16 @@
         height: 22px;
         width: auto;
       }
+      .brand-mark a {
+        display: inline-flex;
+        align-items: center;
+        line-height: 0;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+      .brand-mark a:hover {
+        opacity: 0.85;
+      }
       .slide-number {
         position: absolute;
         bottom: 24px;
@@ -488,7 +498,7 @@
         opacity: 1;
       }
       #s1 .brand-mark img {
-        height: 38px;
+        height: 57px;
       }
       #s1.slide.dark::before,
       #s1.slide.dark::after {
@@ -1084,14 +1094,15 @@
    SLIDE 4 — THE 8 ARCHETYPES (LIGHT) - NEW
    ========================================================= */
       #s3 .header {
-        margin-top: 28px;
+        margin-top: 18px;
         max-width: 80ch;
       }
       #s3 h1.slide-title {
         font-size: clamp(1.9rem, 3.8vw, 3rem);
       }
       #s3 .detect {
-        margin-top: 26px;
+        margin-top: 20px;
+        width: 100%;
         flex: 1;
         min-height: 0;
         display: flex;
@@ -1106,7 +1117,7 @@
         overflow: hidden;
       }
       #s3 .detect-head {
-        padding: 14px 26px;
+        padding: 12px 26px;
         display: flex;
         align-items: center;
         gap: 16px;
@@ -1150,12 +1161,13 @@
         display: flex;
         flex-direction: column;
         flex: 1;
+        min-height: 0;
       }
       #s3 .det {
         display: flex;
         align-items: center;
         gap: 18px;
-        padding: 14px 26px;
+        padding: 10px 26px;
         border-bottom: 1px solid var(--border-l);
         flex: 1;
       }
@@ -1177,8 +1189,8 @@
         flex-shrink: 0;
       }
       #s3 .det .ico {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         color: var(--tone);
         flex-shrink: 0;
         display: flex;
@@ -1192,7 +1204,7 @@
       #s3 .det .nm {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 1.05rem;
         letter-spacing: -0.015em;
         color: var(--ink);
         flex: 1;
@@ -1201,7 +1213,7 @@
         font-family: var(--font-head);
         font-style: italic;
         font-weight: 500;
-        font-size: 0.92rem;
+        font-size: 0.98rem;
         color: var(--tone);
         text-align: right;
       }
@@ -1214,7 +1226,7 @@
       #s3 .det:nth-child(7) { --tone: #00925c; --tone-halo: rgba(17, 214, 119, 0.16); }
       #s3 .det:nth-child(8) { --tone: #4338ca; --tone-halo: rgba(79, 70, 229, 0.14); }
       #s3 .detect-foot {
-        padding: 14px 26px;
+        padding: 12px 26px;
         border-top: 1px solid var(--border-l);
         background: linear-gradient(180deg, transparent 0%, rgba(64, 14, 190, 0.035) 100%);
         display: flex;
@@ -2015,6 +2027,7 @@
         font-weight: 700;
         letter-spacing: -0.015em;
         line-height: 1.2;
+        min-height: 2.4em;
       }
       #s12 .std .tag {
         font-family: var(--font-head);
@@ -2957,7 +2970,7 @@
         </div>
         <div class="scrim"></div>
 
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <div class="l">
           <span class="pill teal dot">RSAC 2026 · Innovation Sandbox Finalist</span>
@@ -2979,7 +2992,7 @@
        - Limited samples: typical eval pipelines sample ~10% of traffic. Expensive to scale to 100%.
 ============================================================ -->
       <section class="slide dark" id="s2" data-idx="2">
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Signal</div>
@@ -3052,7 +3065,7 @@
      SLIDE 4 — THE 8 ARCHETYPES (LIGHT) - NEW
 ============================================================ -->
       <section class="slide light" id="s3" data-idx="3">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Invisible Failures</div>
@@ -3137,7 +3150,7 @@
      SLIDE 4 — WHY NOW (DARK) — moved ahead of social proof
 ============================================================ -->
       <section class="slide dark" id="s5" data-idx="4">
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <div class="eyebrow" style="justify-content: center; margin: 40px auto 12px">Why now</div>
         <h1>The time to act is <em>now</em>.</h1>
@@ -3181,7 +3194,7 @@
      SLIDE 5 — SOCIAL PROOF (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s4" data-idx="5">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">Trusted by</div>
@@ -3279,7 +3292,7 @@
      SLIDE 5 — HOW IT WORKS (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s6" data-idx="6">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">How it works</div>
@@ -3335,7 +3348,7 @@
      SLIDE 7 — DEEP NEURAL INSPECTION (DARK) - NEW
 ============================================================ -->
       <section class="slide dark" id="s7" data-idx="7">
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Breakthrough</div>
@@ -3392,7 +3405,7 @@
      SLIDE 9 — DNI COMPARISON (DARK)
 ============================================================ -->
       <section class="slide dark" id="s11" data-idx="8">
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">Deep Neural Inspection</div>
@@ -3443,7 +3456,7 @@
      SLIDE 8 — PLATFORM (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s8" data-idx="9">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Platform</div>
@@ -3525,7 +3538,7 @@
      SLIDE 7 — USE CASES (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s9" data-idx="10">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">Who it's for</div>
@@ -3616,7 +3629,7 @@
      SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
 ============================================================ -->
       <section class="slide light" id="s10" data-idx="11">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Business Case</div>
@@ -3753,7 +3766,7 @@
      SLIDE 10 — STANDARDS (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s12" data-idx="12">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">Trust infrastructure</div>
@@ -3840,7 +3853,7 @@
      SLIDE 11 — DEPLOYMENT (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s13" data-idx="13">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">Deployment</div>
@@ -3909,7 +3922,7 @@
      SLIDE 12 — TEAM (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s14" data-idx="14">
-        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
 
         <div class="header">
           <div class="eyebrow">The Team</div>
@@ -4001,7 +4014,7 @@
          SLIDE 15 — CLOSING CTA: LIVE DEMO (DARK)
       ============================================================ -->
       <section class="slide dark" id="s15" data-idx="15">
-        <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
+        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
 
         <svg class="ghost-mark" viewBox="-2 0 178 162" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M41.1851 81C41.1851 81 72.7357 102.22 80.5854 126.197C88.4351 150.174 74.3323 161 74.3323 161C74.3323 161 -1.3055 105 0.0171575 81H41.1851Z" fill="currentColor"/>
