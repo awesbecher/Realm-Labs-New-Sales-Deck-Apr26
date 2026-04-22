@@ -19,11 +19,30 @@ You are picking up work on the Realm Labs RSAC 2026 sales deck. A previous Claud
 
 ## Step 1: Clone on the new machine
 
+Pick whichever auth matches your machine:
+
+**HTTPS (works anywhere, no SSH key needed):**
+```bash
+cd ~/Desktop
+git clone https://github.com/awesbecher/Realm-Labs-New-Sales-Deck-Apr26.git
+cd Realm-Labs-New-Sales-Deck-Apr26
+git pull
+```
+When pushing, you'll need a GitHub personal access token (not password). Create one at https://github.com/settings/tokens/new with `repo` scope. Git will cache it after first use.
+
+**GitHub CLI (cleanest for long-term):**
+```bash
+brew install gh          # if not already installed
+gh auth login            # pick GitHub.com, HTTPS, browser login
+gh repo clone awesbecher/Realm-Labs-New-Sales-Deck-Apr26
+cd Realm-Labs-New-Sales-Deck-Apr26
+```
+
+**SSH (if the key is already set up on this machine):**
 ```bash
 cd ~/Desktop
 git clone git@github.com:awesbecher/Realm-Labs-New-Sales-Deck-Apr26.git
 cd Realm-Labs-New-Sales-Deck-Apr26
-git pull   # make sure you're current
 ```
 
 Confirm you're on the latest commit. Check:
