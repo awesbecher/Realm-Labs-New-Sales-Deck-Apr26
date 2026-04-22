@@ -481,6 +481,15 @@
         background: #060912 !important;
         color: var(--white);
       }
+
+      #s1 .brand-mark {
+        top: clamp(32px, 4vh, 48px);
+        left: clamp(44px, 5vw, 64px);
+        opacity: 1;
+      }
+      #s1 .brand-mark img {
+        height: 38px;
+      }
       #s1.slide.dark::before,
       #s1.slide.dark::after {
         display: none;
@@ -2066,26 +2075,6 @@
         opacity: 0.92;
         filter: grayscale(60%) contrast(1.05);
       }
-      #s13 .enterprise-bar {
-        margin-top: 14px;
-        margin-bottom: 4px;
-        font-family: var(--font-body);
-        font-size: 0.875rem;
-        color: var(--body);
-        text-align: center;
-        letter-spacing: 0.01em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        flex-wrap: wrap;
-      }
-      #s13 .enterprise-bar .sep {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: var(--muted);
-      }
 
       /* =========================================================
    SLIDE 12 — TEAM (LIGHT)
@@ -2103,23 +2092,25 @@
       }
       #s14 .leader {
         display: grid;
-        grid-template-columns: 120px 1fr;
-        gap: 18px;
+        grid-template-columns: 148px 1fr;
+        gap: 22px;
         align-items: start;
         padding: 0;
       }
       #s14 .avatar {
-        width: 120px;
+        width: 148px;
         aspect-ratio: 4 / 5;
-        border-radius: 6px;
+        border-radius: 14px;
         overflow: hidden;
-        background: #e2dcf0;
+        background: linear-gradient(160deg, #ede7fa 0%, #f0fcf6 100%);
         object-fit: cover;
-        object-position: center 20%;
+        object-position: center 44%;
         display: block;
-        filter: grayscale(100%) contrast(1.04);
-        outline: 1px solid rgba(15, 23, 42, 0.1);
-        outline-offset: -1px;
+        filter: saturate(1.08) contrast(1.06);
+        box-shadow:
+          0 0 0 1px rgba(64, 14, 190, 0.18),
+          0 22px 42px rgba(13, 10, 31, 0.16),
+          0 6px 18px rgba(13, 10, 31, 0.08);
         margin: 0;
       }
       #s14 .leader .text {
@@ -2129,9 +2120,10 @@
       }
       #s14 .leader .name {
         font-family: var(--font-head);
-        font-size: 1.15rem;
+        font-size: 1.22rem;
         font-weight: 700;
-        letter-spacing: -0.01em;
+        letter-spacing: -0.015em;
+        margin-top: 2px;
       }
       #s14 .leader .role {
         font-family: var(--font-head);
@@ -3828,12 +3820,6 @@
           </div>
         </div>
 
-        <div class="enterprise-bar">
-          <span>Multi-model</span><span class="sep"></span> <span>Custom policies</span
-          ><span class="sep"></span> <span>Sub-15ms inspection</span><span class="sep"></span>
-          <span>100+ languages</span><span class="sep"></span>
-          <span>Compliance-ready</span>
-        </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
         <span class="slide-number">13 / 15</span>
