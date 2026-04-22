@@ -1099,15 +1099,16 @@
         min-height: 0;
       }
       #s3 .arch {
-        padding: 20px 22px 18px;
+        padding: 22px 22px 20px 28px;
         background: var(--white);
         border: 1px solid var(--border-l);
-        border-radius: 12px;
+        border-radius: 14px;
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 10px;
         position: relative;
         overflow: hidden;
+        transition: transform 0.2s ease;
       }
       #s3 .arch::before {
         content: '';
@@ -1118,40 +1119,43 @@
         height: 100%;
         background: linear-gradient(180deg, var(--purple), var(--teal));
       }
-      #s3 .arch-head {
+      #s3 .arch-icon {
+        width: 44px;
+        height: 44px;
+        color: var(--purple);
         display: flex;
-        align-items: baseline;
-        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4px;
+      }
+      #s3 .arch-icon svg {
+        width: 100%;
+        height: 100%;
       }
       #s3 .arch-num {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
-        color: var(--purple);
+        font-size: 0.72rem;
+        color: var(--muted);
         font-weight: 500;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
       }
       #s3 .arch-title {
         font-family: var(--font-head);
-        font-size: 1.02rem;
+        font-size: 1.08rem;
         font-weight: 700;
         color: var(--ink);
-        letter-spacing: -0.01em;
-        line-height: 1.15;
+        letter-spacing: -0.015em;
+        line-height: 1.18;
       }
       #s3 .arch-tagline {
         font-family: var(--font-head);
-        font-size: 0.82rem;
+        font-size: 0.88rem;
         font-style: italic;
         font-weight: 500;
         color: var(--purple);
-        padding-bottom: 8px;
-        border-bottom: 1px solid var(--border-l);
-        margin-bottom: 4px;
-      }
-      #s3 .arch-body {
-        font-size: 0.78rem;
-        color: var(--body);
-        line-height: 1.5;
+        line-height: 1.35;
+        margin-top: auto;
       }
       #s3 .arch-footer {
         margin-top: 20px;
@@ -2946,92 +2950,52 @@
 
         <div class="archetypes">
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">01</span>
-              <span class="arch-title">The Confidence Trap</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="9"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></svg></div>
+            <span class="arch-num">01</span>
+            <div class="arch-title">The Confidence Trap</div>
             <div class="arch-tagline">Confidently wrong.</div>
-            <div class="arch-body">
-              Wrong answer, full conviction. No hedging, no uncertainty markers. Sounds
-              authoritative, which is why nobody catches it.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">02</span>
-              <span class="arch-title">The Silent Mismatch</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 L30 14 M25 9 L30 14 L25 19"/><path d="M32 26 L10 26 M15 21 L10 26 L15 31"/></svg></div>
+            <span class="arch-num">02</span>
+            <div class="arch-title">The Silent Mismatch</div>
             <div class="arch-tagline">Answered the wrong question.</div>
-            <div class="arch-body">
-              Valid response, wrong target. The user asked A, the model answered B. User often can't
-              articulate what's off.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">03</span>
-              <span class="arch-title">The Drift</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30 C10 30, 14 22, 22 18 S34 10, 36 6"/><path d="M36 6 L31 7 M36 6 L35 11"/></svg></div>
+            <span class="arch-num">03</span>
+            <div class="arch-title">The Drift</div>
             <div class="arch-tagline">Wandered off task.</div>
-            <div class="arch-body">
-              Early turns on topic. By turn five the conversation has drifted from the original
-              goal. No single turn is wrong, the trajectory is.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">04</span>
-              <span class="arch-title">The Death Spiral</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 20 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/><path d="M20 20 m-8 0 a8 8 0 1 0 16 0"/><path d="M20 20 m-13 0 a13 13 0 1 0 16 -12"/></svg></div>
+            <span class="arch-num">04</span>
+            <div class="arch-title">The Death Spiral</div>
             <div class="arch-tagline">Loops, never resolves.</div>
-            <div class="arch-body">
-              Same issue, different words. The model rewords its non-answer until the user retries
-              and gets the same non-answer again.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">05</span>
-              <span class="arch-title">The Walkaway</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8 L8 8 L8 32 L18 32"/><path d="M16 20 L34 20 M28 14 L34 20 L28 26"/></svg></div>
+            <span class="arch-num">05</span>
+            <div class="arch-title">The Walkaway</div>
             <div class="arch-tagline">User gave up.</div>
-            <div class="arch-body">
-              No complaint. No thumbs-down. No ticket. The user just stopped. Your tools see
-              nothing. Churn sees everything.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">06</span>
-              <span class="arch-title">The Contradiction Unravel</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 15 L32 15 M8 25 L32 25"/><path d="M27 8 L13 32"/></svg></div>
+            <span class="arch-num">06</span>
+            <div class="arch-title">The Contradiction Unravel</div>
             <div class="arch-tagline">Reversed itself across turns.</div>
-            <div class="arch-body">
-              Turn three says yes. Turn seven says no. Neither turn is flagged alone. The
-              contradiction only exists across the full trace.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">07</span>
-              <span class="arch-title">The Partial Recovery</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="16" width="32" height="8" rx="4"/><path d="M6 20 L28 20" stroke-width="4.5"/></svg></div>
+            <span class="arch-num">07</span>
+            <div class="arch-title">The Partial Recovery</div>
             <div class="arch-tagline">Almost got there.</div>
-            <div class="arch-body">
-              Most of the answer is right, one critical detail is wrong. Good enough to accept,
-              dangerous enough to act on.
-            </div>
           </div>
           <div class="arch">
-            <div class="arch-head">
-              <span class="arch-num">08</span>
-              <span class="arch-title">The Mystery Failure</span>
-            </div>
+            <div class="arch-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="14"/><path d="M15 16 Q16 11 20 11 Q25 11 25 15 Q25 18 21 20 Q20 20.5 20 23"/><circle cx="20" cy="28" r="1.3" fill="currentColor" stroke="none"/></svg></div>
+            <span class="arch-num">08</span>
+            <div class="arch-title">The Mystery Failure</div>
             <div class="arch-tagline">Failed and we can't say why.</div>
-            <div class="arch-body">
-              Something went wrong, the output was bad, the logs are silent. Without reasoning-chain
-              visibility, there's nothing to debug.
-            </div>
           </div>
         </div>
 
