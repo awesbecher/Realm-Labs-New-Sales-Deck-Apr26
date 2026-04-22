@@ -2260,6 +2260,16 @@
         align-items: center;
         gap: 40px;
       }
+      #s14 .back-logos a {
+        display: inline-flex;
+        align-items: center;
+        opacity: 0.9;
+        transition: opacity 0.2s ease;
+      }
+      #s14 .back-logos a:hover {
+        opacity: 1;
+      }
+
       #s14 .back-logos img {
         height: 28px;
         width: auto;
@@ -3866,8 +3876,12 @@
           <div class="back-block">
             <div class="footer-lbl">Backed by</div>
             <div class="back-logos">
-              <img src="assets/inv-crosspoint.png" alt="Crosspoint Capital" />
-              <img src="assets/inv-tola.png" alt="Tola Capital" />
+              <a href="https://crosspointcapital.com/" target="_blank" rel="noopener">
+                <img src="assets/inv-crosspoint.png" alt="Crosspoint Capital" />
+              </a>
+              <a href="https://tolacapital.com/" target="_blank" rel="noopener">
+                <img src="assets/inv-tola.png" alt="Tola Capital" />
+              </a>
             </div>
           </div>
         </div>
