@@ -1099,64 +1099,86 @@
         flex: 1;
         min-height: 0;
       }
+      /* Per-card tone palette */
       #s3 .arch {
-        padding: 22px 22px 20px 28px;
+        --tone: #dc2626;
+        --tone-tint: rgba(239, 68, 68, 0.1);
+        padding: 22px 24px 20px;
         background: var(--white);
         border: 1px solid var(--border-l);
-        border-radius: 14px;
+        border-radius: 16px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         position: relative;
         overflow: hidden;
-        transition: transform 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
       #s3 .arch::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, var(--purple), var(--teal));
+        inset: 0;
+        background: radial-gradient(circle at 100% 0%, var(--tone-tint), transparent 55%);
+        pointer-events: none;
+        opacity: 0.7;
       }
+      #s3 .arch:nth-child(1) { --tone: #dc2626; --tone-tint: rgba(239, 68, 68, 0.12); }
+      #s3 .arch:nth-child(2) { --tone: #d97706; --tone-tint: rgba(245, 158, 11, 0.14); }
+      #s3 .arch:nth-child(3) { --tone: #2563eb; --tone-tint: rgba(59, 130, 246, 0.12); }
+      #s3 .arch:nth-child(4) { --tone: #7c3aed; --tone-tint: rgba(124, 58, 237, 0.12); }
+      #s3 .arch:nth-child(5) { --tone: #475569; --tone-tint: rgba(100, 116, 139, 0.12); }
+      #s3 .arch:nth-child(6) { --tone: #db2777; --tone-tint: rgba(236, 72, 153, 0.12); }
+      #s3 .arch:nth-child(7) { --tone: #00925c; --tone-tint: rgba(17, 214, 119, 0.14); }
+      #s3 .arch:nth-child(8) { --tone: #4338ca; --tone-tint: rgba(79, 70, 229, 0.12); }
       #s3 .arch-icon {
-        width: 44px;
-        height: 44px;
-        color: var(--purple);
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--tone-tint);
+        color: var(--tone);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 4px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
       }
       #s3 .arch-icon svg {
-        width: 100%;
-        height: 100%;
+        width: 26px;
+        height: 26px;
       }
       #s3 .arch-num {
+        position: absolute;
+        top: 22px;
+        right: 24px;
         font-family: var(--font-mono);
         font-size: 0.72rem;
         color: var(--muted);
         font-weight: 500;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        z-index: 1;
       }
       #s3 .arch-title {
         font-family: var(--font-head);
-        font-size: 1.08rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: var(--ink);
         letter-spacing: -0.015em;
-        line-height: 1.18;
+        line-height: 1.2;
+        margin-top: 2px;
+        position: relative;
+        z-index: 1;
       }
       #s3 .arch-tagline {
         font-family: var(--font-head);
-        font-size: 0.88rem;
+        font-size: 0.92rem;
         font-style: italic;
         font-weight: 500;
-        color: var(--purple);
+        color: var(--tone);
         line-height: 1.35;
         margin-top: auto;
+        position: relative;
+        z-index: 1;
       }
       #s3 .arch-footer {
         margin-top: 20px;
@@ -3000,7 +3022,7 @@
           </div>
           <div class="card u-card">
             <div class="u-label">Bottom Line Impact</div>
-            <div class="u-stat">Wasted API Budget</div>
+            <div class="u-stat">Wasted AI Budget</div>
             <div class="u-body">
               Recursive prompts and runaway loops blow through token budgets in days. One agentic
               deployment burned weeks of budget on a handful of malformed conversations.
