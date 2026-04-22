@@ -1771,7 +1771,7 @@
    SLIDE 9 — DNI COMPARISON (DARK)
    ========================================================= */
       #s11 .header {
-        margin-top: 20px;
+        margin-top: 14px;
         max-width: 92ch;
       }
       #s11 .header .subtitle {
@@ -1781,23 +1781,22 @@
         font-size: clamp(1.9rem, 3.4vw, 2.8rem);
       }
       #s11 .dni-body {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 40px;
-        margin-top: 28px;
-        flex: 1;
-        min-height: 0;
-        align-items: start;
-      }
-      #s11 .dni-steps {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 26px;
+        margin-top: 24px;
+        flex: 1;
+        min-height: 0;
+      }
+      #s11 .dni-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
       }
       #s11 .dni-step {
         display: grid;
-        grid-template-columns: 44px 1fr;
-        gap: 18px;
+        grid-template-columns: 36px 1fr;
+        gap: 14px;
         align-items: start;
       }
       #s11 .dni-step-num {
@@ -1831,56 +1830,31 @@
         line-height: 1.45;
       }
       #s11 .dni-viz {
+        flex: 1;
+        min-height: 0;
         display: flex;
-        flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         justify-content: center;
-        gap: 14px;
-        height: 100%;
       }
       #s11 .dni-viz .frame {
-        position: relative;
         width: 100%;
-        padding: 44px 22px 22px;
-        border-radius: 16px;
-        background:
-          radial-gradient(ellipse at 0% 0%, rgba(64, 14, 190, 0.14), transparent 55%),
-          radial-gradient(ellipse at 100% 100%, rgba(17, 214, 119, 0.12), transparent 55%),
-          rgba(252, 252, 255, 0.98);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        height: 100%;
+        padding: 14px 18px;
+        border-radius: 12px;
+        background: #ffffff;
         box-shadow:
-          0 0 0 1px rgba(124, 92, 255, 0.2),
-          0 28px 64px rgba(0, 0, 0, 0.45),
-          0 10px 32px rgba(64, 14, 190, 0.22),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-      }
-      #s11 .dni-viz .frame::before {
-        content: 'fig. 01 · DNI architecture';
-        position: absolute;
-        top: 14px;
-        left: 20px;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: rgba(64, 14, 190, 0.62);
-        font-weight: 500;
-      }
-      #s11 .dni-viz .frame::after {
-        content: '';
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--teal);
-        box-shadow: 0 0 10px var(--teal), 0 0 0 3px rgba(17, 214, 119, 0.18);
+          0 0 0 1px rgba(124, 92, 255, 0.18),
+          0 24px 56px rgba(0, 0, 0, 0.4),
+          0 8px 28px rgba(64, 14, 190, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       #s11 .dni-viz img {
         width: 100%;
+        height: 100%;
         max-width: 100%;
-        height: auto;
+        max-height: 100%;
         object-fit: contain;
         display: block;
         filter: saturate(1.04) contrast(1.02);
@@ -1909,19 +1883,56 @@
         align-items: stretch;
       }
       #s12 .std {
-        padding: 32px 26px 28px;
+        padding: 28px 26px 26px;
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: 14px;
         min-height: 0;
         border-radius: 14px;
         position: relative;
         overflow: hidden;
       }
+      #s12 .std-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      #s12 .std-type {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      #s12 .std .stat {
+        margin-top: 8px;
+        padding-top: 14px;
+        border-top: 1px dashed var(--border-l);
+      }
+      #s12 .std .stat .num {
+        font-family: var(--font-head);
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+      }
+      #s12 .std .stat .lbl {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
       #s12 .std .tag {
         margin-top: auto;
       }
-      #s12 .std .std-icon { margin-bottom: 4px; }
+      /* tint the stat number to the card tone */
+      #s12 .std:nth-child(1) .stat .num { color: var(--teal-dark); }
+      #s12 .std:nth-child(2) .stat .num { color: var(--purple); }
+      #s12 .std:nth-child(3) .stat .num { color: #b91c1c; }
+      #s12 .std:nth-child(4) .stat .num { color: #1d4ed8; }
       #s12 .std::before {
         content: '';
         position: absolute;
@@ -3690,24 +3701,52 @@
 
         <div class="cards">
           <div class="card std">
-            <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 L32 8 V20 C32 28 26 34 20 36 C14 34 8 28 8 20 V8 L20 4Z"/><path d="M14 20 L18 24 L26 16"/></svg></div>
+            <div class="std-head">
+              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 L32 8 V20 C32 28 26 34 20 36 C14 34 8 28 8 20 V8 L20 4Z"/><path d="M14 20 L18 24 L26 16"/></svg></div>
+              <span class="std-type">Benchmark</span>
+            </div>
             <div class="name">MLCommons<br />AILuminate</div>
-            <div class="tag">12 hazard categories, enforced at runtime.</div>
+            <div class="stat">
+              <div class="num">12</div>
+              <div class="lbl">Hazard categories</div>
+            </div>
+            <div class="tag">Codified and enforced at runtime.</div>
           </div>
           <div class="card std">
-            <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 V34"/><path d="M10 10 H30"/><path d="M10 10 L6 20 C6 22 8 23 10 23 C12 23 14 22 14 20 L10 10Z"/><path d="M30 10 L26 20 C26 22 28 23 30 23 C32 23 34 22 34 20 L30 10Z"/><path d="M14 34 H26"/></svg></div>
+            <div class="std-head">
+              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 V34"/><path d="M10 10 H30"/><path d="M10 10 L6 20 C6 22 8 23 10 23 C12 23 14 22 14 20 L10 10Z"/><path d="M30 10 L26 20 C26 22 28 23 30 23 C32 23 34 22 34 20 L30 10Z"/><path d="M14 34 H26"/></svg></div>
+              <span class="std-type">Regulation</span>
+            </div>
             <div class="name">EU AI Act</div>
-            <div class="tag">Articles 5&ndash;50 mapped and enforced per inference.</div>
+            <div class="stat">
+              <div class="num">5&ndash;50</div>
+              <div class="lbl">Articles mapped</div>
+            </div>
+            <div class="tag">Enforced on every inference.</div>
           </div>
           <div class="card std">
-            <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 L32 10 V20 C32 28 26 33 20 35 C14 33 8 28 8 20 V10 L20 5Z"/><circle cx="20" cy="20" r="3"/><path d="M20 14 V11 M20 29 V26 M14 20 H11 M29 20 H26"/></svg></div>
+            <div class="std-head">
+              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 L32 10 V20 C32 28 26 33 20 35 C14 33 8 28 8 20 V10 L20 5Z"/><circle cx="20" cy="20" r="3"/><path d="M20 14 V11 M20 29 V26 M14 20 H11 M29 20 H26"/></svg></div>
+              <span class="std-type">Threat model</span>
+            </div>
             <div class="name">OWASP Top 10<br />for LLMs</div>
+            <div class="stat">
+              <div class="num">10</div>
+              <div class="lbl">LLM threat classes</div>
+            </div>
             <div class="tag">Prompt injection, exfiltration, jailbreaks.</div>
           </div>
           <div class="card std">
-            <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="24" height="18" rx="2"/><path d="M13 16 V12 C13 8 16 5 20 5 C24 5 27 8 27 12 V16"/><circle cx="20" cy="24" r="2" fill="currentColor" stroke="none"/><path d="M20 26 V29"/></svg></div>
+            <div class="std-head">
+              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="24" height="18" rx="2"/><path d="M13 16 V12 C13 8 16 5 20 5 C24 5 27 8 27 12 V16"/><circle cx="20" cy="24" r="2" fill="currentColor" stroke="none"/><path d="M20 26 V29"/></svg></div>
+              <span class="std-type">Compliance</span>
+            </div>
             <div class="name">SOC 2 Type II</div>
-            <div class="tag">Audit-ready. Deploy in regulated environments.</div>
+            <div class="stat">
+              <div class="num">Type II</div>
+              <div class="lbl">Audit-ready</div>
+            </div>
+            <div class="tag">Deploy in regulated environments.</div>
           </div>
         </div>
 
