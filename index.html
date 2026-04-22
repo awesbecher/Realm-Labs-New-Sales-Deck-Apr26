@@ -582,6 +582,15 @@
         color: rgba(255, 255, 255, 0.78);
         max-width: 40ch;
       }
+      #s1 .axes {
+        font-family: var(--font-mono);
+        font-size: clamp(0.75rem, 1vw, 0.88rem);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: -6px;
+      }
+
 
       /* =========================================================
    SLIDE 2 — PROBLEM (LIGHT)
@@ -2830,9 +2839,10 @@
 
         <div class="l">
           <span class="pill teal dot">RSAC 2026 · Innovation Sandbox Finalist</span>
-          <h1>Ship AI<br />your customers <em>trust</em>.</h1>
+          <h1>Ship AI<br />that your customers <em>trust</em>.</h1>
           <div class="rule"></div>
-          <p class="tagline">Runtime AI Security &amp; Observability.</p>
+          <p class="tagline">Runtime AI observability &amp; enforcement.</p>
+          <p class="axes">Trust &middot; Security &middot; Compliance &middot; Product quality</p>
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
@@ -2841,13 +2851,17 @@
 
       <!-- ============================================================
      SLIDE 2 — READING THE SIGNAL, NOT THE OUTPUT (DARK)
+     SPEAKER NOTES — "Why don't evals solve this?":
+       - Low coverage: evals only catch known, pre-defined failures. The 90% are unknown unknowns.
+       - Low accuracy: LLM-as-judge evaluators are themselves models. Same failure modes.
+       - Limited samples: typical eval pipelines sample ~10% of traffic. Expensive to scale to 100%.
 ============================================================ -->
       <section class="slide dark" id="s2" data-idx="2">
         <div class="brand-mark"><img src="assets/logo-light.svg" alt="Realm Labs" /></div>
 
         <div class="header">
           <div class="eyebrow">The Signal</div>
-          <h1 class="slide-title">The signal everyone is missing.</h1>
+          <h1 class="slide-title">Your AI is failing silently.</h1>
           <p class="subtitle">
             Output monitoring catches roughly 10% of AI failures. The other 90% stays invisible. No
             error codes. No refused responses. No measurable signal. Just silent user churn and
@@ -3038,7 +3052,7 @@
         <div class="cards">
           <div class="card u-card">
             <div class="u-label">Top Line Impact</div>
-            <div class="u-stat">Lost Sale</div>
+            <div class="u-stat">User Churn</div>
             <div class="u-body">
               Broken chatbots lose customers in silence. No complaint, no ticket. Just lost revenue
               you can never trace back to the source.
@@ -3046,7 +3060,7 @@
           </div>
           <div class="card u-card">
             <div class="u-label">Bottom Line Impact</div>
-            <div class="u-stat">Runaway Cost</div>
+            <div class="u-stat">Wasted API Budget</div>
             <div class="u-body">
               Recursive prompts and runaway loops blow through token budgets in days. One agentic
               deployment burned weeks of budget on a handful of malformed conversations.
