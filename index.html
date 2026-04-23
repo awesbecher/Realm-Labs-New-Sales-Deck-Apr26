@@ -1173,55 +1173,6 @@
         opacity: 0.5;
         z-index: 0;
       }
-      #s3 .detect-head {
-        position: relative;
-        z-index: 1;
-        padding: 12px 26px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        background: rgba(255, 255, 255, 0.015);
-      }
-      #s3 .detect-head .live {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: #6ee7a9;
-        font-weight: 500;
-      }
-      #s3 .detect-head .live::before {
-        content: '';
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--teal);
-        box-shadow:
-          0 0 12px var(--teal),
-          0 0 0 4px rgba(17, 214, 119, 0.2);
-        animation: s3pulse 1.8s ease-in-out infinite;
-      }
-      @keyframes s3pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.55;
-        }
-      }
-      #s3 .detect-head .count {
-        margin-left: auto;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.45);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
       #s3 .rows {
         position: relative;
         z-index: 1;
@@ -1233,110 +1184,77 @@
         min-height: 0;
       }
       #s3 .det-col-head {
-        padding: 12px 16px 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
-        background: rgba(255, 255, 255, 0.015);
+        padding: 18px 22px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.04);
+        border-left: 3px solid var(--tone);
+        background: linear-gradient(180deg, var(--tone-halo), transparent);
       }
       #s3 .det-col-head .col-label {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 0.78rem;
-        letter-spacing: -0.005em;
+        font-size: 0.96rem;
         color: var(--tone);
-        line-height: 1.2;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
       }
       #s3 .det-col-head .col-frame {
         font-family: var(--font-head);
         font-style: italic;
         font-weight: 500;
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.5);
-        margin-top: 2px;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 3px;
       }
       #s3 .det {
-        display: grid;
-        grid-template-columns: 10px auto 20px 1fr;
-        grid-template-rows: auto auto;
-        align-items: center;
-        column-gap: 8px;
-        row-gap: 2px;
-        padding: 8px 14px 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
-        min-height: 0;
+        padding: 16px 22px;
+        border-right: 1px solid rgba(255, 255, 255, 0.04);
+        border-left: 3px solid var(--tone);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
         overflow: hidden;
-      }
-      /* Drop right border on column 4, drop bottom border on row 4 (last row) */
-      #s3 .rows > :nth-child(n + 13) {
-        border-right: 0;
       }
       #s3 .rows > :nth-child(4n) {
         border-bottom: 0;
       }
-      #s3 .det .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--tone);
-        box-shadow:
-          0 0 0 3px var(--tone-halo),
-          0 0 10px var(--tone);
-        justify-self: center;
-      }
-      #s3 .det .num {
-        font-family: var(--font-mono);
-        font-size: 0.64rem;
-        color: rgba(255, 255, 255, 0.38);
-        letter-spacing: 0.18em;
-      }
-      #s3 .det .ico {
-        width: 18px;
-        height: 18px;
-        color: var(--tone);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #s3 .det .ico svg {
-        width: 100%;
-        height: 100%;
+      #s3 .rows > :nth-child(n + 13) {
+        border-right: 0;
       }
       #s3 .det .nm {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 1.08rem;
+        color: #fff;
+        line-height: 1.18;
         letter-spacing: -0.01em;
-        color: #ffffff;
-        line-height: 1.15;
       }
       #s3 .det .tag {
-        grid-column: 1 / -1;
         font-family: var(--font-head);
         font-style: italic;
         font-weight: 500;
-        font-size: 0.72rem;
-        color: var(--tone);
-        line-height: 1.3;
-        margin-top: 2px;
-        padding-left: 18px;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.62);
+        line-height: 1.35;
       }
-      /* Column tones — applied via class on each column's items and header */
+      /* Column tones */
       #s3 .col-says {
         --tone: #fb7185;
-        --tone-halo: rgba(251, 113, 133, 0.15);
+        --tone-halo: rgba(251, 113, 133, 0.18);
       }
       #s3 .col-does {
         --tone: #60a5fa;
-        --tone-halo: rgba(96, 165, 250, 0.18);
+        --tone-halo: rgba(96, 165, 250, 0.2);
       }
       #s3 .col-law {
         --tone: #fbbf24;
-        --tone-halo: rgba(251, 191, 36, 0.18);
+        --tone-halo: rgba(251, 191, 36, 0.2);
       }
       #s3 .col-dark {
         --tone: #34d399;
-        --tone-halo: rgba(52, 211, 153, 0.2);
+        --tone-halo: rgba(52, 211, 153, 0.22);
       }
       #s3 .detect-foot {
         position: relative;
@@ -1344,9 +1262,6 @@
         padding: 12px 26px;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
         background: rgba(255, 255, 255, 0.015);
-        display: flex;
-        align-items: center;
-        gap: 10px;
         font-family: var(--font-body);
         font-size: 0.88rem;
         color: rgba(255, 255, 255, 0.72);
@@ -1354,21 +1269,6 @@
       #s3 .detect-foot strong {
         color: #ffffff;
         font-weight: 600;
-      }
-      #s3 .detect-foot .pin {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #c4b5fd;
-        padding: 4px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(167, 139, 250, 0.35);
-        background: rgba(124, 92, 255, 0.12);
-        margin-left: auto;
       }
 
       /* =========================================================
@@ -3500,7 +3400,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">01 / 18</span>
+        <span class="slide-number">01 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -3582,7 +3482,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">02 / 18</span>
+        <span class="slide-number">02 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -3605,273 +3505,84 @@
         </div>
 
         <div class="detect">
-          <div class="detect-head">
-            <span class="live">Realm &middot; live detection</span>
-            <span class="count">12 signatures observed</span>
-          </div>
           <div class="rows">
-            <!-- Column 1: SAYS -->
             <div class="det-col-head col-says">
               <div class="col-label">What the model SAYS</div>
               <div class="col-frame">The CX failure</div>
             </div>
             <div class="det col-says">
-              <span class="dot"></span>
-              <span class="num">01</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                >
-                  <circle cx="20" cy="20" r="15" />
-                  <circle cx="20" cy="20" r="9" />
-                  <circle cx="20" cy="20" r="4" fill="currentColor" stroke="none" /></svg
-              ></span>
-              <span class="nm">The Confidence Trap</span>
-              <span class="tag">Confidently wrong.</span>
+              <div class="nm">The Confidence Trap</div>
+              <div class="tag">Confidently wrong.</div>
             </div>
             <div class="det col-says">
-              <span class="dot"></span>
-              <span class="num">02</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M10 24 L16 30 L32 12" />
-                  <circle cx="8" cy="12" r="2" />
-                  <circle cx="14" cy="10" r="2" opacity="0.6" /></svg
-              ></span>
-              <span class="nm">The Yes-Man</span>
-              <span class="tag">Agreed with a bad idea.</span>
+              <div class="nm">The Yes-Man</div>
+              <div class="tag">Agreed with a bad idea.</div>
             </div>
             <div class="det col-says">
-              <span class="dot"></span>
-              <span class="num">03</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M8 8 H32 V26 H22 L16 32 V26 H8 Z" />
-                  <path d="M14 16 L26 16 M14 21 L22 21" />
-                  <path d="M6 6 L34 34" stroke-width="2.4" /></svg
-              ></span>
-              <span class="nm">The Off-Brand Slip</span>
-              <span class="tag">Said the wrong thing on record.</span>
+              <div class="nm">The Off-Brand Slip</div>
+              <div class="tag">Said the wrong thing on record.</div>
             </div>
 
-            <!-- Column 2: DOES -->
             <div class="det-col-head col-does">
               <div class="col-label">What the model DOES</div>
               <div class="col-frame">The security failure</div>
             </div>
             <div class="det col-does">
-              <span class="dot"></span>
-              <span class="num">04</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M8 20 L20 20 M20 20 L14 14 M20 20 L14 26" />
-                  <path d="M20 10 L32 10 L32 30 L20 30" opacity="0.6" />
-                  <path d="M24 20 L32 20" /></svg
-              ></span>
-              <span class="nm">The Hijack</span>
-              <span class="tag">Followed the attacker's script.</span>
+              <div class="nm">The Hijack</div>
+              <div class="tag">Followed the attacker's script.</div>
             </div>
             <div class="det col-does">
-              <span class="dot"></span>
-              <span class="num">05</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="6" y="22" width="28" height="10" rx="2" />
-                  <path d="M20 22 V10 M20 10 L14 16 M20 10 L26 16" /></svg
-              ></span>
-              <span class="nm">The Overreach</span>
-              <span class="tag">Took an action it shouldn't have.</span>
+              <div class="nm">The Overreach</div>
+              <div class="tag">Took an action it shouldn't have.</div>
             </div>
             <div class="det col-does">
-              <span class="dot"></span>
-              <span class="num">06</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="14" cy="16" r="5" />
-                  <circle cx="28" cy="22" r="5" opacity="0.6" />
-                  <path d="M6 34 Q14 26 22 32" />
-                  <path d="M18 34 Q26 26 34 32" opacity="0.6" /></svg
-              ></span>
-              <span class="nm">The Confused Deputy</span>
-              <span class="tag">Surfaced data the user can't see.</span>
+              <div class="nm">The Confused Deputy</div>
+              <div class="tag">Surfaced data the user can't see.</div>
             </div>
 
-            <!-- Column 3: LAW -->
             <div class="det-col-head col-law">
               <div class="col-label">Where it breaks the LAW</div>
               <div class="col-frame">The compliance failure</div>
             </div>
             <div class="det col-law">
-              <span class="dot"></span>
-              <span class="num">07</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M20 6 C14 14 10 20 10 26 a10 10 0 0 0 20 0 C30 20 26 14 20 6 Z" /></svg
-              ></span>
-              <span class="nm">The Leak</span>
-              <span class="tag">Exposed PII or regulated data.</span>
+              <div class="nm">The Leak</div>
+              <div class="tag">Exposed PII or regulated data.</div>
             </div>
             <div class="det col-law">
-              <span class="dot"></span>
-              <span class="num">08</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M20 6 V12 M10 16 H30 M12 16 L8 28 M28 16 L32 28" />
-                  <path d="M4 28 H16 M24 28 H36" />
-                  <path d="M14 32 H26" /></svg
-              ></span>
-              <span class="nm">The Unlicensed Advisor</span>
-              <span class="tag">Gave advice only a licensed pro should.</span>
+              <div class="nm">The Unlicensed Advisor</div>
+              <div class="tag">Gave advice only a licensed pro should.</div>
             </div>
             <div class="det col-law">
-              <span class="dot"></span>
-              <span class="num">09</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="14" cy="14" r="5" />
-                  <circle cx="26" cy="14" r="5" opacity="0.55" />
-                  <path d="M6 32 Q14 24 22 32" />
-                  <path d="M18 32 Q26 22 34 32" opacity="0.55" />
-                  <path d="M8 8 L32 32" stroke-width="2.4" /></svg
-              ></span>
-              <span class="nm">The Discriminator</span>
-              <span class="tag">Protected-class harm, at runtime.</span>
+              <div class="nm">The Discriminator</div>
+              <div class="tag">Protected-class harm, at runtime.</div>
             </div>
 
-            <!-- Column 4: DARK -->
             <div class="det-col-head col-dark">
               <div class="col-label">What happens IN THE DARK</div>
               <div class="col-frame">The silent failure</div>
             </div>
             <div class="det col-dark">
-              <span class="dot"></span>
-              <span class="num">10</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M18 8 L8 8 L8 32 L18 32" />
-                  <path d="M16 20 L34 20 M28 14 L34 20 L28 26" /></svg
-              ></span>
-              <span class="nm">The Walkaway</span>
-              <span class="tag">User gave up.</span>
+              <div class="nm">The Walkaway</div>
+              <div class="tag">User gave up.</div>
             </div>
             <div class="det col-dark">
-              <span class="dot"></span>
-              <span class="num">11</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="20" cy="22" r="12" />
-                  <path d="M20 22 L20 14 M20 22 L26 26" />
-                  <path d="M20 6 L20 10 M32 12 L30 14 M8 12 L10 14" /></svg
-              ></span>
-              <span class="nm">The Runaway</span>
-              <span class="tag">Burned tokens with no bound.</span>
+              <div class="nm">The Runaway</div>
+              <div class="tag">Burned tokens with no bound.</div>
             </div>
             <div class="det col-dark">
-              <span class="dot"></span>
-              <span class="num">12</span>
-              <span class="ico"
-                ><svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M4 32 Q20 20 36 32" />
-                  <circle cx="20" cy="18" r="4" />
-                  <path d="M6 8 L34 32" stroke-width="2.4" /></svg
-              ></span>
-              <span class="nm">The Cover-Up</span>
-              <span class="tag">Hid a failure it caused.</span>
+              <div class="nm">The Cover-Up</div>
+              <div class="tag">Hid a failure it caused.</div>
             </div>
           </div>
           <div class="detect-foot">
-            <span
-              >Every failure above is
-              <strong>model-agnostic, invisible to WAF, DLP, and endpoint,</strong> and invisible to
-              the LLM itself. The only place to catch them is inline, at runtime.</span
-            >
-            <span class="pin">MRI, not metal detector</span>
+            Every failure above is
+            <strong>model-agnostic, invisible to WAF, DLP, and endpoint,</strong> and invisible to
+            the LLM itself. The only place to catch them is inline, at runtime.
           </div>
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">03 / 18</span>
+        <span class="slide-number">03 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -3919,7 +3630,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">04 / 18</span>
+        <span class="slide-number">04 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4021,7 +3732,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">05 / 18</span>
+        <span class="slide-number">05 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4081,7 +3792,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">06 / 18</span>
+        <span class="slide-number">06 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4142,7 +3853,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">07 / 18</span>
+        <span class="slide-number">07 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4289,7 +4000,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">08 / 18</span>
+        <span class="slide-number">08 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4405,7 +4116,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">09 / 18</span>
+        <span class="slide-number">09 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4432,7 +4143,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">10 / 18</span>
+        <span class="slide-number">10 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4460,7 +4171,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">11 / 18</span>
+        <span class="slide-number">11 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4487,7 +4198,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">12 / 18</span>
+        <span class="slide-number">12 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4614,7 +4325,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">13 / 18</span>
+        <span class="slide-number">13 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4754,152 +4465,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">14 / 18</span>
-      </section>
-
-      <!-- ============================================================
-     SLIDE 10 — STANDARDS (LIGHT)
-============================================================ -->
-      <section class="slide light" id="s12" data-idx="12">
-        <div class="brand-mark">
-          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
-            ><img src="assets/logo-dark.svg" alt="Realm Labs"
-          /></a>
-        </div>
-
-        <div class="header">
-          <div class="eyebrow">Trust infrastructure</div>
-          <h1 class="slide-title">Standards-based safety. At runtime.</h1>
-          <p class="subtitle">
-            Every Realm deployment codifies MLCommons, EU AI Act, OWASP, and SOC 2 into enforceable
-            runtime policy. Not a checklist you have to maintain.
-          </p>
-        </div>
-
-        <div class="cards">
-          <div class="card std">
-            <div class="std-head">
-              <div class="std-icon">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M20 4 L32 8 V20 C32 28 26 34 20 36 C14 34 8 28 8 20 V8 L20 4Z" />
-                  <path d="M14 20 L18 24 L26 16" />
-                </svg>
-              </div>
-              <span class="std-type">Benchmark</span>
-            </div>
-            <div class="name">MLCommons<br />AILuminate</div>
-            <div class="stat">
-              <div class="num">12</div>
-              <div class="lbl">Hazard categories</div>
-            </div>
-            <div class="tag">Codified and enforced at runtime.</div>
-          </div>
-          <div class="card std">
-            <div class="std-head">
-              <div class="std-icon">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M20 6 V34" />
-                  <path d="M10 10 H30" />
-                  <path d="M10 10 L6 20 C6 22 8 23 10 23 C12 23 14 22 14 20 L10 10Z" />
-                  <path d="M30 10 L26 20 C26 22 28 23 30 23 C32 23 34 22 34 20 L30 10Z" />
-                  <path d="M14 34 H26" />
-                </svg>
-              </div>
-              <span class="std-type">Regulation</span>
-            </div>
-            <div class="name">EU AI Act</div>
-            <div class="stat">
-              <div class="num">5&ndash;50</div>
-              <div class="lbl">Articles mapped</div>
-            </div>
-            <div class="tag">Enforced on every inference.</div>
-          </div>
-          <div class="card std">
-            <div class="std-head">
-              <div class="std-icon">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M20 5 L32 10 V20 C32 28 26 33 20 35 C14 33 8 28 8 20 V10 L20 5Z" />
-                  <circle cx="20" cy="20" r="3" />
-                  <path d="M20 14 V11 M20 29 V26 M14 20 H11 M29 20 H26" />
-                </svg>
-              </div>
-              <span class="std-type">Threat model</span>
-            </div>
-            <div class="name">OWASP Top 10<br />for LLMs</div>
-            <div class="stat">
-              <div class="num">10</div>
-              <div class="lbl">LLM threat classes</div>
-            </div>
-            <div class="tag">Prompt injection, exfiltration, jailbreaks.</div>
-          </div>
-          <div class="card std">
-            <div class="std-head">
-              <div class="std-icon">
-                <svg
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="8" y="16" width="24" height="18" rx="2" />
-                  <path d="M13 16 V12 C13 8 16 5 20 5 C24 5 27 8 27 12 V16" />
-                  <circle cx="20" cy="24" r="2" fill="currentColor" stroke="none" />
-                  <path d="M20 26 V29" />
-                </svg>
-              </div>
-              <span class="std-type">Compliance</span>
-            </div>
-            <div class="name">SOC 2 Type II</div>
-            <div class="stat">
-              <div class="num">Type II</div>
-              <div class="lbl">Audit-ready</div>
-            </div>
-            <div class="tag">Deploy in regulated environments.</div>
-          </div>
-        </div>
-
-        <!-- SPEAKER NOTES - "Why DNI, not LLM-as-a-judge?" (back-pocket talking point):
-             - Reads thoughts, not just text: LLM-as-judge only sees prompt + response. DNI reads internal activations mid-inference; catches intent a rephrased prompt can't hide.
-             - Deterministic, not hallucinated: purpose-built classifiers; same input -> same verdict. LLM judges drift, contradict themselves, hallucinate failures.
-             - <50ms, not 200-500ms+: DNI runs inline inside the forward pass. A secondary LLM call doubles latency/cost on every inference and still misses the signals DNI sees.
-        -->
-        <div class="policy-row">
-          <span class="lbl">Plus</span>
-          <span class="sep"></span>
-          <span class="hd">Your policy, codified</span>
-          <div class="chips">
-            <span>Brand voice</span>
-            <span>Legal risk</span>
-            <span>Competitor mentions</span>
-            <span>Internal IP</span>
-          </div>
-        </div>
-
-        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">15 / 18</span>
+        <span class="slide-number">14 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -4973,7 +4539,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">16 / 18</span>
+        <span class="slide-number">15 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -5122,7 +4688,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">17 / 18</span>
+        <span class="slide-number">16 / 17</span>
       </section>
 
       <!-- ============================================================
@@ -5182,7 +4748,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">18 / 18</span>
+        <span class="slide-number">17 / 17</span>
       </section>
     </div>
 
