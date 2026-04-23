@@ -11,14 +11,56 @@
     <meta property="og:description" content="Runtime AI Security & Observability." />
     <title>Realm Labs: Ship AI Your Customers Trust</title>
     <!-- Font preloads: prevent system-font fallback during rapid PDF export -->
-    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Regular.otf" crossorigin />
-    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Medium.otf" crossorigin />
-    <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Semibold.otf" crossorigin />
+    <link
+      rel="preload"
+      as="font"
+      type="font/otf"
+      href="assets/fonts/Rebond-Regular.otf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/otf"
+      href="assets/fonts/Rebond-Medium.otf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/otf"
+      href="assets/fonts/Rebond-Semibold.otf"
+      crossorigin
+    />
     <link rel="preload" as="font" type="font/otf" href="assets/fonts/Rebond-Bold.otf" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Regular.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Italic.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Satoshi-Bold.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/otf" href="assets/fonts/GeistMono-Regular.otf" crossorigin />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/Satoshi-Regular.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/Satoshi-Italic.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="assets/fonts/Satoshi-Bold.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/otf"
+      href="assets/fonts/GeistMono-Regular.otf"
+      crossorigin
+    />
     <style>
       /* ============ BRAND FONTS ============ */
       @font-face {
@@ -150,10 +192,8 @@
         margin: auto;
         overflow: hidden;
         /* Ambient brand-accent glow anchored to top-right corner */
-        background:
-          radial-gradient(ellipse at 92% 4%, rgba(64, 14, 190, 0.10) 0%, transparent 42%),
-          radial-gradient(ellipse at 4% 96%, rgba(17, 214, 119, 0.05) 0%, transparent 48%),
-          #0a0a0c;
+        background: radial-gradient(ellipse at 92% 4%, rgba(64, 14, 190, 0.1) 0%, transparent 42%),
+          radial-gradient(ellipse at 4% 96%, rgba(17, 214, 119, 0.05) 0%, transparent 48%), #0a0a0c;
       }
 
       /* Each slide = 16:9, sized via aspect-ratio box */
@@ -532,8 +572,7 @@
         inset: 0;
         z-index: 2;
         pointer-events: none;
-        background:
-          linear-gradient(
+        background: linear-gradient(
             90deg,
             rgba(6, 9, 18, 0.96) 0%,
             rgba(6, 9, 18, 0.82) 28%,
@@ -601,7 +640,6 @@
         color: rgba(255, 255, 255, 0.55);
         margin-top: -6px;
       }
-
 
       /* =========================================================
    SLIDE 2 — PROBLEM (LIGHT)
@@ -1107,8 +1145,7 @@
         min-height: 0;
         display: flex;
         flex-direction: column;
-        background:
-          radial-gradient(ellipse at 12% 0%, rgba(64, 14, 190, 0.28) 0%, transparent 60%),
+        background: radial-gradient(ellipse at 12% 0%, rgba(64, 14, 190, 0.28) 0%, transparent 60%),
           radial-gradient(ellipse at 96% 100%, rgba(17, 214, 119, 0.18) 0%, transparent 55%),
           linear-gradient(180deg, #110d22 0%, #0a0717 100%);
         border-radius: 16px;
@@ -1126,14 +1163,13 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background:
-          repeating-linear-gradient(
-            180deg,
-            transparent 0,
-            transparent 3px,
-            rgba(255, 255, 255, 0.015) 3px,
-            rgba(255, 255, 255, 0.015) 4px
-          );
+        background: repeating-linear-gradient(
+          180deg,
+          transparent 0,
+          transparent 3px,
+          rgba(255, 255, 255, 0.015) 3px,
+          rgba(255, 255, 255, 0.015) 4px
+        );
         opacity: 0.5;
         z-index: 0;
       }
@@ -1164,12 +1200,19 @@
         height: 8px;
         border-radius: 50%;
         background: var(--teal);
-        box-shadow: 0 0 12px var(--teal), 0 0 0 4px rgba(17, 214, 119, 0.2);
+        box-shadow:
+          0 0 12px var(--teal),
+          0 0 0 4px rgba(17, 214, 119, 0.2);
         animation: s3pulse 1.8s ease-in-out infinite;
       }
       @keyframes s3pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.55; }
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.55;
+        }
       }
       #s3 .detect-head .count {
         margin-left: auto;
@@ -1183,71 +1226,118 @@
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto repeat(3, 1fr);
+        grid-auto-flow: column;
         flex: 1;
         min-height: 0;
       }
+      #s3 .det-col-head {
+        padding: 12px 16px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.015);
+      }
+      #s3 .det-col-head .col-label {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: -0.005em;
+        color: var(--tone);
+        line-height: 1.2;
+      }
+      #s3 .det-col-head .col-frame {
+        font-family: var(--font-head);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 2px;
+      }
       #s3 .det {
         display: grid;
-        grid-template-columns: 14px 28px 26px 1fr auto;
+        grid-template-columns: 10px auto 20px 1fr;
+        grid-template-rows: auto auto;
         align-items: center;
-        column-gap: 14px;
-        padding: 10px 22px;
+        column-gap: 8px;
+        row-gap: 2px;
+        padding: 8px 14px 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         border-right: 1px solid rgba(255, 255, 255, 0.05);
         min-height: 0;
         overflow: hidden;
       }
-      #s3 .det:nth-child(2n) { border-right: 0; }
-      #s3 .det:nth-last-child(-n+2) { border-bottom: 0; }
+      /* Drop right border on column 4, drop bottom border on row 4 (last row) */
+      #s3 .rows > :nth-child(n + 13) {
+        border-right: 0;
+      }
+      #s3 .rows > :nth-child(4n) {
+        border-bottom: 0;
+      }
       #s3 .det .dot {
-        width: 9px;
-        height: 9px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: var(--tone);
-        box-shadow: 0 0 0 4px var(--tone-halo), 0 0 12px var(--tone);
+        box-shadow:
+          0 0 0 3px var(--tone-halo),
+          0 0 10px var(--tone);
         justify-self: center;
       }
       #s3 .det .num {
         font-family: var(--font-mono);
-        font-size: 0.68rem;
+        font-size: 0.64rem;
         color: rgba(255, 255, 255, 0.38);
-        letter-spacing: 0.22em;
+        letter-spacing: 0.18em;
       }
       #s3 .det .ico {
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         color: var(--tone);
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      #s3 .det .ico svg { width: 100%; height: 100%; }
+      #s3 .det .ico svg {
+        width: 100%;
+        height: 100%;
+      }
       #s3 .det .nm {
         font-family: var(--font-head);
         font-weight: 700;
-        font-size: 0.98rem;
+        font-size: 0.85rem;
         letter-spacing: -0.01em;
         color: #ffffff;
+        line-height: 1.15;
       }
       #s3 .det .tag {
+        grid-column: 1 / -1;
         font-family: var(--font-head);
         font-style: italic;
         font-weight: 500;
-        font-size: 0.85rem;
+        font-size: 0.72rem;
         color: var(--tone);
-        text-align: right;
-        white-space: nowrap;
+        line-height: 1.3;
+        margin-top: 2px;
+        padding-left: 18px;
       }
-      /* per-row tones (slightly brighter for dark bg) */
-      #s3 .det:nth-child(1) { --tone: #fb7185; --tone-halo: rgba(251, 113, 133, 0.15); }
-      #s3 .det:nth-child(2) { --tone: #fbbf24; --tone-halo: rgba(251, 191, 36, 0.16); }
-      #s3 .det:nth-child(3) { --tone: #60a5fa; --tone-halo: rgba(96, 165, 250, 0.16); }
-      #s3 .det:nth-child(4) { --tone: #a78bfa; --tone-halo: rgba(167, 139, 250, 0.18); }
-      #s3 .det:nth-child(5) { --tone: #94a3b8; --tone-halo: rgba(148, 163, 184, 0.16); }
-      #s3 .det:nth-child(6) { --tone: #f472b6; --tone-halo: rgba(244, 114, 182, 0.16); }
-      #s3 .det:nth-child(7) { --tone: #34d399; --tone-halo: rgba(52, 211, 153, 0.18); }
-      #s3 .det:nth-child(8) { --tone: #818cf8; --tone-halo: rgba(129, 140, 248, 0.18); }
+      /* Column tones — applied via class on each column's items and header */
+      #s3 .col-says {
+        --tone: #fb7185;
+        --tone-halo: rgba(251, 113, 133, 0.15);
+      }
+      #s3 .col-does {
+        --tone: #60a5fa;
+        --tone-halo: rgba(96, 165, 250, 0.18);
+      }
+      #s3 .col-law {
+        --tone: #fbbf24;
+        --tone-halo: rgba(251, 191, 36, 0.18);
+      }
+      #s3 .col-dark {
+        --tone: #34d399;
+        --tone-halo: rgba(52, 211, 153, 0.2);
+      }
       #s3 .detect-foot {
         position: relative;
         z-index: 1;
@@ -1261,7 +1351,10 @@
         font-size: 0.88rem;
         color: rgba(255, 255, 255, 0.72);
       }
-      #s3 .detect-foot strong { color: #ffffff; font-weight: 600; }
+      #s3 .detect-foot strong {
+        color: #ffffff;
+        font-weight: 600;
+      }
       #s3 .detect-foot .pin {
         display: inline-flex;
         align-items: center;
@@ -1278,7 +1371,7 @@
         margin-left: auto;
       }
 
-            /* =========================================================
+      /* =========================================================
    SLIDE 7 — HOW IT WORKS (LIGHT)
    ========================================================= */
       #s6 .header {
@@ -1421,9 +1514,13 @@
         overflow: hidden;
       }
       #s7 .dni-pillar:nth-child(1) {
-        background:
-          radial-gradient(ellipse at 0% 0%, rgba(139, 92, 246, 0.38) 0%, transparent 60%),
-          linear-gradient(160deg, rgba(64, 14, 190, 0.4) 0%, rgba(26, 12, 58, 0.88) 60%, rgba(18, 10, 40, 0.9) 100%);
+        background: radial-gradient(ellipse at 0% 0%, rgba(139, 92, 246, 0.38) 0%, transparent 60%),
+          linear-gradient(
+            160deg,
+            rgba(64, 14, 190, 0.4) 0%,
+            rgba(26, 12, 58, 0.88) 60%,
+            rgba(18, 10, 40, 0.9) 100%
+          );
         border: 1px solid rgba(167, 139, 250, 0.45);
         box-shadow: 0 14px 44px rgba(64, 14, 190, 0.3);
       }
@@ -1431,9 +1528,13 @@
         color: #c4b5fd;
       }
       #s7 .dni-pillar:nth-child(3) {
-        background:
-          radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.36) 0%, transparent 60%),
-          linear-gradient(160deg, rgba(59, 130, 246, 0.32) 0%, rgba(10, 28, 48, 0.88) 60%, rgba(8, 20, 36, 0.9) 100%);
+        background: radial-gradient(ellipse at 0% 0%, rgba(56, 189, 248, 0.36) 0%, transparent 60%),
+          linear-gradient(
+            160deg,
+            rgba(59, 130, 246, 0.32) 0%,
+            rgba(10, 28, 48, 0.88) 60%,
+            rgba(8, 20, 36, 0.9) 100%
+          );
         border: 1px solid rgba(56, 189, 248, 0.48);
         box-shadow: 0 14px 44px rgba(56, 189, 248, 0.26);
       }
@@ -1441,9 +1542,13 @@
         color: #7dd3fc;
       }
       #s7 .dni-pillar.highlight {
-        background:
-          radial-gradient(ellipse at 0% 0%, rgba(52, 241, 166, 0.36) 0%, transparent 60%),
-          linear-gradient(160deg, rgba(17, 214, 119, 0.32) 0%, rgba(8, 40, 28, 0.88) 60%, rgba(6, 28, 20, 0.9) 100%);
+        background: radial-gradient(ellipse at 0% 0%, rgba(52, 241, 166, 0.36) 0%, transparent 60%),
+          linear-gradient(
+            160deg,
+            rgba(17, 214, 119, 0.32) 0%,
+            rgba(8, 40, 28, 0.88) 60%,
+            rgba(6, 28, 20, 0.9) 100%
+          );
         border: 1px solid rgba(17, 214, 119, 0.55);
         box-shadow: 0 18px 56px rgba(17, 214, 119, 0.3);
       }
@@ -1921,7 +2026,10 @@
         justify-content: center;
       }
       /* Inline DNI diagram (replaces PNG) — floats on dark slide */
-      #s11 .dni-viz .frame, #s11 .dni-viz img { display: none; }
+      #s11 .dni-viz .frame,
+      #s11 .dni-viz img {
+        display: none;
+      }
       #s11 .dni-diagram {
         width: 100%;
         height: 100%;
@@ -1954,7 +2062,9 @@
         height: 8px;
         border-radius: 50%;
         background: var(--teal);
-        box-shadow: 0 0 10px var(--teal), 0 0 0 3px rgba(17, 214, 119, 0.18);
+        box-shadow:
+          0 0 10px var(--teal),
+          0 0 0 3px rgba(17, 214, 119, 0.18);
       }
       #s11 .dni-card-head .t {
         font-family: var(--font-mono);
@@ -2038,8 +2148,12 @@
         display: block;
         margin-bottom: 6px;
       }
-      #s11 .dni-bub.ai .ico { color: #d8c8ff; }
-      #s11 .dni-bub .msg { display: block; }
+      #s11 .dni-bub.ai .ico {
+        color: #d8c8ff;
+      }
+      #s11 .dni-bub .msg {
+        display: block;
+      }
       #s11 .dni-stages {
         position: relative;
         padding: 38px 16px 26px;
@@ -2076,7 +2190,11 @@
         position: relative;
         width: 68px;
         height: 76px;
-        background: linear-gradient(140deg, rgba(196, 181, 253, 0.32) 0%, rgba(124, 92, 255, 0.18) 100%);
+        background: linear-gradient(
+          140deg,
+          rgba(196, 181, 253, 0.32) 0%,
+          rgba(124, 92, 255, 0.18) 100%
+        );
         border: 1px solid rgba(167, 139, 250, 0.45);
         border-radius: 7px;
         transform: skewY(-10deg);
@@ -2139,7 +2257,8 @@
         font-weight: 800;
       }
       @keyframes dnirisk {
-        0%, 100% {
+        0%,
+        100% {
           box-shadow:
             0 0 0 5px rgba(239, 68, 68, 0.25),
             0 0 18px rgba(239, 68, 68, 0.7),
@@ -2170,8 +2289,12 @@
         -webkit-backdrop-filter: blur(10px);
         color: rgba(255, 255, 255, 0.9);
       }
-      #s11 .dni-ov.risk { border-color: rgba(239, 68, 68, 0.28); }
-      #s11 .dni-ov.control { border-color: rgba(17, 214, 119, 0.3); }
+      #s11 .dni-ov.risk {
+        border-color: rgba(239, 68, 68, 0.28);
+      }
+      #s11 .dni-ov.control {
+        border-color: rgba(17, 214, 119, 0.3);
+      }
       #s11 .dni-ov .ic {
         width: 34px;
         height: 34px;
@@ -2181,7 +2304,10 @@
         justify-content: center;
         flex-shrink: 0;
       }
-      #s11 .dni-ov .ic svg { width: 18px; height: 18px; }
+      #s11 .dni-ov .ic svg {
+        width: 18px;
+        height: 18px;
+      }
       #s11 .dni-ov.risk .ic {
         background: rgba(239, 68, 68, 0.15);
         color: #fca5a5;
@@ -2277,10 +2403,18 @@
         margin-top: auto;
       }
       /* tint the stat number to the card tone */
-      #s12 .std:nth-child(1) .stat .num { color: var(--teal-dark); }
-      #s12 .std:nth-child(2) .stat .num { color: var(--purple); }
-      #s12 .std:nth-child(3) .stat .num { color: #b91c1c; }
-      #s12 .std:nth-child(4) .stat .num { color: #1d4ed8; }
+      #s12 .std:nth-child(1) .stat .num {
+        color: var(--teal-dark);
+      }
+      #s12 .std:nth-child(2) .stat .num {
+        color: var(--purple);
+      }
+      #s12 .std:nth-child(3) .stat .num {
+        color: #b91c1c;
+      }
+      #s12 .std:nth-child(4) .stat .num {
+        color: #1d4ed8;
+      }
       #s12 .std::before {
         content: '';
         position: absolute;
@@ -2289,10 +2423,18 @@
         width: 4px;
         height: 100%;
       }
-      #s12 .std:nth-child(1)::before { background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%); }
-      #s12 .std:nth-child(2)::before { background: linear-gradient(180deg, var(--purple-2) 0%, var(--purple) 100%); }
-      #s12 .std:nth-child(3)::before { background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%); }
-      #s12 .std:nth-child(4)::before { background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%); }
+      #s12 .std:nth-child(1)::before {
+        background: linear-gradient(180deg, var(--teal) 0%, var(--teal-dark) 100%);
+      }
+      #s12 .std:nth-child(2)::before {
+        background: linear-gradient(180deg, var(--purple-2) 0%, var(--purple) 100%);
+      }
+      #s12 .std:nth-child(3)::before {
+        background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+      }
+      #s12 .std:nth-child(4)::before {
+        background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+      }
       #s12 .std-icon {
         width: 44px;
         height: 44px;
@@ -2302,10 +2444,22 @@
         justify-content: center;
         flex-shrink: 0;
       }
-      #s12 .std:nth-child(1) .std-icon { background: rgba(17, 214, 119, 0.1); color: var(--teal-dark); }
-      #s12 .std:nth-child(2) .std-icon { background: rgba(64, 14, 190, 0.08); color: var(--purple); }
-      #s12 .std:nth-child(3) .std-icon { background: rgba(239, 68, 68, 0.09); color: #b91c1c; }
-      #s12 .std:nth-child(4) .std-icon { background: rgba(59, 130, 246, 0.1); color: #1d4ed8; }
+      #s12 .std:nth-child(1) .std-icon {
+        background: rgba(17, 214, 119, 0.1);
+        color: var(--teal-dark);
+      }
+      #s12 .std:nth-child(2) .std-icon {
+        background: rgba(64, 14, 190, 0.08);
+        color: var(--purple);
+      }
+      #s12 .std:nth-child(3) .std-icon {
+        background: rgba(239, 68, 68, 0.09);
+        color: #b91c1c;
+      }
+      #s12 .std:nth-child(4) .std-icon {
+        background: rgba(59, 130, 246, 0.1);
+        color: #1d4ed8;
+      }
       #s12 .std-icon svg {
         width: 26px;
         height: 26px;
@@ -2540,7 +2694,9 @@
         background-repeat: no-repeat;
         background-size: 0% 1px;
         background-position: 0% 100%;
-        transition: background-size 0.2s ease, color 0.2s ease;
+        transition:
+          background-size 0.2s ease,
+          color 0.2s ease;
       }
       #s14 .leader .name a:hover,
       #s14 .adv-name a:hover {
@@ -2854,7 +3010,9 @@
         border-color: rgba(15, 23, 42, 0.03);
       }
       /* Don't let the vignette overlay swallow the existing dark-slide orb pseudo */
-      .slide.dark::before { z-index: 0; }
+      .slide.dark::before {
+        z-index: 0;
+      }
 
       /* Glass layering: microscopic top-border highlight on dark cards */
       .slide.dark .card,
@@ -2883,7 +3041,9 @@
       .slide h1 {
         line-height: 1.05;
       }
-      #s1 h1 { line-height: 1.02; }
+      #s1 h1 {
+        line-height: 1.02;
+      }
 
       /* Grid orphans — prevent runt words in headlines and paragraphs inside grids */
       .slide h1,
@@ -2915,8 +3075,12 @@
       #s2 .signals {
         column-gap: clamp(24px, 3vw, 48px);
       }
-      #s2 .signal.legacy { padding-left: 8px; }
-      #s2 .signal.dni { padding-right: 8px; }
+      #s2 .signal.legacy {
+        padding-left: 8px;
+      }
+      #s2 .signal.dni {
+        padding-right: 8px;
+      }
 
       /* Slide 4: cinematic Forrester pull-quote */
       #s4 .forrester .quote-mark {
@@ -2942,14 +3106,13 @@
       /* ---- §5 Asset Fidelity & Data Viz ---- */
 
       /* Strict SVG icon sizing fallback — prevents blow-up during PDF raster */
-      img[src$=".svg"].icon,
-      img[src$=".svg"][class*="-ico"],
-      img[src$=".svg"][class*="-icon"] {
+      img[src$='.svg'].icon,
+      img[src$='.svg'][class*='-ico'],
+      img[src$='.svg'][class*='-icon'] {
         display: block;
         max-width: 100%;
         height: auto;
       }
-
 
       /* Neural diagram glow on Slide 7 (DNI pillars) — highlight the active pillar */
       #s7 .dni-pillar.highlight {
@@ -2968,8 +3131,12 @@
       /* ---- §6 Peripheral Restraint ---- */
 
       /* Whisper the brand mark — 20% smaller, lower opacity */
-      .brand-mark { opacity: 0.55; }
-      .brand-mark img { height: 18px; }
+      .brand-mark {
+        opacity: 0.55;
+      }
+      .brand-mark img {
+        height: 18px;
+      }
 
       /* Footer + slide number: restrained opacity, exact coordinates */
       .footer-copy,
@@ -2982,10 +3149,21 @@
       }
 
       /* Mathematical safe zone — lock perimeter anchors at exact coords across all slides */
-      .slide { padding: clamp(44px, 5vh, 64px) clamp(64px, 7vw, 96px); }
-      .brand-mark { top: clamp(28px, 3.5vh, 40px); left: clamp(44px, 5vw, 64px); }
-      .footer-copy { bottom: clamp(22px, 2.8vh, 32px); left: clamp(44px, 5vw, 64px); }
-      .slide-number { bottom: clamp(22px, 2.8vh, 32px); right: clamp(44px, 5vw, 64px); }
+      .slide {
+        padding: clamp(44px, 5vh, 64px) clamp(64px, 7vw, 96px);
+      }
+      .brand-mark {
+        top: clamp(28px, 3.5vh, 40px);
+        left: clamp(44px, 5vw, 64px);
+      }
+      .footer-copy {
+        bottom: clamp(22px, 2.8vh, 32px);
+        left: clamp(44px, 5vw, 64px);
+      }
+      .slide-number {
+        bottom: clamp(22px, 2.8vh, 32px);
+        right: clamp(44px, 5vw, 64px);
+      }
 
       /* Print-mode pass-through for new rules */
       @media print {
@@ -3243,6 +3421,54 @@
       .slide #s8 .integrations .lbl {
         font-size: 0.75rem;
       }
+
+      /* ============ PRISM PRODUCT SLIDES (inserted after The Platform) ============ */
+      .prism-slide .header {
+        max-width: 38%;
+        flex-shrink: 0;
+      }
+      .prism-slide .header .subtitle {
+        max-width: 44ch;
+      }
+      .prism-slide .prism-body {
+        display: grid;
+        grid-template-columns: minmax(0, 38%) minmax(0, 62%);
+        gap: clamp(28px, 3.5vw, 56px);
+        align-items: center;
+        flex: 1;
+        min-height: 0;
+      }
+      .prism-slide .prism-body .header {
+        max-width: none;
+      }
+      .prism-slide .screen-frame {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #0d0a1f;
+        border: 1px solid var(--border-l);
+        box-shadow:
+          0 1px 0 rgba(255, 255, 255, 0.6) inset,
+          0 20px 40px -12px rgba(15, 23, 42, 0.18),
+          0 8px 20px -6px rgba(64, 14, 190, 0.08);
+      }
+      .prism-slide .screen-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      /* Green kicker variant for product slides (Prism overview + evidence) */
+      .slide.light.prism-slide.kicker-green .eyebrow {
+        color: var(--teal-dark);
+      }
+      .slide.light.prism-slide.kicker-green .eyebrow::before {
+        background: var(--teal-dark);
+      }
+      @media print {
+        .prism-slide .screen-frame {
+          box-shadow: 0 0 0 1px #e6e4ee !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -3259,7 +3485,11 @@
         </div>
         <div class="scrim"></div>
 
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="l">
           <span class="pill teal dot">RSAC 2026 · Innovation Sandbox Finalist</span>
@@ -3270,7 +3500,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">01 / 15</span>
+        <span class="slide-number">01 / 18</span>
       </section>
 
       <!-- ============================================================
@@ -3281,7 +3511,11 @@
        - Limited samples: typical eval pipelines sample ~10% of traffic. Expensive to scale to 100%.
 ============================================================ -->
       <section class="slide dark" id="s2" data-idx="2">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Signal</div>
@@ -3330,7 +3564,8 @@
             </div>
             <div class="readout flat">
               <div class="readout-row">
-                <span class="marker hallucinates">HALLUCINATES</span><span class="bar bar-long"></span>
+                <span class="marker hallucinates">HALLUCINATES</span
+                ><span class="bar bar-long"></span>
               </div>
               <div class="readout-row">
                 <span class="marker drifts">DRIFTS</span><span class="bar bar-mid"></span>
@@ -3347,99 +3582,307 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">02 / 15</span>
+        <span class="slide-number">02 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 4 — THE 8 ARCHETYPES (LIGHT) - NEW
 ============================================================ -->
       <section class="slide light" id="s3" data-idx="3">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Invisible Failures</div>
-          <h1 class="slide-title">The 8 ways your AI silently fails.</h1>
+          <h1 class="slide-title">The failures your stack can't see.</h1>
+          <p class="subtitle">
+            Logs, LLM-as-judge, and guardrails were built for the last problem. These are the silent
+            failures in production AI today.
+          </p>
         </div>
 
         <div class="detect">
           <div class="detect-head">
             <span class="live">Realm &middot; live detection</span>
-            <span class="count">8 signatures observed</span>
+            <span class="count">12 signatures observed</span>
           </div>
           <div class="rows">
-            <div class="det">
+            <!-- Column 1: SAYS -->
+            <div class="det-col-head col-says">
+              <div class="col-label">What the model SAYS</div>
+              <div class="col-frame">The CX failure</div>
+            </div>
+            <div class="det col-says">
               <span class="dot"></span>
               <span class="num">01</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="9"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></svg></span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                >
+                  <circle cx="20" cy="20" r="15" />
+                  <circle cx="20" cy="20" r="9" />
+                  <circle cx="20" cy="20" r="4" fill="currentColor" stroke="none" /></svg
+              ></span>
               <span class="nm">The Confidence Trap</span>
               <span class="tag">Confidently wrong.</span>
             </div>
-            <div class="det">
+            <div class="det col-says">
               <span class="dot"></span>
               <span class="num">02</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14 L30 14 M25 9 L30 14 L25 19"/><path d="M32 26 L10 26 M15 21 L10 26 L15 31"/></svg></span>
-              <span class="nm">The Silent Mismatch</span>
-              <span class="tag">Answered the wrong question.</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M10 24 L16 30 L32 12" />
+                  <circle cx="8" cy="12" r="2" />
+                  <circle cx="14" cy="10" r="2" opacity="0.6" /></svg
+              ></span>
+              <span class="nm">The Yes-Man</span>
+              <span class="tag">Agreed with a bad idea.</span>
             </div>
-            <div class="det">
+            <div class="det col-says">
               <span class="dot"></span>
               <span class="num">03</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 30 C10 30, 14 22, 22 18 S34 10, 36 6"/><path d="M36 6 L31 7 M36 6 L35 11"/></svg></span>
-              <span class="nm">The Drift</span>
-              <span class="tag">Wandered off task.</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 8 H32 V26 H22 L16 32 V26 H8 Z" />
+                  <path d="M14 16 L26 16 M14 21 L22 21" />
+                  <path d="M6 6 L34 34" stroke-width="2.4" /></svg
+              ></span>
+              <span class="nm">The Off-Brand Slip</span>
+              <span class="tag">Said the wrong thing on record.</span>
             </div>
-            <div class="det">
+
+            <!-- Column 2: DOES -->
+            <div class="det-col-head col-does">
+              <div class="col-label">What the model DOES</div>
+              <div class="col-frame">The security failure</div>
+            </div>
+            <div class="det col-does">
               <span class="dot"></span>
               <span class="num">04</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 20 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"/><path d="M20 20 m-8 0 a8 8 0 1 0 16 0"/><path d="M20 20 m-13 0 a13 13 0 1 0 16 -12"/></svg></span>
-              <span class="nm">The Death Spiral</span>
-              <span class="tag">Loops, never resolves.</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M8 20 L20 20 M20 20 L14 14 M20 20 L14 26" />
+                  <path d="M20 10 L32 10 L32 30 L20 30" opacity="0.6" />
+                  <path d="M24 20 L32 20" /></svg
+              ></span>
+              <span class="nm">The Hijack</span>
+              <span class="tag">Followed the attacker's script.</span>
             </div>
-            <div class="det">
+            <div class="det col-does">
               <span class="dot"></span>
               <span class="num">05</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8 L8 8 L8 32 L18 32"/><path d="M16 20 L34 20 M28 14 L34 20 L28 26"/></svg></span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="6" y="22" width="28" height="10" rx="2" />
+                  <path d="M20 22 V10 M20 10 L14 16 M20 10 L26 16" /></svg
+              ></span>
+              <span class="nm">The Overreach</span>
+              <span class="tag">Took an action it shouldn't have.</span>
+            </div>
+            <div class="det col-does">
+              <span class="dot"></span>
+              <span class="num">06</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="14" cy="16" r="5" />
+                  <circle cx="28" cy="22" r="5" opacity="0.6" />
+                  <path d="M6 34 Q14 26 22 32" />
+                  <path d="M18 34 Q26 26 34 32" opacity="0.6" /></svg
+              ></span>
+              <span class="nm">The Confused Deputy</span>
+              <span class="tag">Surfaced data the user can't see.</span>
+            </div>
+
+            <!-- Column 3: LAW -->
+            <div class="det-col-head col-law">
+              <div class="col-label">Where it breaks the LAW</div>
+              <div class="col-frame">The compliance failure</div>
+            </div>
+            <div class="det col-law">
+              <span class="dot"></span>
+              <span class="num">07</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 C14 14 10 20 10 26 a10 10 0 0 0 20 0 C30 20 26 14 20 6 Z" /></svg
+              ></span>
+              <span class="nm">The Leak</span>
+              <span class="tag">Exposed PII or regulated data.</span>
+            </div>
+            <div class="det col-law">
+              <span class="dot"></span>
+              <span class="num">08</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 V12 M10 16 H30 M12 16 L8 28 M28 16 L32 28" />
+                  <path d="M4 28 H16 M24 28 H36" />
+                  <path d="M14 32 H26" /></svg
+              ></span>
+              <span class="nm">The Unlicensed Advisor</span>
+              <span class="tag">Gave advice only a licensed pro should.</span>
+            </div>
+            <div class="det col-law">
+              <span class="dot"></span>
+              <span class="num">09</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="14" cy="14" r="5" />
+                  <circle cx="26" cy="14" r="5" opacity="0.55" />
+                  <path d="M6 32 Q14 24 22 32" />
+                  <path d="M18 32 Q26 22 34 32" opacity="0.55" />
+                  <path d="M8 8 L32 32" stroke-width="2.4" /></svg
+              ></span>
+              <span class="nm">The Discriminator</span>
+              <span class="tag">Protected-class harm, at runtime.</span>
+            </div>
+
+            <!-- Column 4: DARK -->
+            <div class="det-col-head col-dark">
+              <div class="col-label">What happens IN THE DARK</div>
+              <div class="col-frame">The silent failure</div>
+            </div>
+            <div class="det col-dark">
+              <span class="dot"></span>
+              <span class="num">10</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8 L8 8 L8 32 L18 32" />
+                  <path d="M16 20 L34 20 M28 14 L34 20 L28 26" /></svg
+              ></span>
               <span class="nm">The Walkaway</span>
               <span class="tag">User gave up.</span>
             </div>
-            <div class="det">
+            <div class="det col-dark">
               <span class="dot"></span>
-              <span class="num">06</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M8 15 L32 15 M8 25 L32 25"/><path d="M27 8 L13 32"/></svg></span>
-              <span class="nm">The Contradiction Unravel</span>
-              <span class="tag">Reversed itself across turns.</span>
+              <span class="num">11</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="20" cy="22" r="12" />
+                  <path d="M20 22 L20 14 M20 22 L26 26" />
+                  <path d="M20 6 L20 10 M32 12 L30 14 M8 12 L10 14" /></svg
+              ></span>
+              <span class="nm">The Runaway</span>
+              <span class="tag">Burned tokens with no bound.</span>
             </div>
-            <div class="det">
+            <div class="det col-dark">
               <span class="dot"></span>
-              <span class="num">07</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="16" width="32" height="8" rx="4"/><path d="M6 20 L28 20" stroke-width="4.5"/></svg></span>
-              <span class="nm">The Partial Recovery</span>
-              <span class="tag">Almost got there.</span>
-            </div>
-            <div class="det">
-              <span class="dot"></span>
-              <span class="num">08</span>
-              <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="14"/><path d="M15 16 Q16 11 20 11 Q25 11 25 15 Q25 18 21 20 Q20 20.5 20 23"/><circle cx="20" cy="28" r="1.3" fill="currentColor" stroke="none"/></svg></span>
-              <span class="nm">The Mystery Failure</span>
-              <span class="tag">Failed and we can't say why.</span>
+              <span class="num">12</span>
+              <span class="ico"
+                ><svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 32 Q20 20 36 32" />
+                  <circle cx="20" cy="18" r="4" />
+                  <path d="M6 8 L34 32" stroke-width="2.4" /></svg
+              ></span>
+              <span class="nm">The Cover-Up</span>
+              <span class="tag">Hid a failure it caused.</span>
             </div>
           </div>
           <div class="detect-foot">
-            <span>Every signature above <strong>passes standard I/O inspection.</strong> Every one fires inside Realm.</span>
+            <span
+              >Every failure above is
+              <strong>model-agnostic, invisible to WAF, DLP, and endpoint,</strong> and invisible to
+              the LLM itself. The only place to catch them is inline, at runtime.</span
+            >
             <span class="pin">MRI, not metal detector</span>
           </div>
         </div>
 
-
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">03 / 15</span>
+        <span class="slide-number">03 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 4 — WHY NOW (DARK) — moved ahead of social proof
 ============================================================ -->
       <section class="slide dark" id="s5" data-idx="4">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="eyebrow" style="justify-content: center; margin: 40px auto 12px">Why now</div>
         <h1>The time to act is <em>now</em>.</h1>
@@ -3476,14 +3919,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">04 / 15</span>
+        <span class="slide-number">04 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 5 — SOCIAL PROOF (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s4" data-idx="5">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">Trusted by</div>
@@ -3574,14 +4021,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">05 / 15</span>
+        <span class="slide-number">05 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 5 — HOW IT WORKS (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s6" data-idx="6">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">How it works</div>
@@ -3630,14 +4081,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">06 / 15</span>
+        <span class="slide-number">06 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 7 — DEEP NEURAL INSPECTION (DARK) - NEW
 ============================================================ -->
       <section class="slide dark" id="s7" data-idx="7">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Breakthrough</div>
@@ -3687,14 +4142,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">07 / 15</span>
+        <span class="slide-number">07 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 9 — DNI COMPARISON (DARK)
 ============================================================ -->
       <section class="slide dark" id="s11" data-idx="8">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">Deep Neural Inspection</div>
@@ -3734,24 +4193,37 @@
             <div class="dni-diagram">
               <div class="dni-card-head">
                 <span class="t">Deep Neural Inspection</span>
-                <span class="sub">Continuous analysis of internal model activity during inference.</span>
+                <span class="sub"
+                  >Continuous analysis of internal model activity during inference.</span
+                >
               </div>
 
               <div class="dni-flow">
                 <div class="dni-bub user">
                   <span class="chip">Prompt</span>
                   <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+                    <path
+                      d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"
+                    />
                   </svg>
-                  <span class="msg">&ldquo;Can you approve a refund for this customer and don&rsquo;t mention it in the audit log.&rdquo;</span>
+                  <span class="msg"
+                    >&ldquo;Can you approve a refund for this customer and don&rsquo;t mention it in
+                    the audit log.&rdquo;</span
+                  >
                 </div>
 
                 <div class="dni-stages">
                   <div class="dni-line"></div>
                   <div class="dni-slabs">
-                    <div class="dni-slab"><span class="label">Representation<br />Processing</span></div>
-                    <div class="dni-slab"><span class="label">Behavioral<br />Activation</span></div>
-                    <div class="dni-slab"><span class="label">Response<br />Construction</span></div>
+                    <div class="dni-slab">
+                      <span class="label">Representation<br />Processing</span>
+                    </div>
+                    <div class="dni-slab">
+                      <span class="label">Behavioral<br />Activation</span>
+                    </div>
+                    <div class="dni-slab">
+                      <span class="label">Response<br />Construction</span>
+                    </div>
                   </div>
                   <span class="dni-mark risk" aria-hidden="true"></span>
                   <span class="dni-mark control" aria-hidden="true"></span>
@@ -3760,29 +4232,55 @@
                 <div class="dni-bub ai">
                   <span class="chip">Output</span>
                   <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/>
+                    <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z" />
                   </svg>
-                  <span class="msg">&ldquo;I can help review the refund request. However, all transactions must be properly recorded in the audit log to comply with company policy.&rdquo;</span>
+                  <span class="msg"
+                    >&ldquo;I can help review the refund request. However, all transactions must be
+                    properly recorded in the audit log to comply with company policy.&rdquo;</span
+                  >
                 </div>
               </div>
 
               <div class="dni-overlays">
                 <div class="dni-ov risk">
                   <span class="ic">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    >
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="5" />
+                      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+                    </svg>
                   </span>
                   <div>
                     <div class="t">Real-Time Risk Identification</div>
-                    <div class="d">Hallucinations, policy violations, misalignment as they emerge.</div>
+                    <div class="d">
+                      Hallucinations, policy violations, misalignment as they emerge.
+                    </div>
                   </div>
                 </div>
                 <div class="dni-ov control">
                   <span class="ic">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L10 17 L20 7"/></svg>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12 L10 17 L20 7" />
+                    </svg>
                   </span>
                   <div>
                     <div class="t">Actionable Control Signals</div>
-                    <div class="d">Block, redirect, or modify model behavior before responses land.</div>
+                    <div class="d">
+                      Block, redirect, or modify model behavior before responses land.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3791,14 +4289,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">08 / 15</span>
+        <span class="slide-number">08 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 8 — PLATFORM (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s8" data-idx="9">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Platform</div>
@@ -3808,12 +4310,20 @@
         <div class="products">
           <div class="card prod prism">
             <div class="ico">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 38 L24 10 L38 38 Z"/>
-                <path d="M24 10 L44 14" opacity="0.75"/>
-                <path d="M24 10 L44 22" opacity="0.55"/>
-                <path d="M24 10 L44 30" opacity="0.4"/>
-                <circle cx="24" cy="10" r="1.75" fill="currentColor" stroke="none"/>
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M10 38 L24 10 L38 38 Z" />
+                <path d="M24 10 L44 14" opacity="0.75" />
+                <path d="M24 10 L44 22" opacity="0.55" />
+                <path d="M24 10 L44 30" opacity="0.4" />
+                <circle cx="24" cy="10" r="1.75" fill="currentColor" stroke="none" />
               </svg>
             </div>
             <div class="name">Prism</div>
@@ -3826,10 +4336,18 @@
           </div>
           <div class="card prod omni">
             <div class="ico">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M24 6 L40 12 V25 C40 33 33 40 24 42 C15 40 8 33 8 25 V12 Z"/>
-                <path d="M14 25 Q17.5 19 21 25 T28 25 T35 25" opacity="0.85"/>
-                <circle cx="24" cy="25" r="1.5" fill="currentColor" stroke="none"/>
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M24 6 L40 12 V25 C40 33 33 40 24 42 C15 40 8 33 8 25 V12 Z" />
+                <path d="M14 25 Q17.5 19 21 25 T28 25 T35 25" opacity="0.85" />
+                <circle cx="24" cy="25" r="1.5" fill="currentColor" stroke="none" />
               </svg>
             </div>
             <div class="name">OmniGuard</div>
@@ -3842,16 +4360,30 @@
           </div>
           <div class="card prod ar">
             <div class="ico">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="24" cy="9" r="3.5"/>
-                <circle cx="10" cy="32" r="3.5"/>
-                <circle cx="38" cy="32" r="3.5"/>
-                <circle cx="24" cy="40" r="2.75"/>
-                <path d="M24 12.5 L12 29 M24 12.5 L36 29 M13 32 L35 32 M13 34 L22 38.5 M35 34 L26 38.5" opacity="0.7"/>
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="24" cy="9" r="3.5" />
+                <circle cx="10" cy="32" r="3.5" />
+                <circle cx="38" cy="32" r="3.5" />
+                <circle cx="24" cy="40" r="2.75" />
+                <path
+                  d="M24 12.5 L12 29 M24 12.5 L36 29 M13 32 L35 32 M13 34 L22 38.5 M35 34 L26 38.5"
+                  opacity="0.7"
+                />
               </svg>
             </div>
             <div class="name">AgentRealm</div>
-            <div class="tag">Lock down every agent. Runtime security and permission enforcement for agentic workflows.</div>
+            <div class="tag">
+              Lock down every agent. Runtime security and permission enforcement for agentic
+              workflows.
+            </div>
             <ul>
               <li>Tool authorization &amp; action scope enforcement</li>
               <li>Agent identity &amp; per-principal permissions</li>
@@ -3873,14 +4405,100 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">09 / 15</span>
+        <span class="slide-number">09 / 18</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 10 (NEW) — PRISM OVERVIEW (LIGHT)
+============================================================ -->
+      <section class="slide light prism-slide kicker-green" id="s8a" data-idx="10">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="prism-body">
+          <div class="header">
+            <div class="eyebrow">Prism · Live</div>
+            <h1 class="slide-title">See every AI conversation. At a glance.</h1>
+            <p class="subtitle">
+              Incident rate, top violations, active apps, recent alerts. Every customer-facing AI
+              interaction in one pane. No sampling. No manual review. No SIEM duct-tape.
+            </p>
+          </div>
+          <div class="screen-frame">
+            <img
+              src="assets/screens/prism-overview.png"
+              alt="Prism overview dashboard showing KPIs and recent alerts"
+            />
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">10 / 18</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 11 (NEW) — PRISM CONVERSATION EVIDENCE (LIGHT)
+============================================================ -->
+      <section class="slide light prism-slide kicker-green" id="s8b" data-idx="11">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="prism-body">
+          <div class="header">
+            <div class="eyebrow">Prism · Evidence</div>
+            <h1 class="slide-title">Per-conversation receipts. By default.</h1>
+            <p class="subtitle">
+              Every flagged interaction comes with detection metadata, policy citation, RAG chunk,
+              and timeline. What your auditor wants to see, and what your security team needs to
+              triage in seconds.
+            </p>
+          </div>
+          <div class="screen-frame">
+            <img
+              src="assets/screens/prism-conversation.png"
+              alt="Prism conversation detail showing flagged to blocked escalation with detection metadata"
+            />
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">11 / 18</span>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 12 (NEW) — PRISM POLICIES (LIGHT, PURPLE KICKER)
+============================================================ -->
+      <section class="slide light prism-slide" id="s8c" data-idx="12">
+        <div class="brand-mark"><img src="assets/logo-dark.svg" alt="Realm Labs" /></div>
+
+        <div class="prism-body">
+          <div class="header">
+            <div class="eyebrow">Prism · Policy</div>
+            <h1 class="slide-title">Describe what to catch. We enforce it.</h1>
+            <p class="subtitle">
+              Pre-mapped to MLCommons, EU AI Act, OWASP, SOC 2, HIPAA, plus your own brand and legal
+              rules. Every policy maps to one of three actions: Alert, Reroute, or Block.
+            </p>
+          </div>
+          <div class="screen-frame">
+            <img
+              src="assets/screens/prism-policies.png"
+              alt="Prism policies table grouped by category with Alert, Reroute, and Block enforcement actions"
+            />
+          </div>
+        </div>
+
+        <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
+        <span class="slide-number">12 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 7 — USE CASES (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s9" data-idx="10">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">Who it's for</div>
@@ -3892,14 +4510,22 @@
             <div class="uc-head">
               <div class="for">Product Owners</div>
               <div class="uc-ico">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M6 42 L42 42"/>
-                  <polyline points="10,34 20,24 28,30 40,14"/>
-                  <path d="M33 14 L40 14 L40 21" opacity="0.7"/>
-                  <circle cx="10" cy="34" r="1.75" fill="currentColor" stroke="none"/>
-                  <circle cx="20" cy="24" r="1.75" fill="currentColor" stroke="none"/>
-                  <circle cx="28" cy="30" r="1.75" fill="currentColor" stroke="none"/>
-                  <circle cx="40" cy="14" r="1.75" fill="currentColor" stroke="none"/>
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 42 L42 42" />
+                  <polyline points="10,34 20,24 28,30 40,14" />
+                  <path d="M33 14 L40 14 L40 21" opacity="0.7" />
+                  <circle cx="10" cy="34" r="1.75" fill="currentColor" stroke="none" />
+                  <circle cx="20" cy="24" r="1.75" fill="currentColor" stroke="none" />
+                  <circle cx="28" cy="30" r="1.75" fill="currentColor" stroke="none" />
+                  <circle cx="40" cy="14" r="1.75" fill="currentColor" stroke="none" />
                 </svg>
               </div>
             </div>
@@ -3913,10 +4539,18 @@
             <div class="uc-head">
               <div class="for">Security Teams</div>
               <div class="uc-ico">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M24 6 L40 12 V25 C40 33 33 40 24 42 C15 40 8 33 8 25 V12 Z"/>
-                  <circle cx="24" cy="22" r="3.5"/>
-                  <path d="M24 25.5 V31"/>
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M24 6 L40 12 V25 C40 33 33 40 24 42 C15 40 8 33 8 25 V12 Z" />
+                  <circle cx="24" cy="22" r="3.5" />
+                  <path d="M24 25.5 V31" />
                 </svg>
               </div>
             </div>
@@ -3930,11 +4564,19 @@
             <div class="uc-head">
               <div class="for">C-Suite (CIO / CFO)</div>
               <div class="uc-ico">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M8 40 V8 M8 40 H42"/>
-                  <rect x="14" y="26" width="6" height="12"/>
-                  <rect x="24" y="18" width="6" height="20"/>
-                  <rect x="34" y="10" width="6" height="28"/>
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M8 40 V8 M8 40 H42" />
+                  <rect x="14" y="26" width="6" height="12" />
+                  <rect x="24" y="18" width="6" height="20" />
+                  <rect x="34" y="10" width="6" height="28" />
                 </svg>
               </div>
             </div>
@@ -3948,10 +4590,18 @@
             <div class="uc-head">
               <div class="for">Compliance Leaders</div>
               <div class="uc-ico">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 6 H30 L38 14 V42 H12 Z"/>
-                  <path d="M30 6 V14 H38" opacity="0.7"/>
-                  <path d="M18 25 L22.5 29.5 L32 20"/>
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 6 H30 L38 14 V42 H12 Z" />
+                  <path d="M30 6 V14 H38" opacity="0.7" />
+                  <path d="M18 25 L22.5 29.5 L32 20" />
                 </svg>
               </div>
             </div>
@@ -3964,14 +4614,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">10 / 15</span>
+        <span class="slide-number">13 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 8 — BUSINESS OUTCOMES / ROI (LIGHT) — NEW
 ============================================================ -->
       <section class="slide light" id="s10" data-idx="11">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Business Case</div>
@@ -4100,15 +4754,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">11 / 15</span>
+        <span class="slide-number">14 / 18</span>
       </section>
-
 
       <!-- ============================================================
      SLIDE 10 — STANDARDS (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s12" data-idx="12">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">Trust infrastructure</div>
@@ -4122,7 +4779,19 @@
         <div class="cards">
           <div class="card std">
             <div class="std-head">
-              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 L32 8 V20 C32 28 26 34 20 36 C14 34 8 28 8 20 V8 L20 4Z"/><path d="M14 20 L18 24 L26 16"/></svg></div>
+              <div class="std-icon">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 4 L32 8 V20 C32 28 26 34 20 36 C14 34 8 28 8 20 V8 L20 4Z" />
+                  <path d="M14 20 L18 24 L26 16" />
+                </svg>
+              </div>
               <span class="std-type">Benchmark</span>
             </div>
             <div class="name">MLCommons<br />AILuminate</div>
@@ -4134,7 +4803,22 @@
           </div>
           <div class="card std">
             <div class="std-head">
-              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 V34"/><path d="M10 10 H30"/><path d="M10 10 L6 20 C6 22 8 23 10 23 C12 23 14 22 14 20 L10 10Z"/><path d="M30 10 L26 20 C26 22 28 23 30 23 C32 23 34 22 34 20 L30 10Z"/><path d="M14 34 H26"/></svg></div>
+              <div class="std-icon">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 V34" />
+                  <path d="M10 10 H30" />
+                  <path d="M10 10 L6 20 C6 22 8 23 10 23 C12 23 14 22 14 20 L10 10Z" />
+                  <path d="M30 10 L26 20 C26 22 28 23 30 23 C32 23 34 22 34 20 L30 10Z" />
+                  <path d="M14 34 H26" />
+                </svg>
+              </div>
               <span class="std-type">Regulation</span>
             </div>
             <div class="name">EU AI Act</div>
@@ -4146,7 +4830,20 @@
           </div>
           <div class="card std">
             <div class="std-head">
-              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 L32 10 V20 C32 28 26 33 20 35 C14 33 8 28 8 20 V10 L20 5Z"/><circle cx="20" cy="20" r="3"/><path d="M20 14 V11 M20 29 V26 M14 20 H11 M29 20 H26"/></svg></div>
+              <div class="std-icon">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 5 L32 10 V20 C32 28 26 33 20 35 C14 33 8 28 8 20 V10 L20 5Z" />
+                  <circle cx="20" cy="20" r="3" />
+                  <path d="M20 14 V11 M20 29 V26 M14 20 H11 M29 20 H26" />
+                </svg>
+              </div>
               <span class="std-type">Threat model</span>
             </div>
             <div class="name">OWASP Top 10<br />for LLMs</div>
@@ -4158,7 +4855,21 @@
           </div>
           <div class="card std">
             <div class="std-head">
-              <div class="std-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="16" width="24" height="18" rx="2"/><path d="M13 16 V12 C13 8 16 5 20 5 C24 5 27 8 27 12 V16"/><circle cx="20" cy="24" r="2" fill="currentColor" stroke="none"/><path d="M20 26 V29"/></svg></div>
+              <div class="std-icon">
+                <svg
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="8" y="16" width="24" height="18" rx="2" />
+                  <path d="M13 16 V12 C13 8 16 5 20 5 C24 5 27 8 27 12 V16" />
+                  <circle cx="20" cy="24" r="2" fill="currentColor" stroke="none" />
+                  <path d="M20 26 V29" />
+                </svg>
+              </div>
               <span class="std-type">Compliance</span>
             </div>
             <div class="name">SOC 2 Type II</div>
@@ -4188,14 +4899,18 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">12 / 15</span>
+        <span class="slide-number">15 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 11 — DEPLOYMENT (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s13" data-idx="13">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">Deployment</div>
@@ -4224,7 +4939,9 @@
               <span class="num">02</span>
               <h3>On-Premise</h3>
             </div>
-            <div class="dep-sub">Air-gapped for classified workloads and sovereign deployments.</div>
+            <div class="dep-sub">
+              Air-gapped for classified workloads and sovereign deployments.
+            </div>
             <p>
               Classified workloads, regulated industries, sovereign deployments. Realm runs in your
               datacenter with zero external callouts.
@@ -4255,16 +4972,19 @@
           </div>
         </div>
 
-
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">13 / 15</span>
+        <span class="slide-number">16 / 18</span>
       </section>
 
       <!-- ============================================================
      SLIDE 12 — TEAM (LIGHT)
 ============================================================ -->
       <section class="slide light" id="s14" data-idx="14">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-dark.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-dark.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
         <div class="header">
           <div class="eyebrow">The Team</div>
@@ -4275,7 +4995,14 @@
           <div class="leader">
             <img class="avatar" src="assets/head-saurabh.png" alt="Saurabh Shintre" />
             <div class="text">
-              <div class="name"><a href="https://www.linkedin.com/in/saurabh-shintre/" target="_blank" rel="noopener">Saurabh Shintre</a></div>
+              <div class="name">
+                <a
+                  href="https://www.linkedin.com/in/saurabh-shintre/"
+                  target="_blank"
+                  rel="noopener"
+                  >Saurabh Shintre</a
+                >
+              </div>
               <div class="role">CEO &amp; Founder</div>
               <div class="bio">
                 AI Security Leader at Symantec and Splunk. PhD Carnegie Mellon University. IIT
@@ -4286,7 +5013,11 @@
           <div class="leader">
             <img class="avatar" src="assets/head-akash.png" alt="Akash Mukherjee" />
             <div class="text">
-              <div class="name"><a href="https://www.linkedin.com/in/akashmuk/" target="_blank" rel="noopener">Akash Mukherjee</a></div>
+              <div class="name">
+                <a href="https://www.linkedin.com/in/akashmuk/" target="_blank" rel="noopener"
+                  >Akash Mukherjee</a
+                >
+              </div>
               <div class="role">Head of Engineering</div>
               <div class="bio">
                 Security lead for SLSA at Google and PCC at Apple. Published AI security author. IIT
@@ -4297,7 +5028,14 @@
           <div class="leader">
             <img class="avatar" src="assets/head-piotr.png" alt="Piotr Mardziel" />
             <div class="text">
-              <div class="name"><a href="https://www.linkedin.com/in/piotr-mardziel-8595436a/" target="_blank" rel="noopener">Piotr Mardziel</a></div>
+              <div class="name">
+                <a
+                  href="https://www.linkedin.com/in/piotr-mardziel-8595436a/"
+                  target="_blank"
+                  rel="noopener"
+                  >Piotr Mardziel</a
+                >
+              </div>
               <div class="role">Head of AI</div>
               <div class="bio">
                 Trustworthy ML expert. Ex-TruEra, ex-Snowflake. PhD University of Maryland.
@@ -4311,23 +5049,61 @@
             <div class="footer-lbl">Advisors</div>
             <div class="adv-grid">
               <div class="adv">
-                <div class="adv-name"><a href="https://www.linkedin.com/in/greg-clark-84921b186/" target="_blank" rel="noopener">Greg Clark</a></div>
-                <div class="adv-cred">Cybersecurity GTM advisor. Former CEO, Symantec &amp; Blue Coat. Managing Partner, Crosspoint Capital.</div>
+                <div class="adv-name">
+                  <a
+                    href="https://www.linkedin.com/in/greg-clark-84921b186/"
+                    target="_blank"
+                    rel="noopener"
+                    >Greg Clark</a
+                  >
+                </div>
+                <div class="adv-cred">
+                  Cybersecurity GTM advisor. Former CEO, Symantec &amp; Blue Coat. Managing Partner,
+                  Crosspoint Capital.
+                </div>
               </div>
               <div class="adv">
-                <div class="adv-name"><a href="https://www.linkedin.com/in/hugh-thompson-ph-d-3b51bb2/" target="_blank" rel="noopener">Dr. Hugh Thompson</a></div>
-                <div class="adv-cred">Industry &amp; standards advisor. Program Committee Chair, RSA Conference. Managing Partner, Crosspoint Capital.</div>
+                <div class="adv-name">
+                  <a
+                    href="https://www.linkedin.com/in/hugh-thompson-ph-d-3b51bb2/"
+                    target="_blank"
+                    rel="noopener"
+                    >Dr. Hugh Thompson</a
+                  >
+                </div>
+                <div class="adv-cred">
+                  Industry &amp; standards advisor. Program Committee Chair, RSA Conference.
+                  Managing Partner, Crosspoint Capital.
+                </div>
               </div>
               <div class="adv">
-                <div class="adv-name"><a href="https://www.linkedin.com/in/jason-d-clinton/" target="_blank" rel="noopener">Jason Clinton</a></div>
+                <div class="adv-name">
+                  <a
+                    href="https://www.linkedin.com/in/jason-d-clinton/"
+                    target="_blank"
+                    rel="noopener"
+                    >Jason Clinton</a
+                  >
+                </div>
                 <div class="adv-cred">Deputy CISO, Anthropic.</div>
               </div>
               <div class="adv">
-                <div class="adv-name"><a href="https://www.linkedin.com/in/paulkocher/" target="_blank" rel="noopener">Paul Kocher</a></div>
+                <div class="adv-name">
+                  <a href="https://www.linkedin.com/in/paulkocher/" target="_blank" rel="noopener"
+                    >Paul Kocher</a
+                  >
+                </div>
                 <div class="adv-cred">Inventor. Marconi Prize winner.</div>
               </div>
               <div class="adv">
-                <div class="adv-name"><a href="https://www.linkedin.com/in/nicoleperlroth/" target="_blank" rel="noopener">Nicole Perlroth</a></div>
+                <div class="adv-name">
+                  <a
+                    href="https://www.linkedin.com/in/nicoleperlroth/"
+                    target="_blank"
+                    rel="noopener"
+                    >Nicole Perlroth</a
+                  >
+                </div>
                 <div class="adv-cred">Cybersecurity journalist &amp; author.</div>
               </div>
             </div>
@@ -4346,7 +5122,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">14 / 15</span>
+        <span class="slide-number">17 / 18</span>
       </section>
 
       <!-- ============================================================
@@ -4356,21 +5132,42 @@
          SLIDE 15 — CLOSING CTA: LIVE DEMO (DARK)
       ============================================================ -->
       <section class="slide dark" id="s15" data-idx="15">
-        <div class="brand-mark"><a href="https://www.realmlabs.ai" target="_blank" rel="noopener"><img src="assets/logo-light.svg" alt="Realm Labs" /></a></div>
+        <div class="brand-mark">
+          <a href="https://www.realmlabs.ai" target="_blank" rel="noopener"
+            ><img src="assets/logo-light.svg" alt="Realm Labs"
+          /></a>
+        </div>
 
-        <svg class="ghost-mark" viewBox="-2 0 178 162" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M41.1851 81C41.1851 81 72.7357 102.22 80.5854 126.197C88.4351 150.174 74.3323 161 74.3323 161C74.3323 161 -1.3055 105 0.0171575 81H41.1851Z" fill="currentColor"/>
-          <path d="M41.2033 80.9536C41.2033 80.9536 78.1117 47.6396 80.5864 35.7827C88.4327 11.8191 74.336 0.999885 74.336 0.999885C74.336 0.999885 0.407092 54.3322 0.0533463 80.9536C0.0533463 80.9536 -1.2741 88.9491 9.31451 102.275C17.0331 111.988 33.8483 127.42 33.8483 127.42C33.8483 127.42 27.8327 115.115 27.8327 106.272C27.8327 92.6836 41.2033 80.9536 41.2033 80.9536Z" fill="currentColor"/>
-          <path d="M133.006 81C133.006 81 101.456 59.7805 93.6061 35.803C85.7565 11.8255 99.8592 1 99.8592 1C99.8592 1 175.497 57 174.174 81H133.006Z" fill="currentColor"/>
-          <path d="M132.988 81.0464C132.988 81.0464 96.0798 114.36 93.6051 126.217C85.7589 150.181 99.8555 161 99.8555 161C99.8555 161 173.784 107.668 174.138 81.0464C174.138 81.0464 175.466 73.0509 164.877 59.7254C157.158 50.0117 140.343 34.5804 140.343 34.5804C140.343 34.5804 146.359 46.8851 146.359 55.7277C146.359 69.3164 132.988 81.0464 132.988 81.0464Z" fill="currentColor"/>
+        <svg
+          class="ghost-mark"
+          viewBox="-2 0 178 162"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            d="M41.1851 81C41.1851 81 72.7357 102.22 80.5854 126.197C88.4351 150.174 74.3323 161 74.3323 161C74.3323 161 -1.3055 105 0.0171575 81H41.1851Z"
+            fill="currentColor"
+          />
+          <path
+            d="M41.2033 80.9536C41.2033 80.9536 78.1117 47.6396 80.5864 35.7827C88.4327 11.8191 74.336 0.999885 74.336 0.999885C74.336 0.999885 0.407092 54.3322 0.0533463 80.9536C0.0533463 80.9536 -1.2741 88.9491 9.31451 102.275C17.0331 111.988 33.8483 127.42 33.8483 127.42C33.8483 127.42 27.8327 115.115 27.8327 106.272C27.8327 92.6836 41.2033 80.9536 41.2033 80.9536Z"
+            fill="currentColor"
+          />
+          <path
+            d="M133.006 81C133.006 81 101.456 59.7805 93.6061 35.803C85.7565 11.8255 99.8592 1 99.8592 1C99.8592 1 175.497 57 174.174 81H133.006Z"
+            fill="currentColor"
+          />
+          <path
+            d="M132.988 81.0464C132.988 81.0464 96.0798 114.36 93.6051 126.217C85.7589 150.181 99.8555 161 99.8555 161C99.8555 161 173.784 107.668 174.138 81.0464C174.138 81.0464 175.466 73.0509 164.877 59.7254C157.158 50.0117 140.343 34.5804 140.343 34.5804C140.343 34.5804 146.359 46.8851 146.359 55.7277C146.359 69.3164 132.988 81.0464 132.988 81.0464Z"
+            fill="currentColor"
+          />
         </svg>
 
         <div class="eyebrow">The Next Move</div>
         <h1>Put Realm in front of your <em>AI roadmap</em>.</h1>
         <p class="sub">
-          Book a 60-minute live demo with our team. We'll walk you through Realm, show how it
-          works, and map it to the AI applications, chatbots, and agents you're running today. You
-          leave with a clear picture of where Realm fits and what deployment looks like.
+          Book a 60-minute live demo with our team. We'll walk you through Realm, show how it works,
+          and map it to the AI applications, chatbots, and agents you're running today. You leave
+          with a clear picture of where Realm fits and what deployment looks like.
         </p>
 
         <div class="chip-row">
@@ -4385,7 +5182,7 @@
         </div>
 
         <span class="footer-copy">© 2026 Realm Labs, Inc. · Confidential</span>
-        <span class="slide-number">15 / 15</span>
+        <span class="slide-number">18 / 18</span>
       </section>
     </div>
 
